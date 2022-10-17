@@ -1,0 +1,734 @@
+---
+title: "Phylomorphospace"
+output: html_document
+date: "2022-08-09"
+---
+
+```{r - LIBRARIES}
+
+library(xlsx)
+library(stats)
+library(rJava)
+library(ape)
+library(phytools)
+library(png)
+library(TreeTools)
+library(geiger)
+library(rlang)
+library(pillar)
+library(FactoMineR)
+library(factoextra)
+library(FactoClass)
+library(scatterplot3d)
+library(magick)
+library(devtools)
+library(credentials)
+library(rgl)
+
+setwd("C:/Users/Daniel/Documents/Geckolab/Data/Thesis_Analysis")
+
+```
+
+Some of these functions were used in generation of an RGL object for the 3D morphospace later on
+
+```{r - Functions}
+
+rgl_init <- function(new.device = FALSE, bg = "white", width = 640) { 
+  if( new.device | rgl.cur() == 0 ) {
+    rgl.open()
+    par3d(windowRect = 50 + c( 0, 0, width, width ) )
+    rgl.bg(color = bg )
+  }
+  rgl.clear(type = c("shapes", "bboxdeco"))
+  rgl.viewpoint(theta = 15, phi = 20, zoom = 0.7)
+}
+
+rgl_add_axes <- function(x, y, z, axis.col = "grey",
+                xlab = "", ylab="", zlab="", show.plane = TRUE, 
+                show.bbox = FALSE, bbox.col = c("#333377","black"))
+  { 
+  
+  lim <- function(x){c(-max(abs(x)), max(abs(x))) * 1.1}
+  # Add axes
+  xlim <- lim(x); ylim <- lim(y); zlim <- lim(z)
+  rgl.lines(xlim, c(0, 0), c(0, 0), color = axis.col)
+  rgl.lines(c(0, 0), ylim, c(0, 0), color = axis.col)
+  rgl.lines(c(0, 0), c(0, 0), zlim, color = axis.col)
+  
+   # Add a point at the end of each axes to specify the direction
+   axes <- rbind(c(xlim[2], 0, 0), c(0, ylim[2], 0), 
+                 c(0, 0, zlim[2]))
+   rgl.points(axes, color = axis.col, size = 3)
+  
+  # Add axis labels
+  rgl.texts(axes, text = c(xlab, ylab, zlab), color = axis.col,
+             adj = c(0.5, -0.8), size = 2)
+  
+  # Add plane
+  if(show.plane) 
+    xlim <- xlim/1.1; zlim <- zlim /1.1
+    rgl.quads( x = rep(xlim, each = 2), y = c(0, 0, 0, 0),
+             z = c(zlim[1], zlim[2], zlim[2], zlim[1]))
+  
+  # Add bounding box decoration
+  if(show.bbox){
+    rgl.bbox(color=c(bbox.col[1],bbox.col[2]), alpha = 0.5, 
+          emission=bbox.col[1], specular=bbox.col[1], shininess=5, 
+          xlen = 3, ylen = 3, zlen = 3) 
+  }
+}
+
+get_colors <- function(groups, group.col = palette()){
+  groups <- as.factor(groups)
+  ngrps <- length(levels(groups))
+  if(ngrps > length(group.col)) 
+    group.col <- rep(group.col, ngrps)
+  color <- group.col[as.numeric(groups)]
+  names(color) <- as.vector(groups)
+  return(color)
+}
+
+lim <- function(x){c(-max(abs(x)), max(abs(x))) * 1.1}
+
+```
+
+Read in data.
+Excel spreadsheet was created by copying over character states from Mesquite Character Matrix.
+Tree is obtained from Pyron et al. 2015 (https://link.springer.com/article/10.1186/1471-2148-13-93) and was coerced into an appropriate Newick format using FigTree after taxa not present in my sample were pruned.
+Characters are available in the Thesis or Combined_Data_Tree Mesquite dataset.
+
+```{r - DATA}
+
+#Read in newick tree from Pyron 2013
+pyron <- read.tree("Scale_NEWICK.phy")
+
+#Read in dataset from excel
+scale <- as.matrix(read.xlsx('Dataset.xlsx',
+                             sheetIndex = 1,
+                             rowIndex = 1:153,
+                             colIndex = 2:181,
+                             header = F))
+#Return taxa names
+scale_taxa <- read.xlsx('Dataset.xlsx',
+                   sheetIndex = 1,
+                   rowIndex = 1:153,
+                   colIndex = 1,
+                   as.data.frame = F)
+#Develop vector for denoting proper character numbers
+ch <- c(1:180)
+#Apply names to each section of the matrix
+rownames(scale) <- scale_taxa
+colnames(scale) <- ch
+
+#Verify that taxa are identically named
+name.check(pyron, scale)
+#Underscores instead of spaces in our tree, data needs to be changed
+rownames(scale) <- gsub(" ","_",rownames(scale))
+#Now to verify
+name.check(pyron, scale)
+
+#Set up the data to use in MCA
+scale.df <- as.data.frame(scale)
+#Naming variables will help with interpretation later on
+var_names <- (c("Rostral", "Ex.Rostral", "Spl.Rostral", "Narial.Op", "Op.Rostral", "Op.Superlab",
+                "Nasal.Ros", "Supralab.Ros", "Internasal", "Ceph.Size", "Ceph.Keel", "Ceph.Elong",
+                "En.Frontal", "FParietal.Con", "CirOrbital", "En.Supraoc", "Supraoc.Row", "Supracil",
+                "Supraoc.Con", "Supracil.Ov", "Supralab.Orb", "En.Suboc", "Suboc.Con", "En.Interpar",
+                "En.Temp", "Heat.Pit", "Mouth", "Tongue.Gr", "Eye", "Eye.Scales",
+                "Eyelids", "Low.Eye.Sc", "Spectacle", "Gran.Eyelid", "Ear", "Tympanum",
+                "Ear.Cover", "Dewlap", "Mental", "El.Postment", "One.Postment", "En.Med.Infralab",
+                "Infralab.Sep", "Ex.Labials", "Mental.Gr", "Gular.Fold", "Annul.Body", "Varanus.Sc",
+                "Homo.Dorsal", "Gen.Dorsal", "Body.Keel", "Dorsal.Ridge", "En.Middorsal", "Nuchal.Cr",
+                "Gen.Lateral", "Lateral.Fold", "Gastrosteges", "Ventral.Size", "Gen.Ventral", "Belly.Keel",
+                "Ventral.Edge", "Fem.Pores", "Preanal.Pores", "Tail.Tip", "Tail.Spike", "Tail.Cross",
+                "Tail.Size", "Tail.Keel", "Annul.Tail", "En.Preanal", "Anal.Plate", "En.Postanal",
+                "Tubercles", "One.Subcaudal", "Ex.Hindlimb", "Limb.Cross", "Toe.Pads", "Subdig.Num",
+                "Subdig,Keel", "Mittens", "Claw.Sheath", "Frontal.Shape", "Frontal.Tex", "Frontal.Ov",
+                "Chalcidine", "Inasal.Shape", "Inasal.Tex", "Inasal.Keel", "Inasal.K.T", "Loreal.Shape",
+                "Loreal.Tex", "Loreal.Keel", "Loreal.K.T", "Loreal.Just", "Loreal.Ov", "En.Loreal",
+                "Supraoc.Shape", "Supraoc.Tex", "Supraoc.Keel", "Supraoc.K.T", "Supraoc.Just", "Supraoc.Ov",
+                "Postmen.Shape", "Postmen.Tex", "Postmen.Keel", "Postmen.K.T", "Postmen.Ov", "Homo.DNeck",
+                "DNeck.Shape", "DNeck.Tex", "DNeck.Keel", "DNeck.K.T", "DNeck.Just", "DNeck.Ov",
+                "LNeck.Shape", "LNeck.Tex", "LNeck.Keel", "LNeck.K.T", "LNeck.Just", "LNeck.Ov",
+                "VNeck.Shape", "VNeck.Tex", "VNeck.Keel", "VNeck.K.T", "VNeck.Just", "VNeck.Ov",
+                "Dorsal.Shape", "Dorsal.Tex", "Dorsal.Keel", "Dorsal.K.T", "Dorsal.Just", "Dorsal.Ov",
+                "Lateral.Shape", "Lateral.Tex", "Lateral.Keel", "Lateral.K.T", "Lateral.Just", "Lateral.Ov",
+                "Ventral.Shape", "Ventral.Tex", "Ventral.Keel", "Ventral.K.T", "Ventral.Just", "Ventral.Ov",
+                "Thigh.Shape", "Thigh.Tex", "Thigh.Keel", "Thigh.K.T", "Thigh.Just", "Thigh.Ov",
+                "Foot.Shape", "Foot.Tex", "Foot.Keel", "Foot.K.T", "Foot.Just", "Foot.Ov",
+                "Digit.Just", "Digit.Ov", "DCaudal.Shape", "DCaudal.Tex", "DCaudal.Keel", "DCaudal.K.T",
+                "DCaudal.Just", "DCaudal.Ov", "VCaudal.Shape", "VCaudal.Tex", "VCaudal.Keel", "VCaudal.K.T",
+                "VCaudal.Just", "VCaudal.Ov", "Ap.Pits", "Osteoderms", "Spines", "Horns",
+                "Subtympanic", "Supraoc.Disc", "Sens.Head", "Sens.Body", "Scale.Form", "Mid.Ven.Crest"))
+colnames(scale.df) <- var_names
+
+```
+
+
+
+```{r - Run All Data}
+
+#Generate groups, starting with clades
+clade <- c("Sphenodon", "Dibamidae", (rep("Gekkota", 20)), (rep("Scincoidea", 16)), (rep("Teioidea", 8)),
+           (rep("Amphisbaenia", 8)), (rep("Lacertoidea", 4)), (rep("Anguimorpha", 15)),
+           (rep("Acrodonta", 7)), (rep("Pleurodonta", 28)), (rep("'Scolecophidia'", 7)),
+           (rep("Alethinophidia", 38)))
+
+#Use multiple correspondence analysis
+scale.MCA <- MCA(scale.df, axes = c(1,2), na.method = "NA", graph = F)
+
+#Some extra visualization may be possible but is not necessary
+
+#scale.MCA$ind
+#scale.MCA$var
+#plot.MCA(scale.MCA, axes = c(1,2), choix = "ind",invisible = "var", )
+#plot.MCA(scale.MCA, axes = c(1,2), choix = "var",invisible = "ind", )
+
+#Visualize separation in individuals along these axes
+grp.clade <- as.factor(clade)
+fviz_mca_ind(scale.MCA,
+             label = "none",
+             habillage = grp.clade,
+             palette = c("#AA4466", "#88CCEE", "#CC6677", "#999933",
+                         "#DDCC77", "#6699CC", "#882255", "#AA4499",
+                         "#44AA99", "#117733", "#661100", "#332288"),
+             cex = 5,
+             ggtheme = theme_minimal()
+             )
+
+#Contribution shows that limbless traits are skewing data potentially
+fviz_mca_var(scale.MCA,
+             label = "none",
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = T,
+             ggtheme = theme_minimal()
+             )
+
+```
+
+Now to rerun the analyses without the limbless characters. This may be a bit more informative, and could show some separation in the body scales a bit more. Currently the analysis is assuming all of the "?" characters indicate shared states for snakes, amphisbaenians, and other limbless taxa despite there simply being absent info.
+
+```{r - Limb Corrected Data}
+
+#Remove limb dependent characters from dataset
+scale.body <- subset(scale.df,
+                     select = -c(145:158))
+scale.body <- subset(scale.body,
+                     select = -c(75:81))
+
+#Run MCA
+scale.body.MCA <- MCA(scale.body, axes = c(1,2), na.method = "NA", graph = F)
+scale.body.MCA2 <- MCA(scale.body, axes = c(2,3), na.method = "NA", graph = F)
+
+#scale.body.MCA$ind
+#scale.body.MCA$var
+#plot.MCA(scale.body.MCA, axes = c(1,2), choix = "ind", invisible = "var")
+
+#Identify contribution of key characters
+fviz_contrib(scale.body.MCA, choice = "var", axes = 1, top = 15)
+fviz_contrib(scale.body.MCA, choice = "var", axes = 2, top = 15)
+#And both axes together
+fviz_contrib(scale.body.MCA, choice = "var", axes = 1:2, top = 15)
+#It appears overlap and justification are key contributors to variance
+
+#Visualize separation in individuals without limbed characters, used png() to save high resolution images
+#png(filename = "HiRes2_1.5pt.png", res = 800, width = 5000, height = 3200)
+
+fviz_mca_ind(scale.body.MCA,
+             label = "none",
+             habillage = grp.clade,
+             palette = c("#e66c76", "#88CCEE", "#cc7f43", "#999933",
+                         "#DDCC77", "#6699CC", "#8a000b", "#d41cce",
+                         "#44AA99", "#117733", "#2f3d34", "#332288"),
+             #addEllipses = T, ellipse.level = 0.95,
+             #select.ind = list(contrib = 68),
+             shape.ind = "triangle",
+             pointsize = 1.5,
+             invisible = "quali",
+             ggtheme = theme_minimal()
+             )
+
+#Develop a vector for lizards
+scale_lizards <- scale.body[-c(109:153), ]
+
+#Now the other two axes, with Dim 2 on the Y
+#png(filename = "Final_Ellipses_12_1.5.png", res = 800, width = 5000, height = 3200)
+
+fviz_mca_ind(scale.body.MCA,
+             axes = c(1, 2),
+             label = "none",
+             habillage = grp.clade,
+             palette = c("#4ccf84", "#e66c76", "#117733", "#8fc2db", "#cc7f43", "#999933",
+                         "#DDCC77", "#2b95ff", "#8a000b", "#d41cce",
+                         "#2f3d34", "#332288"),
+             addEllipses = T, ellipse.level = 0.95,
+             #select.ind = list(name = rownames(scale_lizards)),
+             shape.ind = "triangle",
+             pointsize = 1.5,
+             invisible = "quali",
+             ggtheme = theme_minimal()
+             )
+
+
+#Visualize Variable directionality
+#png(filename = "HiRes2_Var_12_Names_Test.png", res = 800, width = 9000, height = 3200)
+
+fviz_mca_var(scale.body.MCA,
+             #label = "none",
+             axes = c(1, 2),
+             col.var = "contrib",
+             gradient.cols = c("#91008d", "#00d420"),
+             #alpha.var = "cos2",
+             #repel = T,
+             select = list(contrib = 20),
+             geom.var = c("arrow", "text"),
+             ggtheme = theme_minimal()
+             )
+
+
+```
+
+Not that this is necessary, but I wanted to visualize what would happen if several (presumably) uninformative characters were removed. This ended up having little bearing on the percent of variation explained by the top three taxa thus it was not necessary.
+
+```{r - Minimizing MCA Variables}
+
+scale.min <- subset(scale.body,
+                    select = -c(82, 86, 93, 99, 105, 111, 117, 123, 129, 135, 141, 147),
+                    drop = T)
+
+min.MCA <- MCA(scale.min, axes = c(1, 2), na.method = "NA", graph = F)
+
+#Visualize separation in individuals without limbed characters
+fviz_mca_ind(min.MCA,
+             label = "none",
+             habillage = grp.clade,
+             palette = c("#AA4466", "#88CCEE", "#CC6677", "#999933",
+                         "#DDCC77", "#6699CC", "#882255", "#AA4499",
+                         "#44AA99", "#117733", "#661100", "#332288"),
+             #addEllipses = T, ellipse.level = 0.95,
+             #select.ind = list(contrib = 68),
+             cex = 5,
+             pointsize = 4.5,
+             invisible = "quali",
+             ggtheme = theme_minimal()
+             )
+
+```
+
+
+Various examples of variable contribution using package FactoExtra
+
+```{r - Visualize Variable Contribution}
+
+fviz_contrib(scale.MCA, choice = "var", axes = 1, top = 15)
+fviz_contrib(scale.body.MCA, choice = "var", axes = 1, top = 15)
+
+#png(filename = "HiRes_Contribution.png", res = 800, width = 8000, height = 3200)
+
+fviz_contrib(MCA.3D, choice = "var", axes = 1:3, top = 40)
+
+fviz_mca_var(scale.MCA, choice = "mca.cor",
+             repel = T)
+fviz_mca_var(scale.body.MCA, choice = "mca.cor",
+             col.var = "contrib",
+             repel = T)
+fviz_mca_var(min.MCA, choice = "mca.cor",
+             repel = T)
+fviz_mca_var(MCA.3D, choice = "mca.cor",
+             repel = T,
+             col.var = "black",
+             shape.var = 16)+
+  scale_color_gradient2(low = "steelblue", mid = "blue", high = "orange", midpoint = 0.5)
+
+```
+
+
+
+
+
+Some of these vectors were generated to visualize only certain clades at a time. Not necessary
+
+```{r - Preparing specific Figures}
+
+#Visualize limb reduced groups
+knubs <- list(name = c("Xantusia_vigilis", "Lepidophyma_pajapanensis", "Gerrhosaurus_sp", "Gerrhosaurus_flavigularis",
+                       "Platysaurus_intermedius", "Smaug_warreni", "Plestiodon_obsoletus", "Plestiodon_fasciatus", "Scincella_lateralis",
+                       "Tribolonotus_novaeguineae", "Tiliqua_sp", "Tiliqua_scincoides", "Tiliqua_gigas", "Trachylepis_sp",
+                       "Rhineura_floridana", "Bipes_canaliculatus", "Blanus_alexandri", "Cadea_blanoides", "Trogonophis_wiegmanni",
+                       "Amphisbaena_mertensii", "Amphisbaena_camura", "Leposternon_microcephalum", "Helminthophis_frontalis", "Trilepida_macrolepis",
+                       "Rena_humilis", "Gerrhopilus_persephone", "Xenotyphlops_grandidieri", "Typhlops_reticulatus", "Typhlops_hectus",
+                       "Anilius_scytale", "Tropidophis_spiritus", "Xenophidion_acanthognathus", "Casarea_dussumieri", "Exiliboa_placata",
+                       "Corallus_caninus", "Anomochilus_monticola", "Cylindrophis_ruffus", "Uropeltis_melanogaster", "Xenopeltis_unicolor",
+                       "Loxocemus_bicolor", "Python_brongersmai", "Python_sebae", "Acrochordus_javanicus", "Achalinus_juliani", "Aplopeltura_boa",
+                       "Bitis_caudalis", "Trimeresurus_venustus", "Crotalus_stephensi", "Crotalus_cerastes", "Crotalus_molossus", "Crotalus_tigris",
+                       "Enhydris_enhydris", "Atractaspis_irregularis", "Micrurus_tener", "Ophiophagus_hannah", "Laticauda_colubrina",
+                       "Hapsidophrys_smaragdina", "Tantilla_cucullata", "Leptophis_ahaetulla", "Drymobius_margaritiferus", "Masticophis_lateralis",
+                       "Xenochrophis_vittatus", "Tropidodipsas_sartorii", "Sibynomorphus_turgidus", "Borikenophis_portoricensis"))
+
+#Visualize Toxicoferan lizards
+toxic <- list(name = c("Xenosaurus_grandis", "Heloderma_suspectum", "Anniella_geronimensis", "Anniella_pulchra", "Ophiodes_luciae",
+                       "Ophisaurus_attenuatus", "Mesaspis_monticola", "Abronia_ornelasi", "Shinisaurus_crocodilurus", "Lanthanotus_borneensis",
+                       "Varanus_sp", "Chamaeleo_calyptratus", "Trioceros_jacksonii", "Uromastyx_aegyptia", "Uromastyx_ocellata", "Moloch_horridus",
+                       "Pogona_vitticeps", "Acanthosaura_capra", "Uranoscodon_superciliosus", "Plica_plica", "Iguana_iguana", "Sauromalus_obesus",
+                       "Ctenosaura_similis", "Leiocephalus_carinatus", "Crotaphytus_bicinctores", "Crotaphytus_collaris", "Holbrookia_maculata",
+                       "Phrynosoma_cornutum", "Sceloporus_sp", "Hoplocercus_spinosus", "Enyalioides_laticeps", "Enyalioides_palpebralis",
+                       "Oplurus_cuvieri", "Anisolepis_grilli", "Liolaemus_rothi", "Basiliscus_basiliscus", "Basiliscus_plumifrons",
+                       "Anolis_carolinensis", "Anolis_evermanni", "Anolis_stratulus", "Anolis_pulchellus", "Anolis_gundlachi",
+                       "Anolis_cristatellus", "Anolis_sagrei", "Anolis_sp"))
+
+#Now with snakes
+toxic_plus <- list(name = c("Xenosaurus_grandis", "Heloderma_suspectum", "Anniella_geronimensis", "Anniella_pulchra", "Ophiodes_luciae",
+                       "Ophisaurus_attenuatus", "Mesaspis_monticola", "Abronia_ornelasi", "Shinisaurus_crocodilurus", "Lanthanotus_borneensis",
+                       "Varanus_sp", "Chamaeleo_calyptratus", "Trioceros_jacksonii", "Uromastyx_aegyptia", "Uromastyx_ocellata", "Moloch_horridus",
+                       "Pogona_vitticeps", "Acanthosaura_capra", "Uranoscodon_superciliosus", "Plica_plica", "Iguana_iguana", "Sauromalus_obesus",
+                       "Ctenosaura_similis", "Leiocephalus_carinatus", "Crotaphytus_bicinctores", "Crotaphytus_collaris", "Holbrookia_maculata",
+                       "Phrynosoma_cornutum", "Sceloporus_sp", "Hoplocercus_spinosus", "Enyalioides_laticeps", "Enyalioides_palpebralis",
+                       "Oplurus_cuvieri", "Anisolepis_grilli", "Liolaemus_rothi", "Basiliscus_basiliscus", "Basiliscus_plumifrons",
+                       "Anolis_carolinensis", "Anolis_evermanni", "Anolis_stratulus", "Anolis_pulchellus", "Anolis_gundlachi",
+                       "Anolis_cristatellus", "Anolis_sagrei", "Anolis_sp", "Helminthophis_frontalis", "Trilepida_macrolepis",
+                       "Rena_humilis", "Gerrhopilus_persephone", "Xenotyphlops_grandidieri", "Typhlops_reticulatus", "Typhlops_hectus",
+                       "Anilius_scytale", "Tropidophis_spiritus", "Xenophidion_acanthognathus", "Casarea_dussumieri", "Exiliboa_placata",
+                       "Corallus_caninus", "Anomochilus_monticola", "Cylindrophis_ruffus", "Uropeltis_melanogaster", "Xenopeltis_unicolor",
+                       "Loxocemus_bicolor", "Python_brongersmai", "Python_sebae", "Acrochordus_javanicus", "Achalinus_juliani", "Aplopeltura_boa",
+                       "Bitis_caudalis", "Trimeresurus_venustus", "Crotalus_stephensi", "Crotalus_cerastes", "Crotalus_molossus", "Crotalus_tigris",
+                       "Enhydris_enhydris", "Atractaspis_irregularis", "Micrurus_tener", "Ophiophagus_hannah", "Laticauda_colubrina",
+                       "Hapsidophrys_smaragdina", "Tantilla_cucullata", "Leptophis_ahaetulla", "Drymobius_margaritiferus", "Masticophis_lateralis",
+                       "Xenochrophis_vittatus", "Tropidodipsas_sartorii", "Sibynomorphus_turgidus", "Borikenophis_portoricensis"))
+
+```
+
+Actual ellipse figure generation with above categories.
+
+```{r - Figure Generation}
+
+#Limb reduced clades
+fviz_mca_ind(min.MCA, title = "Limb Reduced Clades",
+             label = "none",
+             #repel = T,
+             habillage = grp.clade,
+             palette = c("#88CCEE", "#AA4499", "#44AA99", "#117733"),
+             select.ind = knubs,
+             addEllipses = T, ellipse.level = 0.95,
+             cex = 10,
+             pointsize = 4.5,
+             invisible = "quali",
+             ggtheme = theme_minimal(),
+             )
+
+#Toxicoferan lizards
+fviz_mca_ind(min.MCA, title = "Toxicoferan Lizards",
+             label = "none",
+             #repel = T,
+             habillage = grp.clade,
+             palette = c("#DDCC77", "#332288", "#882255"),
+             select.ind = toxic,
+             addEllipses = T, ellipse.level = 0.95,
+             cex = 10,
+             pointsize = 4.5,
+             invisible = "quali",
+             ggtheme = theme_minimal(),
+             )
+
+#All toxicofera
+fviz_mca_ind(min.MCA, title = "Toxicofera",
+             label = "none",
+             #repel = T,
+             habillage = grp.clade,
+             palette = c("#DDCC77", "#332288", "#882255", "#44AA99", "#117733"),
+             select.ind = toxic_plus,
+             addEllipses = T, ellipse.level = 0.95,
+             cex = 10,
+             pointsize = 4.5,
+             invisible = "quali",
+             ggtheme = theme_minimal(),
+             )
+
+```
+
+
+
+
+Now to place all three axes on the same scatterplot. This is not a capability of FactoMineR or FactoExtra, thus I had to make a workaround by isolating the coordinates and running them through either package rgl or scatterplot3d. Because there are many ways to go about this I have each method separated by a block of code.
+
+```{r - 3D MCA}
+#Get 3 Dimensional MCA
+MCA.3D <- MCA(scale.body, ncp = 3, na.method = "NA")
+coords <- MCA.3D$ind$coord
+coords <- as.data.frame(coords)
+
+#Set up groups for visualizing differences in 3D plot
+color_3d <- c("#AA4466", "#88CCEE", (rep("#CC6677", 20)), (rep("#999933", 16)),
+              (rep("#DDCC77", 8)), (rep("#6699CC", 8)), (rep("#882255", 4)), (rep("#AA4499", 15)),
+              (rep("#44AA99", 7)), (rep("#117733", 28)), (rep("#661100", 7)), 
+              (rep("#332288", 38)))
+
+#Empty plot for points3d()
+s3d <- scatterplot3d(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+                     pch = "",
+                     grid = F, box = F)
+
+
+#Using RGL to generate a 3D scatterplot
+rgl_init()
+rgl.bg(color = "white")
+rgl.spheres(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+            r = 0.030, color = get_colors(color_3d, c("#8a000b", "#117733", "#e66c76", "#44aa99",
+                                                      "#88ccee", "#6699cc", "#918716", "#d41cce",
+                                                      "#2f3d34", "#cc7f43", "#ddcc77", "#332288"
+                                                     )))
+rgl.lines(lim(coords$`Dim 1`), c(0, 0), c(0, 0), color = "black")
+rgl.lines(c(0, 0), lim(coords$`Dim 2`), c(0, 0), color = "red")
+rgl.lines(c(0, 0), c(0, 0), lim(coords$`Dim 3`), color = "green")
+#rgl_add_axes(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+             #show.bbox = T)
+rgl.bbox(color = c("white", "black"), emission = "white",
+         specular = "#7a7a7a", shininess = 3, alpha = 0.75)
+aspect3d(1,1,1)
+
+```
+
+
+```{r}
+
+plot3d(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+       xlab = "Dimension 1", ylab = "Dimension 2", zlab = "Dimension 3",
+       type = "s", col = get_colors(color_3d, c("#8a000b", "#117733", "#e66c76", "#4ccf84",
+                                                      "#8fc2db", "#2b95ff", "#918716", "#d41cce",
+                                                      "#2f3d34", "#cc7f43", "#ddcc77", "#332288"
+                                                     )),  
+        radius = 0.80, add = FALSE)
+aspect3d(20, 20, 20)
+
+rgl.snapshot(filename = "Final3D5.png")
+
+#Write a gif of the morphospace
+movie3d(spin3d(axis = c(0, 1, 0)), duration = 10,
+        dir = getwd())
+
+
+```
+
+Here I considered adjusting the axes size to represent the variation explained by that eigenvalue... This not only turned out to be difficult to represent well but may not have really given the impression I wanted. I left this code alone in case I want to come back to it.
+
+```{r - 3D MCA}
+
+#Scale to variation explained?
+rgl_init()
+rgl.bg(color = "white")
+rgl.spheres(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+            r = 0.025, color = get_colors(color_3d, c("#4f0000", "#117733", "#7d4a4a", "#61ff6b",
+                                                      "#6699CC", "#5cf2f2", "#b8ff6b", "#603b7d",
+                                                      "#ff3838", "#f79c2d", "#ffed99", "#202496"
+                                                     )))
+rgl_add_axes(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+             show.bbox = T)
+rgl.bbox(color = c("black", "black"), emission = "black",
+         specular = "#7a7a7a", shininess = 3, alpha = 0.75)
+aspect3d()
+
+```
+
+Scatterplot3d can be powerful for adding legends and other tools for visualization, but ended up being too much of a nightmare to orient correctly. Code is left here for the same reason as above.
+
+```{r - 3D Figure Generation}
+
+#NEED TO FIX: NAMES ARE NOT IN THE PROPER SPACE
+
+#And legend
+legend <- c("Rhynchocephalia", "Dibamidae", "Gekkota", "Scincoidea",
+            "Teioidea", "Amphisbaenia", "Lacertoidea", "Anguimorpha",
+            "Acrodonta", "Pleurodonta", "Scolecophidia", "Serpentes")
+#And color palette for legend
+legend.col <- c(
+  #Rhynch
+  "#e30000",
+  #Dib
+  "#999933",
+  #Gekk
+  "#DDCC77",
+  #Scin
+  "#8b11b8",
+  #Teiid
+  "#332288",
+  #Amph
+  "#88CCEE",
+  #Lacer
+  "#6699CC",
+  #Angui
+  "#ff9421",
+  #Acro
+  "#75041a",
+  #Pleuro
+  "#b84d62",
+  #Scol
+  "#44AA99",
+  #Serp
+  "#117733")
+
+color_3d_plot <- c("#e30000", "#999933", (rep("#DDCC77", 20)), (rep("#8b11b8", 16)),
+              (rep("#332288", 8)), (rep("#88CCEE", 8)), (rep("#6699CC", 4)), (rep("#ff9421", 15)),
+              (rep("#75041a", 7)), (rep("#b84d62", 28)), (rep("#44AA99", 7)), 
+              (rep("#117733", 38)))
+
+scatterplot3d(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+              angle = 20,
+              type = "h",
+              xlab = "Dimension 1 (%)",
+              ylab = "Dimension 2 (%)",
+              zlab = "Dimension 3 (%)",
+              pch = 19,
+              grid = F, box = F,
+              color = color_3d_plot)
+addgrids3d(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`, grid = c("xy", "xz", "yz"),
+           angle = 20)
+s3d$points3d(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+             pch = 16,
+             cex = 2,
+             col = color_3d_plot)
+legend("bottom", legend = legend,
+       col = legend.col, pch = 16,
+       #inset = 0.25,
+       xpd = T)
+
+```
+
+Again, I thought it may be interesting to only use the characters that contributed most to the variation. This showed little effect on % explained by each axis and ultimately lowered the resolution. Those additional 100+ characters offer small insights and differences between similar families or genera.
+
+```{r - Highest Contribution Characters Only}
+
+#Read in data
+scale.red <- as.matrix(read.xlsx('Char_Reduction.xlsx',
+                             sheetIndex = 1,
+                             rowIndex = 1:153,
+                             colIndex = 2:71,
+                             header = F))
+scale.red <- as.data.frame(scale.red)
+
+#Name 70 Variables, fix column and row names
+red_names <- (c("Narial.Op", "Nasal.Ros", "Supralab.Ros", "Internasal", "Ceph.Size", "Ceph.Keel", "Supraoc.Row", "Supracil",
+                "Supraoc.Con", "Suboc.Con", "En.Interpar", "Tongue.Gr", "Eye", "Eye.Scales", "Low.Eye.Sc", "Tympanum",
+                "Annul.Body", "Gen.Body", "Gen.Lateral", "Gastrosteges", "Belly.Keel", "Tail.Cross", "Tail.Keel", "Annul.Tail",
+                "En.Preanal", "Anal.Plate", "Frontal.Shape", "Frontal.Ov", "Chalcidine", "Loreal.Keel", "Loreal.Ov", "Supraoc.Shape",
+                "Supraoc.Tex", "Supraoc.Keel", "Supraoc.Just", "Supraoc.Ov", "Postmen.Ov", "DNeck.Shape", "DNeck.Tex",
+                "DNeck.Just", "DNeck.Ov", "LNeck.Tex","LNeck.Just", "LNeck.Ov", "VNeck.Shape", "VNeck.Tex", "VNeck.Just",
+                "VNeck.Ov", "Dorsal.Shape", "Dorsal.Tex", "Dorsal.Just", "Dorsal.Ov", "Lateral.Shape", "Lateral.Tex",
+                "Lateral.Just", "Lateral.Ov", "Ventral.Shape", "Ventral.Tex", "Ventral.Keel", "Ventral.K.T", "DCaudal.Shape",
+                "DCaudal.Keel", "DCaudal.K.T", "DCaudal.Just", "DCaudal.Ov", "VCaudal.Keel", "VCaudal.Just", "VCaudal.Ov",
+                "Osteoderms", "Supraoc.Disc"))
+colnames(scale.red) <- red_names
+rownames(scale.red) <- scale_taxa
+
+#Run MCA
+red.MCA <- MCA(scale.red, axes = c(1, 2), na.method = "NA", graph = F)
+
+#Character reduction MCA plot
+fviz_mca_ind(red.MCA,
+             label = "none",
+             habillage = grp.clade,
+             palette = c("#AA4466", "#88CCEE", "#CC6677", "#999933",
+                         "#DDCC77", "#6699CC", "#882255", "#AA4499",
+                         "#44AA99", "#117733", "#661100", "#332288"),
+             #addEllipses = T, ellipse.level = 0.95,
+             #select.ind = list(contrib = 68),
+             cex = 5,
+             pointsize = 4.5,
+             invisible = "quali",
+             ggtheme = theme_minimal()
+             )
+
+#3D Plot
+#Get 3 Dimensional MCA
+red.3d <- MCA(scale.red, ncp = 3, na.method = "NA")
+coords.red <- red.3d$ind$coord
+coords.red <- as.data.frame(coords.red)
+
+#Using RGL to generate a 3D scatterplot
+rgl_init()
+rgl.bg(color = "white")
+rgl.spheres(coords.red$`Dim 1`, coords.red$`Dim 2`, coords.red$`Dim 3`,
+            r = 0.025, color = get_colors(color_3d, c("#4f0000", "#117733", "#7d4a4a", "#61ff6b",
+                                                      "#6699CC", "#5cf2f2", "#b8ff6b", "#603b7d",
+                                                      "#ff3838", "#f79c2d", "#ffed99", "#202496"
+                                                     )))
+rgl.lines(lim(coords.red$`Dim 1`), c(0, 0), c(0, 0), color = "black")
+rgl.lines(c(0, 0), lim(coords.red$`Dim 2`), c(0, 0), color = "red")
+rgl.lines(c(0, 0), c(0, 0), lim(coords.red$`Dim 3`), color = "green")
+#rgl_add_axes(coords$`Dim 1`, coords$`Dim 2`, coords$`Dim 3`,
+             #show.bbox = T)
+rgl.bbox(color = c("black", "black"), emission = "black",
+         specular = "#7a7a7a", shininess = 3, alpha = 0.75)
+aspect3d(1,1,1)
+
+```
+
+A phylomorphospace can be generated using only the 2D morphospace coordinates. It doesn't offer much insight by itself, at least that can't already be observed by grouping taxa into higher level relationships on the above 3D morphospaces. A 3D phylomorphospace could be interesting, but is beyond my R capabilities right now.
+
+```{r - The Phylomorphospace}
+
+phylomorphospace(pyron, scale.body.MCA$ind$coord,
+                 label = F,
+                 #direction = "from",
+                 xlab = "Dimension 1 (12%)", ylab = "Dimension 2 (5.3%)")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

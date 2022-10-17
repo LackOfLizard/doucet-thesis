@@ -1,0 +1,1678 @@
+#NEXUS
+[written Sat Sep 10 13:16:27 CDT 2022 by Mesquite  version 3.70 (build 940) at Zebes/192.168.1.82]
+
+BEGIN TAXA;
+	TITLE Taxa;
+	DIMENSIONS NTAX=153;
+	TAXLABELS
+		Sphenodon_punctatus Dibamus_floweri Phyllurus_ossa Lialis_burtonis Rhacodactylus_ciliatus Oedura_marmorata Coleonyx_mitratus Eublepharis_macularius Teratoscincus_sp Sphaerodactylus_roosevelti Sphaerodactylus_klauberi Sphaerodactylus_gaigeae Thecadactylus_rapicauda Phyllodactylus_wirshingi Phyllodactylus_galapagoensis Gekko_gecko Gekko_horsfieldii Hemidactylus_turcicus Paroedura_androyensis Uroplatus_sikorae Homopholis_wahlbergii Phelsuma_guentheri Xantusia_vigilis Lepidophyma_pajapanensis Lepidophyma_occulor Gerrhosaurus_sp Gerrhosaurus_flavigularis Platysaurus_intermedius Smaug_warreni Plestiodon_obsoletus Plestiodon_fasciatus Chalcides_ocellatus Scincella_lateralis Tribolonotus_novaeguineae Tiliqua_sp Tiliqua_scincoides Tiliqua_gigas Trachylepis_sp Dracaena_sp Ameiva_ameiva Aspidoscelis_sexlineata Aspidoscelis_gularis Anadia_steyeri Arthrosaura_reticulata Neusticurus_rudis Cercosaura_ocellata Rhineura_floridana Bipes_canaliculatus Blanus_alexandri Cadea_blanoides Trogonophis_wiegmanni Amphisbaena_mertensii Amphisbaena_camura Leposternon_microcephalum Acanthodactylus_cantoris Takydromus_sexlineatus Lacerta_viridis Podarcis_muralis Xenosaurus_grandis Heloderma_suspectum Anniella_geronimensis Anniella_pulchra Wetmorena_haetiana Ophiodes_luciae Ophisaurus_attenuatus Gerrhonotus_ophiurus Mesaspis_monticola Abronia_ornelasi Shinisaurus_crocodilurus Lanthanotus_borneensis Varanus_niloticus Varanus_prasinus Varanus_sp Chamaeleo_calyptratus Trioceros_jacksonii Uromastyx_aegyptia Uromastyx_ocellata Moloch_horridus Pogona_vitticeps Acanthosaura_capra Uranoscodon_superciliosus Plica_plica Iguana_iguana Sauromalus_obesus Cyclura_ricordii Ctenosaura_similis Leiocephalus_carinatus Crotaphytus_bicinctores Crotaphytus_collaris Holbrookia_maculata Phrynosoma_cornutum Sceloporus_sp Hoplocercus_spinosus Enyalioides_laticeps Enyalioides_palpebralis Oplurus_cuvieri Anisolepis_grilli Liolaemus_rothi Basiliscus_basiliscus Basiliscus_plumifrons Anolis_carolinensis Anolis_evermanni Anolis_stratulus Anolis_pulchellus Anolis_gundlachi Anolis_cristatellus Anolis_sagrei Anolis_sp Helminthophis_frontalis Trilepida_macrolepis Rena_humilis Gerrhopilus_persephone Xenotyphlops_grandidieri Typhlops_reticulatus Typhlops_hectus Tropidophis_spiritus Xenophidion_acanthognathus Casarea_dussumieri Exiliboa_placata Boa_constrictor Corallus_caninus Anomochilus_monticola Cylindrophis_ruffus Uropeltis_melanogaster Anilius_scytale Xenopeltis_unicolor Loxocemus_bicolor Python_brongersmai Python_sebae Acrochordus_javanicus Achalinus_juliani Laticauda_colubrina Aplopeltura_boa Bitis_caudalis Trimeresurus_venustus Crotalus_stephensi Crotalus_cerastes Crotalus_molossus Crotalus_tigris Enhydris_enhydris Atractaspis_irregularis Micrurus_tener Ophiophagus_hannah Naja_kaouthia Hapsidophrys_smaragdina Tantilla_cucullata Leptophis_ahaetulla Drymobius_margaritiferus Masticophis_lateralis Xenochrophis_vittatus Tropidodipsas_sartorii Sibynomorphus_turgidus Borikenophis_portoricensis 
+	;
+
+END;
+
+
+BEGIN CHARACTERS;
+	TITLE  Character_Matrix2;
+	DIMENSIONS  NCHAR=180;
+	FORMAT DATATYPE = STANDARD RESPECTCASE GAP = - MISSING = ? SYMBOLS = "  0 1 2 3 4 5";
+	CHARSTATELABELS 
+		1 '(611). Enlarged rostral scale: (0) absent or undifferentiated; (1) present',
+		2 '(612). Rostral scale: (0) not greatly expanded and dominating anterior portion of head; (1) expanded dorsally (onto top of skull) posteriorly and laterally or dominating anterior portion of head',
+		3 '(613). Posterior split in rostral scale: (0) absent; (1) present (division along posterior margin of scale near midline)',
+		4 '(614). External narial opening: (0) enclosed entirely within nasal scale; (1) at edge of nasal scale',
+		5 '(615). External narial opening: (0) separated from rostral; (1) partially in rostral',
+		6 '(616). External narial opening: (0) separated from supralabial; (1) partially in supralabial',
+		7 '(617). Nasal-rostral contact: (0) absent or separated by scales; (1) present - When the narial opening is between scales rather than entirely within a scale state 1 is used when one of these scales bordering the nasal contacts the rostral',
+		8 '(618). Contact between nasal and supralabial scales: (0) absent (separated by other scales); (1) present - When the narial opening is between scales rather than entirely within a scale state 1 is used when one of these scales bordering the nasal contacts the supralabial',
+		9 '(619). Minimum number of scales separating the nasal scales medially: (0) none (nasal scales contact medially); (1) one scale; (2) two; (3) three; (4) four or more scale rows - Previously used phylogenetically (in modified form) by Wiens ([48] his char. 22).  Ordered',
+		10 '(620).  Dorsal cephalic scales: (0) relatively small; (1) enlarged (larger than adjacent neck scales)',
+		11 '(621).  Dorsal cephalic scales: (0) smooth; (1) some or all keeled',
+		12 '(622).  Head scales vertically elongate: (0) no; (1) yes, including scales associated with eye and nostril (extending almost from mouth to top of skull)',
+		13 '(623).  Enlarged frontal scale between orbits: (0) absent; (1) present.  Previously used phylogenetically by Wiens ([48]; his char. 18)',
+		14 '(624).  Median contact of frontoparietals: (0) present; (1) absent, frontoparietals reduced and separated by contact of frontal and interparietal.  Scored as unknown in taxa lacking frontals, frontoparietals, and an interparietal',
+		15 '(625).  Circumorbital scales (distinct semicircular row of scales bordering orbital region): (0) absent; (1) present',
+		16 '(626).  Enlarged supraoculars: (0) absent; (1) present (scales over eye larger than surrounding scales)',
+		17 '(627).  Supraoculars: (0) two or more rows of scales; (1) single row of enlarged scales between superciliary and frontal.  Taxa with multiple rows of scales in this region were given state 0, regardless of whether or not they had well-differentiated supraoculars.  Previously used phylogenetically by Wiens ([48] his char. 25)',
+		18 '(628).  Single enlarged supraocular scale row between orbit laterally and frontal medially: (0) no; (1) yes, supraciliary scales absent',
+		19 '(629).  Median contact of enlarged supraoculars: (0) absent; (1) present',
+		20 '(630).  Supercilary scales: (0) non-overlapping; (1) overlapping.  Used previously in modified form by Etheridge and de Queiroz ([49] their char. 46) and subsequent authors',
+		21 '(631).  Supralabial scales: (0) not entering orbit; (1) entering orbit.  In most squamates examined, one or more enlarged scales (suboculars) separate the supralabials from the rim of the orbital opening.  In others, supralabials extend to the orbital opening',
+		22 '(632).  Enlarged subocular scale (elongate scale ventral to orbit): (0) absent (or series of smaller scales); (1) present (single scale larger than surrounding scales).  In many taxa, there is a single scale below the orbit that is also part of the labial series bordering the upper jaw (see character 21).  In these cases, it is possible that the subocular has entered the labial series or that the labial has shifed into the subocular position, and these taxa were coded as unknown for the presence or absence of a subocular. Used previously phylogenetically in modified form by Etheridge and de Queiroz ([49] their char. 47) and subsequent authors',
+		23 '(633).  Subocular-supralabial contact: (0) absent, row of one or more scales between scales above lip (supralabials) and below the orbit (suborbitals); (1) present. Taxa lacking any subocular scales below the eye (e.g., many snakes) were coded as inapplicable',
+		24 '(634).  Enlarged interparietal scale: (0) absent; (1) present (scale distinctly larger than surrounding head scales present over parietal region of skull).  Used in modified form by Etheridge and de Queiroz ([49] their char. 45) and subsequent authors',
+		25 '(635).  Temporal region covered almost exclusively by pair of enlarged temporal scales: (0) no; (1) yes. Derived state is mostly in advanced snakes',
+		26 '(636).  Heat-sensing pit in loreal region: (0) absent; (1) present',
+		27 '(637).  Mouth: (0) large, extending posterior to eye; (1) greatly reduced, posterior terminus at or anterior to level of eye.',
+		28 '(638).  Groove allowing tongue to be extruded when mouth is closed: (0) absent; (1) groove present in rostral (sometimes in mental also, but too difficult to score consistently as a separate state). The derived state is found in snakes.',
+		29 '(639).  Eye: (0) visible externally; (1) not visible externally; Previously used phylogenetically (in modified form) by Kearney ([50] her char. 10).  Derived state is found only in Rhineura.',
+		30 '(640).  Eye surrounded by single scale: (0) no, multiple scales; (1) single scale. Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 253).',
+		31 '(641).  Fleshy eyelids:  (0) present; (1) absent.  Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 253).',
+		32 '(642).  Lower eyelid scales: (0) homogeneous; (1) some enlarged scales.',
+		33 '(643).  Transparent spectacle in lower eyelid scales: (0) absent; (1) present.',
+		34 '(644).  Thick granular eyelid covering eye except for small opening for pupil (chamaeleon condition):  (0) absent; (1) present;  Used previously phylogenetically by Estes et al. ([52] p. 199).',
+		35 '(645).  External ear opening: (0) present; (1) absent;  Previously used phylogenetically by Estes et al - 48.',
+		36 '(646).  Tympanum: (0) large and superficial; (1) small and inset;  Used previously phylogenetically by Estes et al. ([51] and noted by McDowell and Bogert [36]).',
+		37 '(647).  External ear opening: (0) entirely or mostly uncovered; (1) partially covered by fleshy lobule; (2) partially covered by scales only, no fleshy lobule. Unordered.',
+		38 '(648).  Complex dewlap apparatus (gular fan), in males: (0) absent; (1) present, extensive flap of skin on throat, usually with modified scales.',
+		39 '(649).  Mental scale: (0) entire; (1) with a partial split at the posterior end. Previously noted by Frost and Etheridge ([53] from E. Williams, pers. comm.).',
+		40 '(650).  Elongate postmentals: (0) absent; (1) present.',
+		41 '(651).  Postmentals (scales immediately posterior to mental): (0) two (enlarged scales sometimes separated by additional scales) or more scales immediately posterior to mental; (1) one, single unpaired scale immediately posterior to mental.',
+		42 '(652).  Enlarged scales medial to infralabials: (0) present; (1) absent, scales in chin more-or-less homogeneous.',
+		43 '(653).  Infralabials, anteriormost pair(s): (0) separate medially; (1) one row contacting medially posterior to mental; (2) two rows contacting medially. It is possible that the medially contacting infralabials actually represent postmentals that have shifted their position. Ordered.',
+		44 '(654).  Infralabial and supralabial scales: (0) not greatly expanded; (1) greatly expanded, with single pair of sublabials covering most of chin region (i.e., dibamids).',
+		45 '(655).  Mental groove: (0) absent; (1) present, a distinct infolding of skin and scales along the anterior midline of the chin region.',
+		46 '(656).  Gular fold: (0) present or complete; (1) incomplete; (2) absent. Ordered. Previously used phylogenetically by Etheridge and de Queiroz ([49] their char. 43) and subsequent authors.',
+		47 '(657).  Body scales: (0) not arranged in non-overlapping rings; (1) annulated, arranged in non-overlapping rows.  Previously used phylogenetically by Kearney ([50] her char. 3).',
+		48 '(658).  Varanus-type scale on dorsum, with small scale surrounded by tiny granular scales: (0) absent; (1) present.',
+		49 '(659).  Dorsal scales: (0) homogeneous, lacking enlarged scales; (1) heterogeneous, with enlarged scales separated by smaller scales, either in rows or scattered.',
+		50 '(660).  Dorsal body scales: (0) small, granular, non-overlapping; (1) mucronate (pointed, overlapping); (2) cycloid (rounded, overlapping); (3) rectangular.  Unordered.  Expanded from char. 148 of Estes et al. [52].',
+		51 '(661).  Dorsal body scales: (0) all smooth; (1) some or all keeled.',
+		52 '(662).  Dorsals, with longitudinal ridges in addition to mid-dorsal keels: (0) absent (including species lacking keels); (1) present',
+		53 '(663).  Enlarged middorsal scale row: (0) middorsal scales same size as surrounding scales; (1) middorsal scales enlarged relative to surrounding scales in both sexes; (2) sexually dimorphic, mid-dorsals enlarged in males. Unordered. Expanded and modified from char. 146 of Estes et al. [52].',
+		54 '(664).  Nuchal crest of enlarged scales: (0) absent; (1) present in both sexes; (2) sexually dimorphic, mid-dorsals enlarged in males. Unordered. Has similar distribution to that of mid-dorsal scale row, but clearly not identical.',
+		55 '(665).  Lateral body scales: (0) granular, non-overlapping; (1) imbricate overlapping. Although this may seem redundant with the condition of the dorsal scales, several taxa have enlarged and imbricate dorsal scales but granular lateral scales.',
+		56 '(666).  Lateral fold along side of body: (0) absent; (1) present (often associated with row of granular scales in species with larger scales). Previously used phylogenetically in squamates by Estes et al. [52].',
+		57 '(667).  Gastrosteges (enlarged mid-ventral scale row in snakes): (0) absent, multiple scale rows; (1) present, single mid-ventral scale row distinctly larger than surrounding scale rows.  Previously used phylogenetically (in modified form) by Lee and Scanlon ([51]; their char. 255).',
+		58 '(668).  Ventrals: (0) same size as adjacent laterals; (1) at least some distinctly larger than adjacent laterals.',
+		59 '(669).  Ventral body scales: (0) mostly small and granular; (1) large and flat.  Note that this character is independent of the preceding character, because scales can be large and flat and still be the same size as the adjacent laterals.',
+		60 '(670).  Ventral scales: (0) all smooth; (1) some or all keeled.',
+		61 '(671).  Ventrals, posterior edge: (0) cycloid, mucronate, or otherwise rounded; (1) square (posterior margin more-or-less straight). Some snakes with gastrosteges have variation that approaches the condition in state 1, but were coded as 0.',
+		62 '(672).  Femoral pores: (0) absent; (1) present in both sexes; (2) sexually dimorphic. Unordered. In some cases, femoral and preanal pores may be difficult to distinguish (e.g. Gekko gecko, Takydromus ocellatus). In general, pores on the legs were considered femoral pores, and pores between the legs were considered preanals, but pores that extended from the legs onto the preanal region were considered femorals. Taxa lacking hindlimbs were coded as unknown. Previously used phylogenetically by Estes et al. ([52] but noted by Camp [54]), their character 144.',
+		63 '(673).  Preanal pores: (0) absent; (1) present. Previously used phylogenetically by Estes et al. [52], their character 144.',
+		64 '(674).  Tail tip: (0) pointed, tapered; (1) blunt and rounded',
+		65 '(675).  Small sharply pointed spike at posterior tail tip: (0) absent; (1) present.',
+		66 '(676).  Tail shape (cross-section): (0) dorsoventrally flattened (depressed); (1) rounded; (2) laterally compressed. Ordered.',
+		67 '(677).  Caudal scales: (0) approximately same size as dorsal body scales; (1) distinctly larger than dorsal body scales',
+		68 '(678).  Caudals (dorsal): (0) smooth; (1) mostly keeled.',
+		69 '(679).  Caudal scales: (0) not arranged in non-overlapping vertical rows; (1) annulated, arranged in non-overlapping vertical rows.',
+		70 '(680).  Enlarged preanal scales: (0) absent; (1) present (preanals enlarged relative to adjacent ventrals).',
+		71 '(681).  Anal plate: (0) two or more scales; (1) single plate. Species without a distinct anal plate but with multiple scales in the pre-anal region were coded as having state 0. Previously used phylogenetically by Lee and Scanlon ([51] their char. 257).',
+		72 '(682).  Enlarged postanal scales (males): (0) absent; (1) present (some scales posterior to vent greatly enlarged relative to adjacent scales).',
+		73 '(683).  Lateral postanal tubercles: (0) absent; (1) present (enlarged scale or scales on medial surface of anterior end of tail).',
+		74 '(684).  Subcaudals (scales on ventral mid-line of tail): (0) divided, two or more scale rows; (1) some single, some divided; (2) all single. Ordered. Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 256).',
+		75 '(685).  External hindlimb: (0) present; (1) absent in both sexes; (2) sexually dimorphic, present in males, absent in females. Unordered. Taxa in which hindlimbs were observed in all individuals but the sex was uncertain were coded as having state 0.',
+		76 '(686).  External hindlimbs: (0) cylindrical; (1) flattened and flaplike. Taxa having the fully-developed limbs and those having only a claw were both coded as having state 0.',
+		77 '(687).  Expanded toe pads: (0) absent; (1) present. Previously used phylogenetically by Etheridge and de Queiroz ([49] their char. 40) and subsequent authors.',
+		78 '(688).  Number of rows of subdigital scales along mid-ventral surface of digits (manus): (0) one; (1) two or more (some or all scales). Previously used phylogenetically by Estes et al. (1988) and Etheridge and de Queiroz [49].',
+		79 '(689).  Keels on subdigital scales (hand, longest finger): (0) absent; (1) present, Used previously phylogenetically by Etheridge and de Queiroz ([49] their char. 39).',
+		80 '(690).  Digits connected in groups of 2 and 3 by skin (chameleon “mittens”): (0) no; (1) yes;  Previously used phylogenetically (in modified form) by Estes et al. ([52] p. 198).',
+		81 '(691).  Claws: (0) not covered by sheath of scales; (1) entirely or mostly covered by sheath of scales.',
+		82 'Frontal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		83 'Frontal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		84 'Frontal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		85 'Chalcidine frontal scale pattern: (0) Absent; (1) Present.',
+		86 'Internasal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		87 'Internasal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		88 'Internasal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		89 'Internasal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		90 'Loreal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		91 'Loreal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		92 'Loreal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		93 'Loreal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		94 'Loreal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		95 'Loreal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		96 'Loreal scale enlargement: (0) Absent; (1) Present.',
+		97 'Supraocular scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		98 'Supraocular scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		99 'Supraocular scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		100 'Supraocular scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		101 'Supraocular scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		102 'Supraocular scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		103 'Postmental scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		104 'Postmental scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		105 'Postmental scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		106 'Postmental scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		107 'Postmental scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		108 'Dorsal neck scale homogeneity: (0) Scales more or less homogenous; (1) Some or all scales vary in morphological traits.',
+		109 'Dorsal neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		110 'Dorsal neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		111 'Dorsal neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		112 'Dorsal neck scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		113 'Dorsal neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		114 'Dorsal neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		115 'Lateral neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		116 'Lateral neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		117 'Lateral neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		118 'Lateral neck scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		119 'Lateral neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		120 'Lateral neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		121 'Ventral neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		122 'Ventral neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		123 'Ventral neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		124 'Ventral neck scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		125 'Ventral neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		126 'Ventral neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		127 'Dorsal body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		128 'Dorsal body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		129 'Dorsal body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		130 'Dorsal body scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		131 'Dorsal body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		132 'Dorsal body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		133 'Lateral body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		134 'Lateral body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		135 'Lateral body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		136 'Lateral body scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		137 'Lateral body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		138 'Lateral body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		139 'Ventral body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		140 'Ventral body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		141 'Ventral body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		142 'Ventral body scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		143 'Ventral body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		144 'Ventral body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		145 'Left dorsal hind leg scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		146 'Left dorsal hind leg scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		147 'Left dorsal hind leg scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		148 'Left dorsal hind leg scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		149 'Left dorsal hind leg scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		150 'Left dorsal hind leg scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		151 'Left ventral hind foot scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		152 'Left ventral hind foot scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		153 'Left ventral hind foot scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		154 'Left ventral hind foot scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		155 'Left ventral hind foot scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		156 'Left ventral hind foot scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		157 'Digit scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		158 'Digit scale overlap: (0) Absent; (1) Present; (2) Free margin.',
+		159 'Dorsal caudal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		160 'Dorsal caudal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		161 'Dorsal caudal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		162 'Dorsal caudal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		163 'Dorsal caudal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		164 'Dorsal caudal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		165 'Ventral caudal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		166 'Ventral caudal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		167 'Ventral caudal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		168 'Ventral caudal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		169 'Ventral caudal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		170 'Ventral caudal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		171 'Apical pits: (0) Absent; (1) Present.',
+		172 'Osteoderms: (0) Absent; (1) Present.',
+		173 'Spines: (0) Absent; (1) Present, distinct appendages when compared to surrounding scales',
+		174 'Horns: (0) Absent; (1) Present, distinct appendages when compared to surrounding scales',
+		175 'Subtympanic Shield: (0) Absent; (1) Present.',
+		176 'Supraocular Disk: (0) Absent; (1) Present',
+		177 'Sensory structures on head: (0) Absent; (1) Present.',
+		178 'Sensory structures on body: (0) Absent; (1) Present.',
+		179 'Body scale formation: (0) Overlap or scale end directed towards posterior; (1) Overlap directed 45 degrees toward midline; (2) Overlap directed completely toward midline (Acanthosaur condition); (3) Overlap directed towards varanus-like enlarged scales..',
+		180 'Mid-ventral Crest: (0) Absent; (1) Present.' ; 
+	MATRIX
+	Sphenodon_punctatus           1001000040000?000000000000000000001??000111000000000010101101011020000000000010001000000?100?000400?00000?00020?00020?00000?00020?00020?00300?10020?00000?0010020?00300?100010000000
+	Dibamus_floweri               1100101101001?001100?0?11000111?001??00111010200020000100010000101000000001??????1020????410?021100?22310?20100?22100?22100?22100?21100?21100?21??????????????100?21100?210000001000
+	Phyllurus_ossa                1001000140000?00000000000000001?001??000010002001000100000101000000000000000100000200020?050?000020?00020?01020?00050?00000?00020?00050?00000?00050?00000?0021020?00000?000010000000
+	Lialis_burtonis               0001000121010?11100100000000001???01100000000200020000100110101001001000021??????????400?110?210200?01200?10200?22100?22200?22200?22100?22300?22??????????????200?22300?220000000000
+	Rhacodactylus_ciliatus        1001001140000?0000000000000000111?01000011000100000000000010000001001000100010001????000?100?000020?00000?00020?00020?00020?00020?00020?00000?21000?01000?0021300?10300?100010000000
+	Oedura_marmorata              1012101020000?1000000000000000000001000011100110000000000000000001001000010011001????020?020?000020?00200?00020?10020?10000?10000?10000?10000?20020?10020?0020300?10300?100000000000
+	Coleonyx_mitratus             1000001130000?1000000000000000000001000001000101100000000110000001001000010000001????400?010?000000?00000?01020?00020?00020?00020?00020?00000?21000?21020?0021300?10000?110100000000
+	Eublepharis_macularius        1012001140000?0000100000000000000001000001000200101000000110000001001000010001001????000?000?000000?00100?01040?00040?00120?00440?00440?00000?21040?10050?0020040?10300?110100000000
+	Teratoscincus_sp              1011101120000?00000100000010001??001100001000100020000100010000001000000010001000????400?000?110000?11410?10000?21020?00200?21200?21200?21200?21200?21050?0000000?21200?210000000000
+	Sphaerodactylus_roosevelti    1001101140100?10000000100010001??001100001000200011000100010000001010000020010000????100?000?110121031410?10241021151001041021241321241321240?21201321020?0020241321100?210000000000
+	Sphaerodactylus_klauberi      1011111140110?1000000010001000100001000001000200011000100010000001010000020010000????4011440?100121031440?00241021240?21201021241321241021040?21241321000?2020241021000?210000000000
+	Sphaerodactylus_gaigeae       1011101130110?1000000010001000100001000101000200011000100010000001010000020010000????410?4110010111001111010021000021000021021241321241321240?21241321020?0020241321100?210000000000
+	Thecadactylus_rapicauda       1011111120000?10000100000000001?0001000100000200000000000110000001001000000011000????300?020?100020?00100?00020?00020?00000?21020?00020?00000?21000?21000?0101000?11100?110000000000
+	Phyllodactylus_wirshingi      1001111120000?10000010?00010001??001000001000210001000000010000001011000020010001????110?110?000110?00400?10011110050?10000?20011110011110000?10050?10020?0020011110100?100000000000
+	Phyllodactylus_galapagoensis  1011001130000?10000110?00000001?001??00001000201101000000110000001000000000010000????020?000?100020?00200?01051000050?00020?01021000020?00200?21201021020?0020200?01100?210000000000
+	Gekko_gecko                   1001001140000?1000000000001000000001100101100101100000000010001001001000010011001????020?020?000020?00100?01000?00000?10000?10000?00000?10000?10000?10020?0020000?10100?100100000000
+	Gekko_horsfieldii             1011111130000?10000100000000001?0001000110000200020000100110010100000000110010000????400?000?010000?01100?00000?01020?00000?01000?01000?01000?22000?21000?0121000?11300?120000000000
+	Hemidactylus_turcicus         1001101140000?10000000000010001??001000001000201101000000010000001001100020011001????000?020?000020?00400?01020?00020?00200?21001100000?00240?21030?21020?0020021110200?110000000000
+	Paroedura_androyensis         1001001040100?10000100100000001?0001000001000200111000100010000001100000100011000????000?0211000101100200?01251100050?00200?21211100211100200?21201021200?0121301010100?110000000000
+	Uroplatus_sikorae             1001000040000?10000000000000000000011000?1100200100000010000010100000000100011001????020?000?000020?00020?01020?00020?00000?00000?00100?00000?10120?10020?0010020?00000?000000000000
+	Homopholis_wahlbergii         1001000140000?00000100100010001?001??00001000200020000100010000001001000100001000????020?020?100120?00200?00000?00000?00000?00000?21000?21000?21000?00020?0010300?11300?110000000000
+	Phelsuma_guentheri            1001001130000?10000100100010001?0001200000000200001000000110000001101000010011000????000?000?000110?00200?20021100021100200?22021100021100200?22000?01000?0121300?11300?110000000000
+	Xantusia_vigilis              1001011121001111110010010000011000000000000001000000000001101100011011?00000000012100400?440?201300?21400?10020?00020?00020?00020?10020?10340?30000?21020?0031300?11300?110000011000
+	Lepidophyma_pajapanensis      1001001101001001111?01111000001??0011000111101001110000001101100010111010000000012400????440?201440?30000?01050?00050?00220?00221001220?00300?30201021000?0021301311300?310010111000
+	Lepidophyma_occulor           1001011121000?01111?01110000001?0001100001110000100000000110110001111000000000000????410?310?200310?30020?01020?00020?00020?00020?00020?00300?30101021050?0021301011300?310000000000
+	Gerrhosaurus_sp               1001011101001011100101110100000000010000000002100310001000101000010111000000000004400????440?211440?20400?10341030341030340?31341030341030340?31140?21100?3031341031340?310100011000
+	Gerrhosaurus_flavigularis     1002001101001011000101100000000000012000010002100110001100101100010111000000000004000????400?211400?21100?10331032300?32130?21231032300?32340?31231021200?00212313322013310100000000
+	Platysaurus_intermedius       1000001111001001000001110000000100000001000001100000000101101100001111000000001004010200?400?210300?21300?10020?10050?10400?00020?10020?00300?30000?10050?00213013303013300100011000
+	Smaug_warreni                 1010001111001001100110000000000100000001000001100310000100101000010111000200001003400440?440?000340?20100?00211021350?10040?10311130350?10300?30211331231301313410303410300110000000
+	Plestiodon_obsoletus          1000001121001111100110010000001100012000100002000200001000101000010001100200000003010400?400?211400?21300?10100?22100?22100?21100?22100?22100?22100?22010?0022100?22100?220100011100
+	Plestiodon_fasciatus          1000001121001111100110010000000100010000100002000200001000100000010001000200000004011400?400?211400?21300?10130?22130?22130?22130?22130?22130?22130?22020?0022100?22100?220100011100
+	Chalcides_ocellatus           1001101121001111100110?00000000110010000110002000200001000100000010000000200000000021300?300?020320?32300?10130?22130?22100?22130?22130?22130?22130?22120?0031130?22130?220100010000
+	Scincella_lateralis           1000001111001101100010?10000001000010000100002000200001000100000010000?00000000004011400?400?211400?21300?10100?22100?22100?22100?22240?22240?22140?22020?0031100?22100?220100001100
+	Tribolonotus_novaeguineae     1100001111100?11110?100000000011000000010000020010000000011100000101110000000000134103421440?011442121100?11440?00440?00001022440?00440?00101022251021020?00213510303010300110000000
+	Tiliqua_sp                    1000001101001111100110010000000000012000100002000110001000100000010100000200000014411????340?211440?21300?10202022202022130?22201022201022130?22251021020?0021251021130?220100010000
+	Tiliqua_scincoides            1000001101001111100101110100001000012010000002000201001000100000010001000200000004311????340?211430?21440?10130?22130?22130?22130?22130?22130?22100?22140?2121130?22130?220100011000
+	Tiliqua_gigas                 1000001101001111100100110000000000010000100012000200001000100000010000000200000014011????400?211400?21400?11100?22100?22100?22100?22100?22100?22110?22020?0022000?22100?220100010000
+	Trachylepis_sp                1000001121001101100110?10000000010012000100002000211001000100000010100?00000000004011400?300?211400?21300?10132322130?22130?22132322130?22130?22132322020?0021132322130?220000000000
+	Dracaena_sp                   10000011010010011000000100000000001??000100001001110100001111000020111000000000001410????440?010400?00300?11100?00000?00400?00101100100?00301011301011200?21213410113010310010000000
+	Ameiva_ameiva                 1001001101011011100101100000000100011000100001100000000101101101011111000000001004110????310?211410?21410?10020?10020?10400?10020?10020?10300?31400?21020?0021301131300?310000000000
+	Aspidoscelis_sexlineata       1001001101001011100101110000000110000000100001100000000001101100021111000000001004410????400?211400?21400?10020?10020?10400?01220?10220?10300?32200?11200?20213410313010320000001000
+	Aspidoscelis_gularis          1001001101001011100101110000000000000010100001100000000001101100011111000000001004010????400?211400?21400?10020?10020?10200?22220?10220?10300?32200?11050?2021301031300?320000001000
+	Anadia_steyeri                1000001111001011100100110000000110010001000002100300000000101100010011000000000014011400?400?010400?20300?10300?10000?10300?10300?10000?10300?10300?11020?0021300?30300?300000001000
+	Arthrosaura_reticulata        1000001111001001100001110000000110012000100002100110001001100100010111000000000014010300?300?000400?20100?00301011020?00000?02301011201031100?32201021020?0021301011100?320000001100
+	Neusticurus_rudis             1000001111011111100001110010000100000000100102001110001001101110011100000000000004400340?400?000310?20300?01020?00050?00100?01201301201301300?32201021020?2021201301300?320000000000
+	Cercosaura_ocellata           1000001111011111100000110000000110010000100002001311001001101100010111000000000004000400?400?000400?20300?01301301120?00300?32301331000?01300?32201021220?0021301331300?310000000000
+	Rhineura_floridana            1001001131000?001???00000000111???1??00101000210030000000010100101001001001??????????340?140?001??????330?00300?10440?10440?10300?10300?10300?10??????????????020?00300?100000001000
+	Bipes_canaliculatus           1000001111001000010?01100000101???1??00111000210030000010010101101001000001?010001000????400?000400?00300?00300?30300?30300?30300?30300?30300?30300?30300?1020300?30300?300000000000
+	Blanus_alexandri              1000011111001?00110?00?00000111?001??00011010210030000000010100111001000001??????4000????300?301400?00300?01300?10300?10300?10300?30300?30300?30??????????????300?30300?300000000000
+	Cadea_blanoides               1000001111011?00110?00?00000111?001??00011010210000000000010000101001000001??????4300????400?301400?30300?01300?30300?30300?30100?10100?10100?10??????????????100?10100?100000000000
+	Trogonophis_wiegmanni         1000001101000?001???00100000111???1??00101000210030000010010100001001100001??????????300?400?010??????240?10340?10340?10340?10300?10300?10300?10??????????????300?10300?100000001000
+	Amphisbaena_mertensii         1000001101000?001???00000000111???1??00111000210030000010010101101001000001??????????400?400?010??????300?10300?30300?30000?30300?30300?30300?30??????????????300?30300?300000001000
+	Amphisbaena_camura            1000001101000?001???00000000111???1??00111000210030000010010101101001000001??????????400?400?010??????300?10340?30340?30000?30340?30340?30300?30??????????????340?30300?300000001000
+	Leposternon_microcephalum     10001011010010001???00000000111???1??01111010210030000010010100101001000001??????4010????400?010??????130?10440?01440?01400?00300?30300?30300?30??????????????300?30300?300000001000
+	Acanthodactylus_cantoris      1000001101011011000101100000000000010000100011000110001101101000010101000000001004010????300?210400?21000?10220?20050?00200?21201321201321300?31201321001301212013312013310000010000
+	Takydromus_sexlineatus        1001001101011001100100100000000000000011000002000110000001110000010101000000000004410????400?211400?21300?10211322020?00211321311331020?00211332211331020?20213113312113320000011000
+	Lacerta_viridis               1001001101001011100101100000000000010000100011100000001001101100011111100000010004000????400?210040?20000?10020?10020?00200?21020?10220?01300?32200?21020?00213013313013320000010000
+	Podarcis_muralis              1001001101001011100101100000000000000000000001100010000001101100011111000000000004010200?400?210400?21300?10021110021110200?21021110021110300?31200?21020?00213013303013300100010000
+	Xenosaurus_grandis            1000000041000?100001001000000000001??00000000001101000000110100001001000000000000????440?440?200020?00200?11020?00020?00000?10141100141100300?10141100000?0021140?10340?300100101000
+	Heloderma_suspectum           0001000140000?100001000000000000001??00001000110000000000110100101001100000000000????440?440?100040?00300?00020?10020?10020?10020?10120?10300?10020?10000?0021020?10300?110100000000
+	Anniella_geronimensis         1000011121001100000110010000001???1??00001000200020000100010000101000000001??????4020400?300?010400?01200?10100?22100?22100?22200?22100?22200?22??????????????200?22200?220000000000
+	Anniella_pulchra              1000011121001100000110010000001???1??00001000200020000100010000101000000001??????4020100?200?020200?22000?10100?22100?22100?22000?22000?22000?22??????????????000?22200?220000000000
+	Wetmorena_haetiana            10000001210010101000011100000000001??000110002000200001000100000010000000000000004010300?100?010300?21100?10130?22100?22100?22130?22100?22100?22000?22020?0021130?22100?220100011000
+	Ophiodes_luciae               1000001131000?100001101000000000001??00001000200020100100010000001000000001??????2010200?400?210200?21200?10130?21130?21130?21130?21130?21130?21??????????????130?21130?210100000000
+	Ophisaurus_attenuatus         10010101110011101001011100000000001??00010100210030000110010000001001000001??????1010200?200?220400?22100?20100?22200?22100?02340?31340?31140?21??????????????040?31040?300100001010
+	Gerrhonotus_ophiurus          1000000130000010000101100000000000010000000002100210001100101000010010000200000003010200?400?010400?01100?10201331000?00100?32201331300?31300?32200?21000?0021300?31300?310100010000
+	Mesaspis_monticola            1001000121001100000101110000000000010000100002100310000000101000010110000000000004010300?400?010300?22100?20300?32020?00300?32301332020?00300?32200?21010?0021201031200?320100010000
+	Abronia_ornelasi              1001000121001100000100100000000000012000010002100300101100101000010011000200000004110010?310?210410?21200?20310?31020?00100?22340?31240?31300?32200?21020?0021340?31300?310100010010
+	Shinisaurus_crocodilurus      10000000410010110001000100000001101??000000012011010000001101000021110000000000002410440?400?210440?00300?11141300141300020?10141300141300000?11001310020?0021141310300?110100111000
+	Lanthanotus_borneensis        0001000040110?100000000000000100001??00001201201121010100010100001001000000001000????14110411000040?00020?01441100341120001110141100141100300?10140?00000?0020140?10300?100100000000
+	Varanus_niloticus             0001000040000?10000000000000000000010000010002011010000101101000020010000000010004000400?300?100420?00100?01100?00120?00100?10120?10120?10300?10120?00000?0000120?10300?100100011000
+	Varanus_prasinus              0001000040000?11000000100000000000000001010001011010000001111000020110000000010004100410?310?200310?20300?01121300121100111110111100111100311110101120010?00003011103011100100011000
+	Varanus_sp                    0001000040000?1000010000000000000000000000100200101000000011100002000000020001001????410?410?000410?00400?00101101120?00101110101101121100301110120?00020?0031120?001211300100011000
+	Chamaeleo_calyptratus         0001000041000?100000011?00000000011??000001002001000110000000001010010?0000001010????420?420?100420?00020?01400?00120?10050?20100?10450?20120?10020?10300?3030320?10320?300010000021
+	Trioceros_jacksonii           0000000041000?100000011?00000000011??000011002001000110000000001010010?0000001010????420?420?000420?00000?01420?00020?10020?00020?00020?00020?00020?10300?3030320?10320?300011000000
+	Uromastyx_aegyptia            1000000040001010000001000010000000000010101001000100001100101110001110000000001001400020?020?000020?00000?10020?00020?00020?00200?01200?01300?11300?10230?2121351030300?100000000000
+	Uromastyx_ocellata            1000000021001010000001000010000000000000100000000000000101101100001110?00000000004000400?020?000400?00400?00020?00020?00020?00000?00000?00300?10300?10200?0120351030300?100000000000
+	Moloch_horridus               0001000040100?1000010001001000000000200001100101101000000001000101000000000001100????010?010?000011001010?01011001011001010?00011100011100010?00010?0015102121010?00030?000011000030
+	Pogona_vitticeps              1000000041100?000000000?0000000000000100000000001110001001110100011100?0000000100????400?400?000??????400?00051101051101001101051101050?00001021251121201121212011212013210010110000
+	Acanthosaura_capra            1000000041100?110001010?000000000000000001000100111011100111100001111000000000100????4410441?310441100440?11241021250?21241001241021241011241011241021251021212410113013310010011020
+	Uranoscodon_superciliosus     1000000041100?110001010?0000000000000000000001100110111000111000010110?0000000101????4013400?010441300400?00251021251001251021241011241011241011241021250?22213410311410310010011000
+	Plica_plica                   1000000040100?1100010101000000000001001001000010011011100011100001011000000000100????400?0011000400?21200?11250?01050?00050?00251011201011201012201011201022212010112010120010000010
+	Iguana_iguana                 1000000041000?110001010?0000000000000100000001100110111100111100010110?0000000100????400?400?011000?21000?11020?00020?10020?10301011201011201011201021240?22213010112010210010111000
+	Sauromalus_obesus             0000000040000?1000000100000000000001100000000110010000010000010101001000000000000????020?400?011000?00000?10250?21250?00200?21200?10020?10200?11200?21200?2121350?11340?110000010000
+	Cyclura_ricordii              1000001000110?1000010001000000000000010001000010100011010010110001111000000001100????400?1011000401100200?01200?10200?00200?00220?10220?10200?12221020200?2131301010300?100010110010
+	Ctenosaura_similis            1000000041000?1000010101000000000000010100001010011011010010100001111000000001100????400?400?010400?21400?10350?10220?00200?11201011200?11200?11201021200?22213513312013320010110000
+	Leiocephalus_carinatus        1000001141000?1110010110000000000001100001000200011000100011100001010000000000100????120?410?010300?21400?10201021201021130?21201322201322230?2120132120132122201021230?210000011100
+	Crotaphytus_bicinctores       1000000041001010000001000010000000000000000000000000000101100100010010?10000000014000400?400?000400?00300?00020?00020?00000?01000?00020?00200?21250?0120100101000?10200?110000010000
+	Crotaphytus_collaris          1000000041001010000001000000000000000000000001000000000001100100010010?10000001004000400?400?001400?00400?00020?00020?00020?00020?00020?00200?11000?0020100201020?00200?110000010000
+	Holbrookia_maculata           10000000210010010000011000100000001??000110001000000000001101101010010000000001004000400?200?010400?01400?00200?00000?00000?00000?00000?00300?11200?01200?2101401001200?020000010000
+	Phrynosoma_cornutum           1000000011100?000001000?0110000000000000100001011110100001110111010100?0000000100????440?440?010241101340?01020?00020?00050?00041301020?00041021201301201021212413012010210011011000
+	Sceloporus_sp                 1000000021001101000100010000000000000000000002000110001000100100010100?10000001004010400?400?300400?21400?00201?21201021200?22201021201021200?02201021201021212010212010210000010000
+	Hoplocercus_spinosus          1000000040000?10000100010000000000000000010000001100000001101100001100000000001001200400?100?000400?01400?01450?00020?00000?10440?00000?10300?11450?00200?2121451001300?110010011000
+	Enyalioides_laticeps          0000000040100?1000010000000000000000000001000110131011010111010002011000000000100????020?1511000021100100?11351110350?10201021301010301010301010201020201021213010103010100010000000
+	Enyalioides_palpebralis       0000000040100?1000010000000000000000000001000100111011110111100002011000000000101????15111511000151101100?11051100051100101100201000101000301010101000041021213010103010100010000000
+	Oplurus_cuvieri               0000000041000?10000101010000000110012000010000000100001000100000011110000000001004200420?420?000400?21420?00220?21200?21200?21200?01200?11200?11200?21201021223510313510310010011000
+	Anisolepis_grilli             1000000041000?10000101010000000000010000000001000010000001110000011110000000000004010440?400?010400?21400?00020?00020?00021100021100001100201331241321000?01212413112013310000011000
+	Liolaemus_rothi               1000000040000?110001010?000000000001000001000100011000100010100001011000000000100????400?400?000400?21300?10201321200?01200?22201321200?11200?2220102120102222201311200?120000010000
+	Basiliscus_basiliscus         1000000041100?1000010111000000000000000010000010011011010010100002011000000000000????4411440?110401120120?10220?00020?00200?11201011220?11200?12201021020?0021301011300?110000111000
+	Basiliscus_plumifrons         1001000141110?110001010?0010001???00001100000010000011010010100002011000000000000????????4111310411100410?10010?10010?10010?12010?10010?10310?12211111020?00223111102110120000001000
+	Anolis_carolinensis           1000000041110?100000111?0000000000010111000012000110000001110000011100?1000010001????40113011300430?00120?00021000021000201001001021021010201001201321020?20212010212013310000011000
+	Anolis_evermanni              1000001141100?110001011?0000000000010110000002000010000001110000020110?0000010001????44111411200440?00020?00050?00050?00250?00021000020?00000?01201021020?0021201011000?110000010000
+	Anolis_stratulus              1000001141100?110000011?0000000000010111000002000000000001101001011100?0000010001????40114011300440?00120?00020?00020?00200?21020?00020?00000?10201321020?00212013012013210000011000
+	Anolis_pulchellus             1000001121000?100000011?0000000000010111000002000110000001110010021100?0000010001????400?300?200401020400?00021001020?01201021201021120?00201021241321020?00212413212013210000011000
+	Anolis_gundlachi              1000001141100?110000010?0000000000010111000002000010100001110000010110?1000010001????440?3011200401300120?00020?00020?00220?01021001021001221012201321020?00212010212013310000010000
+	Anolis_cristatellus           1000001141100?110001010?0000000000010111000002000010100001110000010110?0000010001????4413100?200441100120?00020?00020?00220?01020?01020?00001021001021000?22212010012013210000011000
+	Anolis_sagrei                 1000001141100?110001011?0000000000010111010002000010000001110000020100?1000010001????40134410200401000121100021000021000101321021000020?00101022201021020?00212013212013220000010000
+	Anolis_sp                     1000000041100?110000011?0000000100010110000002000000100001110000020100?1000010001????44111011200441100020?00020?00020?00200?01020?00020?00001021201321020?20210210012010210000011000
+	Helminthophis_frontalis       1101001120000?000???00000010111???1??00001000200020000100010000101000010001??????????100?100?221??????100?20100?21100?21100?21000?21000?21000?21??????????????000?21000?210000001000
+	Trilepida_macrolepis          1101011111001101110?00?00011111?001??00001100200020000100010000111000010021??????2120210?410?021110?02100?20100?22100?22000?22100?22100?22100?22??????????????100?22100?220000001000
+	Rena_humilis                  1101011111001101110?00?00011111?001??00001100200020000100010000111000010021??????2120210?410?021110?02100?20100?22100?22000?22100?22100?22100?22??????????????100?22100?220000001000
+	Gerrhopilus_persephone        1101011111010?01110?01100011111?001??00011000200020000100010000101000010001??????1020100?400?021100?02000?20100?22100?22100?22100?22100?22100?22??????????????100?22100?220000000000
+	Xenotyphlops_grandidieri      1101001111010?01110?01100011111?001??00011000200020000100010000101000010001??????1010100?300?011400?01000?10100?21100?21100?21100?21100?21100?21??????????????100?21100?210000000000
+	Typhlops_reticulatus          1100011111010?00110?00?00011111?001??00011000200020000100010000111000000011??????????110?110?021110?02100?10100?22100?22100?21100?22100?22100?21??????????????100?22100?210000001100
+	Typhlops_hectus               1100011111010?00110?00?00011111?001??00011000200020000100010000111000000021??????????110?110?021110?02100?20100?22100?22100?22100?22100?22130?22??????????????100?22100?220000001100
+	Tropidophis_spiritus          1001011121001101110?10?00001001?001??00001000200010000101110100001000010021??????4410340?400?311140?31200?10200?21200?21200?21200?21200?21300?21??????????????200?21300?210000000000
+	Xenophidion_acanthognathus    0000011100000000110?10?00001001?001??00101001200020000101110100001000010021??????1020????300?321100?22100?10100?22100?22100?22100?22100?22300?22??????????????100?22300?220000000000
+	Casarea_dussumieri            1000001121010?01110?10?00001001?001??00101001200021000101110100001010010021??????????040?440?010310?01100?10101121101121100?21101121101121300?32??????????????201122300?320000001100
+	Exiliboa_placata              1000001121001011110?00100001001?001??00000100200010010101110100001000010021??????4010300?400?010300?01400?12400?02100?02400?02200?22200?22300?32??????????????200?22300?320000001100
+	Boa_constrictor               1001000040000?00000100000001001?001??00101001200010000101110100001000010021??????????200?200?010100?01100?10200?21200?21300?22200?21200?21300?22??????????????200?21300?220000000000
+	Corallus_caninus              1001001100000000000100100001001?001??00101101200010000101110100001000010021??????????440?440?211100?21100?10000?01100?01100?01200?21100?21300?32??????????????200?21300?220000000000
+	Anomochilus_monticola         1000001111000?00110?10?10001001?001??00101100200020000100010000101000010001??????2020000?300?021300?02200?20200?22200?22200?22100?22100?22100?22??????????????100?22100?220000000000
+	Cylindrophis_ruffus           1000001101001001110?10?01000001?001??00001101200020000100010000001000000021??????2410????340?111240?01000?20000?22000?22200?22040?22100?22000?22??????????????240?21200?210000001000
+	Uropeltis_melanogaster        1100001111001000110?10?01001011?001??00011000200020000100010000100000000001??????2020????400?021200?02200?20000?22000?22000?22000?22000?22000?22??????????????000?22000?220000000000
+	Anilius_scytale               1001001101011000110?00?10001011?001??00110010200010000100010000101000010001??????2020200?200?221200?22200?20200?22200?22200?22200?22200?22100?22??????????????200?22100?220000001000
+	Xenopeltis_unicolor           1001001121011101110?10?11001001?001??00100101200020000101110100001000010001??????2010200?400?011200?01200?10200?22200?22200?22030?22000?22300?32??????????????030?22300?210000000000
+	Loxocemus_bicolor             1000001121001100110?10?10001001?001??01101101200010000101110100001000000001??????2010300?300?010200?01300?10200?22000?22200?22200?22200?22300?22??????????????200?21100?220000001000
+	Python_brongersmai            1001001121000001110?10000001001?001??00101100200020000101110100001000010001??????4010300?400?000400?21100?10000?22200?21200?01000?21000?21300?32??????????????000?22100?220000001000
+	Python_sebae                  1001001121000011110?00100001001?001??00101100200020000101110100001000010001??????2000300?400?010300?21100?10200?21000?21000?21100?21200?21300?32??????????????200?21000?220000001000
+	Acrochordus_javanicus         0000000010100?00000?00000001001?001??0?001000200001000000001000001010000001??????????22112211000221100001100241100241100241100241100241100241100??????????????241100241100000000?000
+	Achalinus_juliani             1000001121010?00110?10?00001001?001??01100001200020000101110100002000010001??????2410340?340?010240?01300?11140?00140?20300?22100?20100?20300?22??????????????100?20300?220000000000
+	Laticauda_colubrina           1000001111001001110?10000001001?001??00011100200010000101110100102000010001??????4010200?300?000400?01200?10200?22200?22400?22200?22200?22300?32??????????????100?22300?220000001100
+	Aplopeltura_boa               1000001111001101110?00?00001001?001??00001101200010000101110100001000010021??????4110010?300?210310?01200?10200?22200?22200?21200?22200?22300?32??????????????200?22300?320000001100
+	Bitis_caudalis                1001000040100?10000100000001001?001??00101100200021000101110100001010010021??????????01130113110111321100?10111321111301300?32111321111321300?32??????????????2113212013210000000000
+	Trimeresurus_venustus         1010011130000?01110?01000101001?001??00101101200011000101110100001000010001??????????040?400?011400?01300?10201021200?21400?01201021200?21300?32??????????????200?21300?220000001000
+	Crotalus_stephensi            1000001130010?01110?00000101001?001??00101100200011000101110100100010010011??????????140?400?011130?00400?10131121101121100?11231121101121300?32??????????????031121300?120000001000
+	Crotalus_cerastes             1001000040000?01110?00000101001?001??00101000200011000101110100102010010021??????????010?010?110130?00200?10230?01200?01200?01231122131122300?32??????????????211122300?320000001000
+	Crotalus_molossus             1001000041000?01110?00000101001?001??00101001200021000101110100100010010021??????????430?400?011130?00300?10131121101121300?32131121101121300?32??????????????001121300?320000001000
+	Crotalus_tigris               1001001120000?01110?00000101001?001??00001100200021000101110100101010010021??????????040?440?010440?01400?10111121100?21100?01011221100?31300?32??????????????001221300?320000001000
+	Enhydris_enhydris             1000001101011001110?10?01001001?001??00100100200010000101110100001000000001??????4110????310?210310?01200?10240?21110?11210?21230?22230?22300?32??????????????230?22300?220000000000
+	Atractaspis_irregularis       1001001121001000110?10?01001001?001??00101110200010000101110100011000000001??????2010200?400?021300?02200?20000?22000?22200?22200?22200?22300?32??????????????200?22300?220000001000
+	Micrurus_tener                1001001121001001110?10001001001?001??00100100200010000101110100001000000001??????4010400?400?010400?01100?10200?22000?22400?02200?22000?22300?32??????????????000?22300?220000001100
+	Ophiophagus_hannah            1001001121011001110?10001001001?001??00100100200010000101110100001000010011??????4010300?300?000400?01300?11000?01200?21400?02200?21200?21300?32??????????????200?21300?220000001000
+	Naja_kaouthia                 1001000121001111110?10?01001001?001??00100100200020000101110100011000010001??????3010200?300?010300?01200?00100?21100?21300?32200?21200?21300?32??????????????200?21300?320000000000
+	Hapsidophrys_smaragdina       1001001121011011110?10?00001001?001??00100101200011000101110100001010010001??????4010400?400?010400?01300?10201321101321400?02201322201322300?32??????????????201322000?220000001000
+	Tantilla_cucullata            1001011121011011110?10?00001001?001??00100100200010000101110100001000010001??????2010400?000?010400?01300?20200?22200?22400?02200?22200?22300?32??????????????200?22300?220000001000
+	Leptophis_ahaetulla           1001001121011011110?10?00001001?001??00100101200011000101110100001000010001??????4010400?400?010400?01300?10200?21100?21400?02201322201122300?32??????????????200?22300?220000001000
+	Drymobius_margaritiferus      1001001121011011110?10?01001001?001??00100101200011000101110100001010010001??????4010400?400?010400?01300?10200?21200?22300?32201322200?22300?32??????????????201322000?220000001000
+	Masticophis_lateralis         1001001121011011110?10?00001001?001??00100101200010000101110100001000010001??????4410440?400?210440?01300?10200?22200?22400?02200?22200?22300?32??????????????200?22300?220000001000
+	Xenochrophis_vittatus         1000001121001?01110?10000001001?001??00100101200011000101110100001000010021??????4010400?400?210400?01110?10001322200?02400?01241322241322300?32??????????????201322300?320000001100
+	Tropidodipsas_sartorii        1001001121001001110?10?00001001?001??00101100200010000101110100001000010001??????2410340?440?010440?01110?10200?22200?22330?32240?22240?22330?32??????????????240?22300?220000001000
+	Sibynomorphus_turgidus        1001001121001001110?10?00001001?001??00000100200020000101110100001000010001??????2010300?400?010400?02400?20100?22100?22300?22200?22100?22300?32??????????????200?22000?220000001000
+	Borikenophis_portoricensis    1001001121001?01110?10000001001?001??00100101200010000101110100001000010001??????4010400?400?210400?01300?10200?22200?22400?01230?21200?21330?32??????????????230?21330?220000001000
+
+;
+
+END;
+BEGIN CHARACTERS;
+	TITLE  Body_Matrix;
+	DIMENSIONS  NCHAR=159;
+	FORMAT DATATYPE = STANDARD RESPECTCASE GAP = - MISSING = ? SYMBOLS = "  0 1 2 3 4 5";
+	CHARSTATELABELS 
+		1 '(611). Enlarged rostral scale: (0) absent or undifferentiated; (1) present',
+		2 '(612). Rostral scale: (0) not greatly expanded and dominating anterior portion of head; (1) expanded dorsally (onto top of skull) posteriorly and laterally or dominating anterior portion of head',
+		3 '(613). Posterior split in rostral scale: (0) absent; (1) present (division along posterior margin of scale near midline)',
+		4 '(614). External narial opening: (0) enclosed entirely within nasal scale; (1) at edge of nasal scale',
+		5 '(615). External narial opening: (0) separated from rostral; (1) partially in rostral',
+		6 '(616). External narial opening: (0) separated from supralabial; (1) partially in supralabial',
+		7 '(617). Nasal-rostral contact: (0) absent or separated by scales; (1) present - When the narial opening is between scales rather than entirely within a scale state 1 is used when one of these scales bordering the nasal contacts the rostral',
+		8 '(618). Contact between nasal and supralabial scales: (0) absent (separated by other scales); (1) present - When the narial opening is between scales rather than entirely within a scale state 1 is used when one of these scales bordering the nasal contacts the supralabial',
+		9 '(619). Minimum number of scales separating the nasal scales medially: (0) none (nasal scales contact medially); (1) one scale; (2) two; (3) three; (4) four or more scale rows - Previously used phylogenetically (in modified form) by Wiens ([48] his char. 22).  Ordered',
+		10 '(620).  Dorsal cephalic scales: (0) relatively small; (1) enlarged (larger than adjacent neck scales)',
+		11 '(621).  Dorsal cephalic scales: (0) smooth; (1) some or all keeled',
+		12 '(622).  Head scales vertically elongate: (0) no; (1) yes, including scales associated with eye and nostril (extending almost from mouth to top of skull)',
+		13 '(623).  Enlarged frontal scale between orbits: (0) absent; (1) present.  Previously used phylogenetically by Wiens ([48]; his char. 18)',
+		14 '(624).  Median contact of frontoparietals: (0) present; (1) absent, frontoparietals reduced and separated by contact of frontal and interparietal.  Scored as unknown in taxa lacking frontals, frontoparietals, and an interparietal',
+		15 '(625).  Circumorbital scales (distinct semicircular row of scales bordering orbital region): (0) absent; (1) present',
+		16 '(626).  Enlarged supraoculars: (0) absent; (1) present (scales over eye larger than surrounding scales)',
+		17 '(627).  Supraoculars: (0) two or more rows of scales; (1) single row of enlarged scales between superciliary and frontal.  Taxa with multiple rows of scales in this region were given state 0, regardless of whether or not they had well-differentiated supraoculars.  Previously used phylogenetically by Wiens ([48] his char. 25)',
+		18 '(628).  Single enlarged supraocular scale row between orbit laterally and frontal medially: (0) no; (1) yes, supraciliary scales absent',
+		19 '(629).  Median contact of enlarged supraoculars: (0) absent; (1) present',
+		20 '(630).  Supercilary scales: (0) non-overlapping; (1) overlapping.  Used previously in modified form by Etheridge and de Queiroz ([49] their char. 46) and subsequent authors',
+		21 '(631).  Supralabial scales: (0) not entering orbit; (1) entering orbit.  In most squamates examined, one or more enlarged scales (suboculars) separate the supralabials from the rim of the orbital opening.  In others, supralabials extend to the orbital opening',
+		22 '(632).  Enlarged subocular scale (elongate scale ventral to orbit): (0) absent (or series of smaller scales); (1) present (single scale larger than surrounding scales).  In many taxa, there is a single scale below the orbit that is also part of the labial series bordering the upper jaw (see character 21).  In these cases, it is possible that the subocular has entered the labial series or that the labial has shifed into the subocular position, and these taxa were coded as unknown for the presence or absence of a subocular. Used previously phylogenetically in modified form by Etheridge and de Queiroz ([49] their char. 47) and subsequent authors',
+		23 '(633).  Subocular-supralabial contact: (0) absent, row of one or more scales between scales above lip (supralabials) and below the orbit (suborbitals); (1) present. Taxa lacking any subocular scales below the eye (e.g., many snakes) were coded as inapplicable',
+		24 '(634).  Enlarged interparietal scale: (0) absent; (1) present (scale distinctly larger than surrounding head scales present over parietal region of skull).  Used in modified form by Etheridge and de Queiroz ([49] their char. 45) and subsequent authors',
+		25 '(635).  Temporal region covered almost exclusively by pair of enlarged temporal scales: (0) no; (1) yes. Derived state is mostly in advanced snakes',
+		26 '(636).  Heat-sensing pit in loreal region: (0) absent; (1) present',
+		27 '(637).  Mouth: (0) large, extending posterior to eye; (1) greatly reduced, posterior terminus at or anterior to level of eye.',
+		28 '(638).  Groove allowing tongue to be extruded when mouth is closed: (0) absent; (1) groove present in rostral (sometimes in mental also, but too difficult to score consistently as a separate state). The derived state is found in snakes.',
+		29 '(639).  Eye: (0) visible externally; (1) not visible externally; Previously used phylogenetically (in modified form) by Kearney ([50] her char. 10).  Derived state is found only in Rhineura.',
+		30 '(640).  Eye surrounded by single scale: (0) no, multiple scales; (1) single scale. Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 253).',
+		31 '(641).  Fleshy eyelids:  (0) present; (1) absent.  Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 253).',
+		32 '(642).  Lower eyelid scales: (0) homogeneous; (1) some enlarged scales.',
+		33 '(643).  Transparent spectacle in lower eyelid scales: (0) absent; (1) present.',
+		34 '(644).  Thick granular eyelid covering eye except for small opening for pupil (chamaeleon condition):  (0) absent; (1) present;  Used previously phylogenetically by Estes et al. ([52] p. 199).',
+		35 '(645).  External ear opening: (0) present; (1) absent;  Previously used phylogenetically by Estes et al - 48.',
+		36 '(646).  Tympanum: (0) large and superficial; (1) small and inset;  Used previously phylogenetically by Estes et al. ([51] and noted by McDowell and Bogert [36]).',
+		37 '(647).  External ear opening: (0) entirely or mostly uncovered; (1) partially covered by fleshy lobule; (2) partially covered by scales only, no fleshy lobule. Unordered.',
+		38 '(648).  Complex dewlap apparatus (gular fan), in males: (0) absent; (1) present, extensive flap of skin on throat, usually with modified scales.',
+		39 '(649).  Mental scale: (0) entire; (1) with a partial split at the posterior end. Previously noted by Frost and Etheridge ([53] from E. Williams, pers. comm.).',
+		40 '(650).  Elongate postmentals: (0) absent; (1) present.',
+		41 '(651).  Postmentals (scales immediately posterior to mental): (0) two (enlarged scales sometimes separated by additional scales) or more scales immediately posterior to mental; (1) one, single unpaired scale immediately posterior to mental.',
+		42 '(652).  Enlarged scales medial to infralabials: (0) present; (1) absent, scales in chin more-or-less homogeneous.',
+		43 '(653).  Infralabials, anteriormost pair(s): (0) separate medially; (1) one row contacting medially posterior to mental; (2) two rows contacting medially. It is possible that the medially contacting infralabials actually represent postmentals that have shifted their position. Ordered.',
+		44 '(654).  Infralabial and supralabial scales: (0) not greatly expanded; (1) greatly expanded, with single pair of sublabials covering most of chin region (i.e., dibamids).',
+		45 '(655).  Mental groove: (0) absent; (1) present, a distinct infolding of skin and scales along the anterior midline of the chin region.',
+		46 '(656).  Gular fold: (0) present or complete; (1) incomplete; (2) absent. Ordered. Previously used phylogenetically by Etheridge and de Queiroz ([49] their char. 43) and subsequent authors.',
+		47 '(657).  Body scales: (0) not arranged in non-overlapping rings; (1) annulated, arranged in non-overlapping rows.  Previously used phylogenetically by Kearney ([50] her char. 3).',
+		48 '(658).  Varanus-type scale on dorsum, with small scale surrounded by tiny granular scales: (0) absent; (1) present.',
+		49 '(659).  Dorsal scales: (0) homogeneous, lacking enlarged scales; (1) heterogeneous, with enlarged scales separated by smaller scales, either in rows or scattered.',
+		50 '(660).  Dorsal body scales: (0) small, granular, non-overlapping; (1) mucronate (pointed, overlapping); (2) cycloid (rounded, overlapping); (3) rectangular.  Unordered.  Expanded from char. 148 of Estes et al. [52].',
+		51 '(661).  Dorsal body scales: (0) all smooth; (1) some or all keeled.',
+		52 '(662).  Dorsals, with longitudinal ridges in addition to mid-dorsal keels: (0) absent (including species lacking keels); (1) present',
+		53 '(663).  Enlarged middorsal scale row: (0) middorsal scales same size as surrounding scales; (1) middorsal scales enlarged relative to surrounding scales in both sexes; (2) sexually dimorphic, mid-dorsals enlarged in males. Unordered. Expanded and modified from char. 146 of Estes et al. [52].',
+		54 '(664).  Nuchal crest of enlarged scales: (0) absent; (1) present in both sexes; (2) sexually dimorphic, mid-dorsals enlarged in males. Unordered. Has similar distribution to that of mid-dorsal scale row, but clearly not identical.',
+		55 '(665).  Lateral body scales: (0) granular, non-overlapping; (1) imbricate overlapping. Although this may seem redundant with the condition of the dorsal scales, several taxa have enlarged and imbricate dorsal scales but granular lateral scales.',
+		56 '(666).  Lateral fold along side of body: (0) absent; (1) present (often associated with row of granular scales in species with larger scales). Previously used phylogenetically in squamates by Estes et al. [52].',
+		57 '(667).  Gastrosteges (enlarged mid-ventral scale row in snakes): (0) absent, multiple scale rows; (1) present, single mid-ventral scale row distinctly larger than surrounding scale rows.  Previously used phylogenetically (in modified form) by Lee and Scanlon ([51]; their char. 255).',
+		58 '(668).  Ventrals: (0) same size as adjacent laterals; (1) at least some distinctly larger than adjacent laterals.',
+		59 '(669).  Ventral body scales: (0) mostly small and granular; (1) large and flat.  Note that this character is independent of the preceding character, because scales can be large and flat and still be the same size as the adjacent laterals.',
+		60 '(670).  Ventral scales: (0) all smooth; (1) some or all keeled.',
+		61 '(671).  Ventrals, posterior edge: (0) cycloid, mucronate, or otherwise rounded; (1) square (posterior margin more-or-less straight). Some snakes with gastrosteges have variation that approaches the condition in state 1, but were coded as 0.',
+		62 '(672).  Femoral pores: (0) absent; (1) present in both sexes; (2) sexually dimorphic. Unordered. In some cases, femoral and preanal pores may be difficult to distinguish (e.g. Gekko gecko, Takydromus ocellatus). In general, pores on the legs were considered femoral pores, and pores between the legs were considered preanals, but pores that extended from the legs onto the preanal region were considered femorals. Taxa lacking hindlimbs were coded as unknown. Previously used phylogenetically by Estes et al. ([52] but noted by Camp [54]), their character 144.',
+		63 '(673).  Preanal pores: (0) absent; (1) present. Previously used phylogenetically by Estes et al. [52], their character 144.',
+		64 '(674).  Tail tip: (0) pointed, tapered; (1) blunt and rounded',
+		65 '(675).  Small sharply pointed spike at posterior tail tip: (0) absent; (1) present.',
+		66 '(676).  Tail shape (cross-section): (0) dorsoventrally flattened (depressed); (1) rounded; (2) laterally compressed. Ordered.',
+		67 '(677).  Caudal scales: (0) approximately same size as dorsal body scales; (1) distinctly larger than dorsal body scales',
+		68 '(678).  Caudals (dorsal): (0) smooth; (1) mostly keeled.',
+		69 '(679).  Caudal scales: (0) not arranged in non-overlapping vertical rows; (1) annulated, arranged in non-overlapping vertical rows.',
+		70 '(680).  Enlarged preanal scales: (0) absent; (1) present (preanals enlarged relative to adjacent ventrals).',
+		71 '(681).  Anal plate: (0) two or more scales; (1) single plate. Species without a distinct anal plate but with multiple scales in the pre-anal region were coded as having state 0. Previously used phylogenetically by Lee and Scanlon ([51] their char. 257).',
+		72 '(682).  Enlarged postanal scales (males): (0) absent; (1) present (some scales posterior to vent greatly enlarged relative to adjacent scales).',
+		73 '(683).  Lateral postanal tubercles: (0) absent; (1) present (enlarged scale or scales on medial surface of anterior end of tail).',
+		74 '(684).  Subcaudals (scales on ventral mid-line of tail): (0) divided, two or more scale rows; (1) some single, some divided; (2) all single. Ordered. Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 256).',
+		75 'Frontal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		76 'Frontal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		77 'Frontal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		78 'Chalcidine frontal scale pattern: (0) Absent; (1) Present.',
+		79 'Internasal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		80 'Internasal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		81 'Internasal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		82 'Internasal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		83 'Loreal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		84 'Loreal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		85 'Loreal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		86 'Loreal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		87 'Loreal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		88 'Loreal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		89 'Loreal scale enlargement: (0) Absent; (1) Present.',
+		90 'Supraocular scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		91 'Supraocular scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		92 'Supraocular scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		93 'Supraocular scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		94 'Supraocular scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		95 'Supraocular scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		96 'Postmental scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		97 'Postmental scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		98 'Postmental scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		99 'Postmental scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		100 'Postmental scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		101 'Dorsal neck scale homogeneity: (0) Scales more or less homogenous; (1) Some or all scales vary in morphological traits.',
+		102 'Dorsal neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		103 'Dorsal neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		104 'Dorsal neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		105 'Dorsal neck scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		106 'Dorsal neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		107 'Dorsal neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		108 'Lateral neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		109 'Lateral neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		110 'Lateral neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		111 'Lateral neck scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		112 'Lateral neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		113 'Lateral neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		114 'Ventral neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		115 'Ventral neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		116 'Ventral neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		117 'Ventral neck scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		118 'Ventral neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		119 'Ventral neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		120 'Dorsal body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		121 'Dorsal body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		122 'Dorsal body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		123 'Dorsal body scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		124 'Dorsal body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		125 'Dorsal body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		126 'Lateral body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		127 'Lateral body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		128 'Lateral body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		129 'Lateral body scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		130 'Lateral body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		131 'Lateral body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		132 'Ventral body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		133 'Ventral body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		134 'Ventral body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		135 'Ventral body scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		136 'Ventral body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		137 'Ventral body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		138 'Dorsal caudal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		139 'Dorsal caudal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		140 'Dorsal caudal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		141 'Dorsal caudal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		142 'Dorsal caudal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		143 'Dorsal caudal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		144 'Ventral caudal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		145 'Ventral caudal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		146 'Ventral caudal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		147 'Ventral caudal scale keel type: (0) Partial keel on posterior edge; (1) Partial keel centered on scale; (2) Partial keel on anterior edge; (3) Keeling entire.',
+		148 'Ventral caudal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		149 'Ventral caudal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		150 'Apical pits: (0) Absent; (1) Present.',
+		151 'Osteoderms: (0) Absent; (1) Present.',
+		152 'Spines: (0) Absent; (1) Present, distinct appendages when compared to surrounding scales',
+		153 'Horns: (0) Absent; (1) Present, distinct appendages when compared to surrounding scales',
+		154 'Subtympanic Shield: (0) Absent; (1) Present.',
+		155 'Supraocular Disk: (0) Absent; (1) Present',
+		156 'Sensory structures on head: (0) Absent; (1) Present.',
+		157 'Sensory structures on body: (0) Absent; (1) Present.',
+		158 'Body scale formation: (0) Overlap or scale end directed towards posterior; (1) Overlap directed 45 degrees toward midline; (2) Overlap directed completely toward midline (Acanthosaur condition); (3) Overlap directed towards varanus-like enlarged scales..',
+		159 'Mid-ventral Crest: (0) Absent; (1) Present.' ; 
+	MATRIX
+	Sphenodon_punctatus           1001000040000?000000000000000000001??00011100000000001010110101102000000001000000?100?000400?00000?00020?00020?00000?00020?00020?00300?10020?00300?100010000000
+	Dibamus_floweri               1100101101001?001100?0?11000111?001??00111010200020000100010000101000000001020????410?021100?22310?20100?22100?22100?22100?21100?21100?21100?21100?210000001000
+	Phyllurus_ossa                1001000140000?00000000000000001?001??00001000200100010000010100000000000000200020?050?000020?00020?01020?00050?00000?00020?00050?00000?00020?00000?000010000000
+	Lialis_burtonis               0001000121010?11100100000000001???0110000000020002000010011010100100100002????400?110?210200?01200?10200?22100?22200?22200?22100?22300?22200?22300?220000000000
+	Rhacodactylus_ciliatus        1001001140000?0000000000000000111?0100001100010000000000001000000100100010????000?100?000020?00000?00020?00020?00020?00020?00020?00000?21300?10300?100010000000
+	Oedura_marmorata              1012101020000?100000000000000000000100001110011000000000000000000100100001????020?020?000020?00200?00020?10020?10000?10000?10000?10000?20300?10300?100000000000
+	Coleonyx_mitratus             1000001130000?100000000000000000000100000100010110000000011000000100100001????400?010?000000?00000?01020?00020?00020?00020?00020?00000?21300?10000?110100000000
+	Eublepharis_macularius        1012001140000?000010000000000000000100000100020010100000011000000100100001????000?000?000000?00100?01040?00040?00120?00440?00440?00000?21040?10300?110100000000
+	Teratoscincus_sp              1011101120000?00000100000010001??00110000100010002000010001000000100000001????400?000?110000?11410?10000?21020?00200?21200?21200?21200?21000?21200?210000000000
+	Sphaerodactylus_roosevelti    1001101140100?10000000100010001??00110000100020001100010001000000101000002????100?000?110121031410?10241021151001041021241321241321240?21241321100?210000000000
+	Sphaerodactylus_klauberi      1011111140110?100000001000100010000100000100020001100010001000000101000002????4011440?100121031440?00241021240?21201021241321241021040?21241021000?210000000000
+	Sphaerodactylus_gaigeae       1011101130110?100000001000100010000100010100020001100010001000000101000002????410?4110010111001111010021000021000021021241321241321240?21241321100?210000000000
+	Thecadactylus_rapicauda       ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Phyllodactylus_wirshingi      1001111120000?10000010?00010001??00100000100021000100000001000000101100002????110?110?000110?00400?10011110050?10000?20011110011110000?10011110100?100000000000
+	Phyllodactylus_galapagoensis  ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Gekko_gecko                   1001001140000?100000000000100000000110010110010110000000001000100100100001????020?020?000020?00100?01000?00000?10000?10000?00000?10000?10000?10100?100100000000
+	Gekko_horsfieldii             ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Hemidactylus_turcicus         1001101140000?10000000000010001??00100000100020110100000001000000100110002????000?020?000020?00400?01020?00020?00200?21001100000?00240?21021110200?110000000000
+	Paroedura_androyensis         ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Uroplatus_sikorae             1001000040000?10000000000000000000011000?110020010000001000001010000000010????020?000?000020?00020?01020?00020?00000?00000?00100?00000?10020?00000?000000000000
+	Homopholis_wahlbergii         ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Phelsuma_guentheri            ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Xantusia_vigilis              1001011121001111110010010000011000000000000001000000000001101100011011?0002100400?440?201300?21400?10020?00020?00020?00020?10020?10340?30300?11300?110000011000
+	Lepidophyma_pajapanensis      1001001101001001111?01111000001??001100011110100111000000110110001011101002400????440?201440?30000?01050?00050?00220?00221001220?00300?30301311300?310010111000
+	Lepidophyma_occulor           ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Gerrhosaurus_sp               100101110100101110010111010000000001000000000210031000100010100001011100004400????440?211440?20400?10341030341030340?31341030341030340?31341031340?310100011000
+	Gerrhosaurus_flavigularis     100200110100101100010110000000000001200001000210011000110010110001011100004000????400?211400?21100?10331032300?32130?21231032300?32340?312313322013310100000000
+	Platysaurus_intermedius       100000111100100100000111000000010000000100000110000000010110110000111100004010200?400?210300?21300?10020?10050?10400?00020?10020?00300?303013303013300000011000
+	Smaug_warreni                 101000111100100110011000000000010000000100000110031000010010100001011100023400440?440?000340?20100?00211021350?10040?10311130350?10300?303410303410300010000000
+	Plestiodon_obsoletus          100000112100111110011001000000110001200010000200020000100010100001000110023010400?400?211400?21300?10100?22100?22100?21100?22100?22100?22100?22100?220000011100
+	Plestiodon_fasciatus          100000112100111110011001000000010001000010000200020000100010000001000100024011400?400?211400?21300?10130?22130?22130?22130?22130?22130?22100?22100?220000011100
+	Chalcides_ocellatus           ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Scincella_lateralis           1000001111001101100010?10000001000010000100002000200001000100000010000?0004011400?400?211400?21300?10100?22100?22100?22100?22240?22240?22100?22100?220000001100
+	Tribolonotus_novaeguineae     1100001111100?11110?10000000001100000001000002001000000001110000010111000034103421440?011442121100?11440?00440?00001022440?00440?001010223510303010300110000000
+	Tiliqua_sp                    100000110100111110011001000000000001200010000200011000100010000001010000024411????340?211440?21300?10202022202022130?22201022201022130?22251021130?220000010000
+	Tiliqua_scincoides            100000110100111110010111010000100001201000000200020100100010000001000100024311????340?211430?21440?10130?22130?22130?22130?22130?22130?22130?22130?220000011000
+	Tiliqua_gigas                 100000110100111110010011000000000001000010001200020000100010000001000000024011????400?211400?21400?11100?22100?22100?22100?22100?22100?22000?22100?220000010000
+	Trachylepis_sp                1000001121001101100110?10000000010012000100002000211001000100000010100?0004011400?300?211400?21300?10132322130?22130?22132322130?22130?22132322130?220000000000
+	Dracaena_sp                   10000011010010011000000100000000001??00010000100111010000111100002011100001410????440?010400?00300?11100?00000?00400?00101100100?003010113410113010310010000000
+	Ameiva_ameiva                 100100110101101110010110000000010001100010000110000000010110110101111100004110????310?211410?21410?10020?10020?10400?10020?10020?10300?31301131300?310000000000
+	Aspidoscelis_sexlineata       100100110100101110010111000000011000000010000110000000000110110002111100004410????400?211400?21400?10020?10020?10400?01220?10220?10300?323410313010320000001000
+	Aspidoscelis_gularis          100100110100101110010111000000000000001010000110000000000110110001111100004010????400?211400?21400?10020?10020?10200?22220?10220?10300?32301031300?320000001000
+	Anadia_steyeri                100000111100101110010011000000011001000100000210030000000010110001001100004011400?400?010400?20300?10300?10000?10300?10300?10000?10300?10300?30300?300000001000
+	Arthrosaura_reticulata        100000111100100110000111000000011001200010000210011000100110010001011100004010300?300?000400?20100?00301011020?00000?02301011201031100?32301011100?320000001100
+	Neusticurus_rudis             ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Cercosaura_ocellata           ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Rhineura_floridana            1001001131000?001???00000000111???1??0010100021003000000001010010100100100????340?140?001??????330?00300?10440?10440?10300?10300?10300?10020?00300?100000001000
+	Bipes_canaliculatus           1000001111001000010?01100000101???1??00111000210030000010010101101001000001000????400?000400?00300?00300?30300?30300?30300?30300?30300?30300?30300?300000000000
+	Blanus_alexandri              1000011111001?00110?00?00000111?001??00011010210030000000010100111001000004000????300?301400?00300?01300?10300?10300?10300?30300?30300?30300?30300?300?00000000
+	Cadea_blanoides               1000001111011?00110?00?00000111?001??00011010210000000000010000101001000004300????400?301400?30300?01300?30300?30300?30100?10100?10100?10100?10100?100?00000000
+	Trogonophis_wiegmanni         1000001101000?001???00100000111???1??0010100021003000001001010000100110000????300?400?010??????240?10340?10340?10340?10300?10300?10300?10300?10300?100000001000
+	Amphisbaena_mertensii         1000001101000?001???00000000111???1??0011100021003000001001010110100100000????400?400?010??????300?10300?30300?30000?30300?30300?30300?30300?30300?300000001000
+	Amphisbaena_camura            1000001101000?001???00000000111???1??0011100021003000001001010110100100000????400?400?010??????300?10340?30340?30000?30340?30340?30300?30340?30300?300000001000
+	Leposternon_microcephalum     10001011010010001???00000000111???1??01111010210030000010010100101001000004010????400?010??????130?10440?01440?01400?00300?30300?30300?30300?30300?300000001000
+	Acanthodactylus_cantoris      100000110101101100010110000000000001000010001100011000110110100001010100004010????300?210400?21000?10220?20050?00200?21201321201321300?312013312013310000010000
+	Takydromus_sexlineatus        100100110101100110010010000000000000001100000200011000000111000001010100004410????400?211400?21300?10211322020?00211321311331020?002113323113312113320000011000
+	Lacerta_viridis               100100110100101110010110000000000001000010001110000000100110110001111110004000????400?210040?20000?10020?10020?00200?21020?10220?01300?323013313013320000010000
+	Podarcis_muralis              100100110100101110010110000000000000000000000110001000000110110001111100004010200?400?210400?21300?10021110021110200?21021110021110300?313013303013300000010000
+	Xenosaurus_grandis            1000000041000?100001001000000000001??0000000000110100000011010000100100000????4{2 4}0?440?200020?00200?11020?00020?00000?10141100141100300?10140?10340?300000101000
+	Heloderma_suspectum           0001000140000?100001000000000000001??0000100011000000000011010010100110000????440?440?100040?00300?00020?10020?10020?10020?10120?10300?10020?10300?110000000000
+	Anniella_geronimensis         1000011121001100000110010000001???1??00001000200020000100010000101000000004020400?300?010400?01200?10100?22100?22100?22200?22100?22200?22200?22200?220000000000
+	Anniella_pulchra              1000011121001100000110010000001???1??00001000200020000100010000101000000004020100?200?020200?22000?10100?22100?22100?22000?22000?22000?22000?22200?220000000000
+	Wetmorena_haetiana            ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Ophiodes_luciae               1000001131000?100001101000000000001??00001000200020100100010000001000000002010200?400?210200?21200?10130?21130?21130?21130?21130?21130?21130?21130?210?00000000
+	Ophisaurus_attenuatus         10010101110011101001011100000000001??00010100210030000110010000001001000001010200?200?220400?22100?20100?22200?22100?02340?31340?31140?21040?31040?300000001010
+	Gerrhonotus_ophiurus          ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Mesaspis_monticola            100100012100110000010111000000000001000010000210031000000010100001011000004010300?400?010300?22100?20300?32020?00300?32301332020?00300?32201031200?320000010000
+	Abronia_ornelasi              100100012100110000010010000000000001200001000210030010110010100001001100024110010?310?210410?21200?20310?31020?00100?22340?31240?31300?32340?31300?310000010010
+	Shinisaurus_crocodilurus      10000000410010110001000100000001101??000000012011{0 1}1000000110100002111000002410440?400?210440?00300?11141300141300020?10141300141300000?11141310300?110000111000
+	Lanthanotus_borneensis        0001000040110?100000000000000100001??0000120120112101010001010000100100000????14110411000040?00020?01441100341120001110141100141100300?10140?10300?100100000000
+	Varanus_niloticus             ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Varanus_prasinus              ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Varanus_sp                    0001000040000?100001000000000000000000000010020010100000001110000200000002????410?410?000410?00400?00101101120?00101110101101121100301110120?001211300000011000
+	Chamaeleo_calyptratus         0001000041000?100000011?00000000011??000001002001000110000000001010010?000????420?420?100420?00020?01400?00120?10050?20100?10450?20120?10320?10320?300010000021
+	Trioceros_jacksonii           0000000041000?100000011?00000000011??000011002001000110000000001010010?000????420?420?000420?00000?01420?00020?10020?00020?00020?00020?00320?10320?300011000000
+	Uromastyx_aegyptia            100000004000101000000100001000000000001010100100010000110010111000111000001400020?020?000020?00000?10020?00020?00020?00200?01200?01300?11351030300?100000000000
+	Uromastyx_ocellata            1000000021001010000001000010000000000000100000000000000101101100001110?0004000400?020?000400?00400?00020?00020?00020?00000?00000?00300?10351030300?100000000000
+	Moloch_horridus               0001000040100?100001000100100000000020000110010110100000000100010100000000????010?010?000011001010?01011001011001010?00011100011100010?00010?00030?000011000030
+	Pogona_vitticeps              1000000041100?000000000?0000000000000{0 1}00000000001110001001110100011100?000????400?400?000??????400?00051101051101001101051101050?000010212011212013210010110000
+	Acanthosaura_capra            1000000041100?110001010?00000000000000000100010011101110011110000111100000????4410441?310441100440?11241021250?212410012410212410112410112410113013310010011020
+	Uranoscodon_superciliosus     1000000041100?110001010?0000000000000000000001100110111000111000010110?000????4013400?010441300400?002510212510012510212410112410112410113410311410310010011000
+	Plica_plica                   1000000040100?110001010100000000000100100100001001101110001110000101100000????400?0011000400?21200?11250?01050?00050?002510112010112010122010112010120010000010
+	Iguana_iguana                 1000000041000?110001010?0000000000000100000001100110111100111100010110?000????400?400?011000?21000?11020?00020?10020?103010112010112010113010112010210010111000
+	Sauromalus_obesus             0000000040000?100000010000000000000110000000011001000001000001010100100000????020?400?011000?00000?10250?21250?00200?21200?10020?10200?11350?11340?110000010000
+	Cyclura_ricordii              ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Ctenosaura_similis            1000000041000?100001010100000000000001010000101001101101001010000111100000????400?400?010400?21400?10350?10220?00200?11201011200?11200?11351331201332??????????
+	Leiocephalus_carinatus        1000001141000?111001011000000000000110000100020001100010001110000101000000????120?410?010300?21400?10201021201021130?21201322201322230?21201021230?210000011100
+	Crotaphytus_bicinctores       1000000041001010000001000010000000000000000000000000000101100100010010?1004000400?400?000400?00300?00020?00020?00000?01000?00020?00200?21000?10200?110000010000
+	Crotaphytus_collaris          1000000041001010000001000000000000000000000001000000000001100100010010?1004000400?400?001400?00400?00020?00020?00020?00020?00020?00200?11020?00200?110000010000
+	Holbrookia_maculata           10000000210010010000011000100000001??00011000100000000000110110101001000004000400?200?010400?01400?00200?00000?00000?00000?00000?00300?11401001200?020000010000
+	Phrynosoma_cornutum           1000000011100?000001000?0110000000000000100001011110100001110111010100?000????440?440?010241101340?01020?00020?00050?00041301020?000410212413012010210011011000
+	Sceloporus_sp                 1000000021001101000100010000000000000000000002000110001000100100010100?1004010400?400?300400?21400?00201?21201021200?22201021201021200?022010212010210000010000
+	Hoplocercus_spinosus          1000000040000?1000010001000000000000000001000000110000000110110000110000001200400?100?000400?01400?01450?00020?00000?10440?00000?10300?11451001300?110010011000
+	Enyalioides_laticeps          0000000040100?100001000000000000000000000100011013101101011101000201100000????020?1511000021100100?11351110350?102010213010103010103010103010103010100010000000
+	Enyalioides_palpebralis       0000000040100?100001000000000000000000000100010011101111011110000201100000????15111511000151101100?110511000511001011002010001010003010103010103010100010000000
+	Oplurus_cuvieri               0000000041000?1000010101000000011001200001000000010000100010000001111000004200420?420?000400?21420?00220?21200?21200?21200?01200?11200?113510313510310010011000
+	Anisolepis_grilli             1000000041000?1000010101000000000001000000000100001000000111000001111000004010440?400?010400?21400?00020?00020?000211000211000011002013312413112013310000011000
+	Liolaemus_rothi               1000000040000?110001010?00000000000100000100010001100010001010000101100000????400?400?000400?21300?10201321200?01200?22201321200?11200?22201311200?120000010000
+	Basiliscus_basiliscus         1000000041100?100001011100000000000000001000001001101101001010000201100000????4411440?110401120120?10220?00020?00200?11201011220?11200?12301011300?110000111000
+	Basiliscus_plumifrons         1001000141110?110001010?0010001???0000110000001000001101001010000201100000????????4111310411100410?10010?10010?10010?12010?10010?10310?123111102110120000001000
+	Anolis_carolinensis           1000000041110?100000111?0000000000010111000012000110000001110000011100?100????40113011300430?00120?000210000210002010010010210210102010012010212013310000011000
+	Anolis_evermanni              1000001141100?110001011?0000000000010110000002000010000001110000020110?000????44111411200440?00020?00050?00050?00250?00021000020?00000?01201011000?110000010000
+	Anolis_stratulus              1000001141100?110000011?0000000000010111000002000000000001101001011100?000????40114011300440?00120?00020?00020?00200?21020?00020?00000?102013012013210000011000
+	Anolis_pulchellus             1000001121000?100000011?0000000000010111000002000110000001110010021100?000????400?300?200401020400?00021001020?01201021201021120?002010212413212013210000011000
+	Anolis_gundlachi              1000001141100?110000010?0000000000010111000002000010100001110000010110?100????440?3011200401300120?00020?00020?00220?010210010210012210122010212013310000010000
+	Anolis_cristatellus           1000001141100?110001010?0000000000010111000002000010100001110000010110?000????4413100?200441100120?00020?00020?00220?01020?01020?000010212010012013210000011000
+	Anolis_sagrei                 1000001141100?110001011?0000000000010111010002000010000001110000020100?100????40134410200401000121100021000021000101321021000020?001010222013212013220000010000
+	Anolis_sp                     1000000041100?110000011?0000000100010110000002000000100001110000020100?100????44111011200441100020?00020?00020?00200?01020?00020?000010210210012010210000011000
+	Helminthophis_frontalis       1101001120000?000???00000010111???1??0000100020002000010001000010100001000????100?100?221??????100?20100?21100?21100?21000?21000?21000?21000?21000?210000001000
+	Trilepida_macrolepis          1101011111001101110?00?00011111?001??00001100200020000100010000111000010022120210?410?021110?02100?20100?22100?22000?22100?22100?22100?22100?22100?220000001000
+	Rena_humilis                  1101011111001101110?00?00011111?001??00001100200020000100010000111000010022120210?410?021110?02100?20100?22100?22000?22100?22100?22100?22100?22100?220000001000
+	Gerrhopilus_persephone        1101011111010?01110?01100011111?001??00011000200020000100010000101000010001020100?400?021100?02000?20100?22100?22100?22100?22100?22100?22100?22100?220000000000
+	Xenotyphlops_grandidieri      1101001111010?01110?01100011111?001??00011000200020000100010000101000010001010100?300?011400?01000?10100?21100?21100?21100?21100?21100?21100?21100?210000000000
+	Typhlops_reticulatus          1100011111010?00110?00?00011111?001??0001100020002000010001000011100000001????110?110?021110?02100?10100?22100?22100?21100?22100?22100?21100?22100?210000001100
+	Typhlops_hectus               1100011111010?00110?00?00011111?001??0001100020002000010001000011100000002????110?110?021110?02100?20100?22100?22100?22100?22100?22130?22100?22100?220000001100
+	Tropidophis_spiritus          1001011121001101110?10?00001001?001??00001000200010000101110100001000010024410340?400?311140?31200?10200?21200?21200?21200?21200?21300?21200?21300?210000000000
+	Xenophidion_acanthognathus    0000011100000000110?10?00001001?001??00101001200020000101110100001000010021020????300?321100?22100?10100?22100?22100?22100?22100?22300?22100?22300?220000000000
+	Casarea_dussumieri            1000001121010?01110?10?00001001?001??0010100120002100010111010000101001002????040?440?010310?01100?10101121101121100?21101121101121300?32201122300?320000001100
+	Exiliboa_placata              1000001121001011110?00100001001?001??00000100200010010101110100001000010024010300?400?010300?01400?12400?02100?02400?02200?22200?22300?32200?22300?320000001100
+	Boa_constrictor               ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Corallus_caninus              1001001100000000000100100001001?001??0010110120001000010111010000100001002????440?440?211100?21100?10000?01100?01100?01200?21100?21300?32200?21300?220000000000
+	Anomochilus_monticola         1000001111000?00110?10?10001001?001??00101100200020000100010000101000010002020000?300?021300?02200?20200?22200?22200?22100?22100?22100?22100?22100?220000000000
+	Cylindrophis_ruffus           1000001101001001110?10?01000001?001??00001101200020000100010000001000000022410????340?111240?01000?20000?22000?22200?22040?22100?22000?22240?21200?210000001000
+	Uropeltis_melanogaster        1100001111001000110?10?01001011?001??00011000200020000100010000100000000002020????400?021200?02200?20000?22000?22000?22000?22000?22000?22000?22000?220000000000
+	Anilius_scytale               1001001101011000110?00?10001011?001??00110010200010000100010000101000010002020200?200?221200?22200?20200?22200?22200?22200?22200?22100?22200?22100?220000001000
+	Xenopeltis_unicolor           1001001121011101110?10?11001001?001??00100101200020000101110100001000010002010200?400?011200?01200?10200?22200?22200?22030?22000?22300?32030?22300?210000000000
+	Loxocemus_bicolor             1000001121001100110?10?10001001?001??01101101200010000101110100001000000002010300?300?010200?01300?10200?22000?22200?22200?22200?22300?22200?21100?220000001000
+	Python_brongersmai            1001001121000001110?10000001001?001??00101100200020000101110100001000010004010300?400?000400?21100?10000?22200?21200?01000?21000?21300?32000?22100?220000001000
+	Python_sebae                  1001001121000011110?00100001001?001??00101100200020000101110100001000010002000300?400?010300?21100?10200?21000?21000?21100?21200?21300?32200?21000?220000001000
+	Acrochordus_javanicus         0000000010100?00000?00000001001?001??0?00100020000100000000100000101000000????22112211000221100001100241100241100241100241100241100241100241100241100000000?000
+	Achalinus_juliani             1000001121010?00110?10?00001001?001??01100001200020000101110100002000010002410340?340?010240?01300?11140?00140?20300?22100?20100?20300?22100?20300?220000000000
+	Laticauda_colubrina           1000001111001001110?10000001001?001??00011100200010000101110100102000010004010200?300?000400?01200?10200?22200?22400?22200?22200?22300?32100?22300?220000001100
+	Aplopeltura_boa               1000001111001101110?00?00001001?001??00001101200010000101110100001000010024110010?300?210310?01200?10200?22200?22200?21200?22200?22300?32200?22300?320000001100
+	Bitis_caudalis                1001000040100?10000100000001001?001??0010110020002100010111010000101001002????01130113110111321100?10111321111301300?32111321111321300?322113212013210000000000
+	Trimeresurus_venustus         1010011130000?01110?01000101001?001??0010110120001100010111010000100001000????040?400?011400?01300?10201021200?21400?01201021200?21300?32200?21300?220000001000
+	Crotalus_stephensi            1000001130010?01110?00000101001?001??0010110020001100010111010010001001001????140?400?011130?00400?10131121101121100?11231121101121300?32031121300?120000001000
+	Crotalus_cerastes             1001000040000?01110?00000101001?001??0010100020001100010111010010201001002????010?010?110130?00200?10230?01200?01200?01231122131122300?32211122300?320000001000
+	Crotalus_molossus             1001000041000?01110?00000101001?001??0010100120002100010111010010001001002????430?400?011130?00300?10131121101121300?32131121101121300?32001121300?320000001000
+	Crotalus_tigris               1001001120000?01110?00000101001?001??0000110020002100010111010010101001002????040?440?010440?01400?10111121100?21100?01011221100?31300?32001221300?320000001000
+	Enhydris_enhydris             1000001101011001110?10?01001001?001??00100100200010000101110100001000000004110????310?210310?01200?10240?21110?11210?21230?22230?22300?32230?22300?220000000000
+	Atractaspis_irregularis       1001001121001000110?10?01001001?001??00101110200010000101110100011000000002010200?400?021300?02200?20000?22000?22200?22200?22200?22300?32200?22300?220000001000
+	Micrurus_tener                1001001121001001110?10001001001?001??00100100200010000101110100001000000004010400?400?010400?01100?10200?22000?22400?02200?22000?22300?32000?22300?220000001100
+	Ophiophagus_hannah            1001001121011001110?10001001001?001??00100100200010000101110100001000010014010300?300?000400?01300?11000?01200?21400?02200?21200?21300?32200?21300?220000001000
+	Naja_kaouthia                 ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Hapsidophrys_smaragdina       1001001121011011110?10?00001001?001??00100101200011000101110100001010010004010400?400?010400?01300?10201321101321400?02201322201322300?32201322000?220000001000
+	Tantilla_cucullata            1001011121011011110?10?00001001?001??00100100200010000101110100001000010002010400?000?010400?01300?20200?22200?22400?02200?22200?22300?32200?22300?220000001000
+	Leptophis_ahaetulla           1001001121011011110?10?00001001?001??00100101200011000101110100001000010004010400?400?010400?01300?10200?21100?21400?02201322201122300?32200?22300?220000001000
+	Drymobius_margaritiferus      1001001121011011110?10?01001001?001??00100101200011000101110100001010010004010400?400?010400?01300?10200?21200?22300?32201322200?22300?32201322000?220000001000
+	Masticophis_lateralis         1001001121011011110?10?00001001?001??00100101200010000101110100001000010004410440?400?210440?01300?10200?22200?22400?02200?22200?22300?32200?22300?220000001000
+	Xenochrophis_vittatus         1000001121001?01110?10000001001?001??00100101200011000101110100001000010024010400?400?210400?01110?10001322200?02400?01241322241322300?32201322300?320000001100
+	Tropidodipsas_sartorii        1001001121001001110?10?00001001?001??00101100200010000101110100001000010002410340?440?010440?01110?10200?22200?22330?32240?22240?22330?32240?22300?220000001000
+	Sibynomorphus_turgidus        1001001121001001110?10?00001001?001??00000100200020000101110100001000010002010300?400?010400?02400?20100?22100?22300?22200?22100?22300?32200?22000?220000001000
+	Borikenophis_portoricensis    1001001121001?01110?10000001001?001??00100101200010000101110100001000010004010400?400?210400?01300?10200?22200?22400?01230?21200?21330?32230?21330?220000001000
+
+;
+
+END;
+BEGIN CHARACTERS;
+	TITLE  Minimalist_Matrix;
+	DIMENSIONS  NCHAR=147;
+	FORMAT DATATYPE = STANDARD RESPECTCASE GAP = - MISSING = ? SYMBOLS = "  0 1 2 3 4 5";
+	CHARSTATELABELS 
+		1 '(611). Enlarged rostral scale: (0) absent or undifferentiated; (1) present',
+		2 '(612). Rostral scale: (0) not greatly expanded and dominating anterior portion of head; (1) expanded dorsally (onto top of skull) posteriorly and laterally or dominating anterior portion of head',
+		3 '(613). Posterior split in rostral scale: (0) absent; (1) present (division along posterior margin of scale near midline)',
+		4 '(614). External narial opening: (0) enclosed entirely within nasal scale; (1) at edge of nasal scale',
+		5 '(615). External narial opening: (0) separated from rostral; (1) partially in rostral',
+		6 '(616). External narial opening: (0) separated from supralabial; (1) partially in supralabial',
+		7 '(617). Nasal-rostral contact: (0) absent or separated by scales; (1) present - When the narial opening is between scales rather than entirely within a scale state 1 is used when one of these scales bordering the nasal contacts the rostral',
+		8 '(618). Contact between nasal and supralabial scales: (0) absent (separated by other scales); (1) present - When the narial opening is between scales rather than entirely within a scale state 1 is used when one of these scales bordering the nasal contacts the supralabial',
+		9 '(619). Minimum number of scales separating the nasal scales medially: (0) none (nasal scales contact medially); (1) one scale; (2) two; (3) three; (4) four or more scale rows - Previously used phylogenetically (in modified form) by Wiens ([48] his char. 22).  Ordered',
+		10 '(620).  Dorsal cephalic scales: (0) relatively small; (1) enlarged (larger than adjacent neck scales)',
+		11 '(621).  Dorsal cephalic scales: (0) smooth; (1) some or all keeled',
+		12 '(622).  Head scales vertically elongate: (0) no; (1) yes, including scales associated with eye and nostril (extending almost from mouth to top of skull)',
+		13 '(623).  Enlarged frontal scale between orbits: (0) absent; (1) present.  Previously used phylogenetically by Wiens ([48]; his char. 18)',
+		14 '(624).  Median contact of frontoparietals: (0) present; (1) absent, frontoparietals reduced and separated by contact of frontal and interparietal.  Scored as unknown in taxa lacking frontals, frontoparietals, and an interparietal',
+		15 '(625).  Circumorbital scales (distinct semicircular row of scales bordering orbital region): (0) absent; (1) present',
+		16 '(626).  Enlarged supraoculars: (0) absent; (1) present (scales over eye larger than surrounding scales)',
+		17 '(627).  Supraoculars: (0) two or more rows of scales; (1) single row of enlarged scales between superciliary and frontal.  Taxa with multiple rows of scales in this region were given state 0, regardless of whether or not they had well-differentiated supraoculars.  Previously used phylogenetically by Wiens ([48] his char. 25)',
+		18 '(628).  Single enlarged supraocular scale row between orbit laterally and frontal medially: (0) no; (1) yes, supraciliary scales absent',
+		19 '(629).  Median contact of enlarged supraoculars: (0) absent; (1) present',
+		20 '(630).  Supercilary scales: (0) non-overlapping; (1) overlapping.  Used previously in modified form by Etheridge and de Queiroz ([49] their char. 46) and subsequent authors',
+		21 '(631).  Supralabial scales: (0) not entering orbit; (1) entering orbit.  In most squamates examined, one or more enlarged scales (suboculars) separate the supralabials from the rim of the orbital opening.  In others, supralabials extend to the orbital opening',
+		22 '(632).  Enlarged subocular scale (elongate scale ventral to orbit): (0) absent (or series of smaller scales); (1) present (single scale larger than surrounding scales).  In many taxa, there is a single scale below the orbit that is also part of the labial series bordering the upper jaw (see character 21).  In these cases, it is possible that the subocular has entered the labial series or that the labial has shifed into the subocular position, and these taxa were coded as unknown for the presence or absence of a subocular. Used previously phylogenetically in modified form by Etheridge and de Queiroz ([49] their char. 47) and subsequent authors',
+		23 '(633).  Subocular-supralabial contact: (0) absent, row of one or more scales between scales above lip (supralabials) and below the orbit (suborbitals); (1) present. Taxa lacking any subocular scales below the eye (e.g., many snakes) were coded as inapplicable',
+		24 '(634).  Enlarged interparietal scale: (0) absent; (1) present (scale distinctly larger than surrounding head scales present over parietal region of skull).  Used in modified form by Etheridge and de Queiroz ([49] their char. 45) and subsequent authors',
+		25 '(635).  Temporal region covered almost exclusively by pair of enlarged temporal scales: (0) no; (1) yes. Derived state is mostly in advanced snakes',
+		26 '(636).  Heat-sensing pit in loreal region: (0) absent; (1) present',
+		27 '(637).  Mouth: (0) large, extending posterior to eye; (1) greatly reduced, posterior terminus at or anterior to level of eye.',
+		28 '(638).  Groove allowing tongue to be extruded when mouth is closed: (0) absent; (1) groove present in rostral (sometimes in mental also, but too difficult to score consistently as a separate state). The derived state is found in snakes.',
+		29 '(639).  Eye: (0) visible externally; (1) not visible externally; Previously used phylogenetically (in modified form) by Kearney ([50] her char. 10).  Derived state is found only in Rhineura.',
+		30 '(640).  Eye surrounded by single scale: (0) no, multiple scales; (1) single scale. Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 253).',
+		31 '(641).  Fleshy eyelids:  (0) present; (1) absent.  Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 253).',
+		32 '(642).  Lower eyelid scales: (0) homogeneous; (1) some enlarged scales.',
+		33 '(643).  Transparent spectacle in lower eyelid scales: (0) absent; (1) present.',
+		34 '(644).  Thick granular eyelid covering eye except for small opening for pupil (chamaeleon condition):  (0) absent; (1) present;  Used previously phylogenetically by Estes et al. ([52] p. 199).',
+		35 '(645).  External ear opening: (0) present; (1) absent;  Previously used phylogenetically by Estes et al - 48.',
+		36 '(646).  Tympanum: (0) large and superficial; (1) small and inset;  Used previously phylogenetically by Estes et al. ([51] and noted by McDowell and Bogert [36]).',
+		37 '(647).  External ear opening: (0) entirely or mostly uncovered; (1) partially covered by fleshy lobule; (2) partially covered by scales only, no fleshy lobule. Unordered.',
+		38 '(648).  Complex dewlap apparatus (gular fan), in males: (0) absent; (1) present, extensive flap of skin on throat, usually with modified scales.',
+		39 '(649).  Mental scale: (0) entire; (1) with a partial split at the posterior end. Previously noted by Frost and Etheridge ([53] from E. Williams, pers. comm.).',
+		40 '(650).  Elongate postmentals: (0) absent; (1) present.',
+		41 '(651).  Postmentals (scales immediately posterior to mental): (0) two (enlarged scales sometimes separated by additional scales) or more scales immediately posterior to mental; (1) one, single unpaired scale immediately posterior to mental.',
+		42 '(652).  Enlarged scales medial to infralabials: (0) present; (1) absent, scales in chin more-or-less homogeneous.',
+		43 '(653).  Infralabials, anteriormost pair(s): (0) separate medially; (1) one row contacting medially posterior to mental; (2) two rows contacting medially. It is possible that the medially contacting infralabials actually represent postmentals that have shifted their position. Ordered.',
+		44 '(654).  Infralabial and supralabial scales: (0) not greatly expanded; (1) greatly expanded, with single pair of sublabials covering most of chin region (i.e., dibamids).',
+		45 '(655).  Mental groove: (0) absent; (1) present, a distinct infolding of skin and scales along the anterior midline of the chin region.',
+		46 '(656).  Gular fold: (0) present or complete; (1) incomplete; (2) absent. Ordered. Previously used phylogenetically by Etheridge and de Queiroz ([49] their char. 43) and subsequent authors.',
+		47 '(657).  Body scales: (0) not arranged in non-overlapping rings; (1) annulated, arranged in non-overlapping rows.  Previously used phylogenetically by Kearney ([50] her char. 3).',
+		48 '(658).  Varanus-type scale on dorsum, with small scale surrounded by tiny granular scales: (0) absent; (1) present.',
+		49 '(659).  Dorsal scales: (0) homogeneous, lacking enlarged scales; (1) heterogeneous, with enlarged scales separated by smaller scales, either in rows or scattered.',
+		50 '(660).  Dorsal body scales: (0) small, granular, non-overlapping; (1) mucronate (pointed, overlapping); (2) cycloid (rounded, overlapping); (3) rectangular.  Unordered.  Expanded from char. 148 of Estes et al. [52].',
+		51 '(661).  Dorsal body scales: (0) all smooth; (1) some or all keeled.',
+		52 '(662).  Dorsals, with longitudinal ridges in addition to mid-dorsal keels: (0) absent (including species lacking keels); (1) present',
+		53 '(663).  Enlarged middorsal scale row: (0) middorsal scales same size as surrounding scales; (1) middorsal scales enlarged relative to surrounding scales in both sexes; (2) sexually dimorphic, mid-dorsals enlarged in males. Unordered. Expanded and modified from char. 146 of Estes et al. [52].',
+		54 '(664).  Nuchal crest of enlarged scales: (0) absent; (1) present in both sexes; (2) sexually dimorphic, mid-dorsals enlarged in males. Unordered. Has similar distribution to that of mid-dorsal scale row, but clearly not identical.',
+		55 '(665).  Lateral body scales: (0) granular, non-overlapping; (1) imbricate overlapping. Although this may seem redundant with the condition of the dorsal scales, several taxa have enlarged and imbricate dorsal scales but granular lateral scales.',
+		56 '(666).  Lateral fold along side of body: (0) absent; (1) present (often associated with row of granular scales in species with larger scales). Previously used phylogenetically in squamates by Estes et al. [52].',
+		57 '(667).  Gastrosteges (enlarged mid-ventral scale row in snakes): (0) absent, multiple scale rows; (1) present, single mid-ventral scale row distinctly larger than surrounding scale rows.  Previously used phylogenetically (in modified form) by Lee and Scanlon ([51]; their char. 255).',
+		58 '(668).  Ventrals: (0) same size as adjacent laterals; (1) at least some distinctly larger than adjacent laterals.',
+		59 '(669).  Ventral body scales: (0) mostly small and granular; (1) large and flat.  Note that this character is independent of the preceding character, because scales can be large and flat and still be the same size as the adjacent laterals.',
+		60 '(670).  Ventral scales: (0) all smooth; (1) some or all keeled.',
+		61 '(671).  Ventrals, posterior edge: (0) cycloid, mucronate, or otherwise rounded; (1) square (posterior margin more-or-less straight). Some snakes with gastrosteges have variation that approaches the condition in state 1, but were coded as 0.',
+		62 '(672).  Femoral pores: (0) absent; (1) present in both sexes; (2) sexually dimorphic. Unordered. In some cases, femoral and preanal pores may be difficult to distinguish (e.g. Gekko gecko, Takydromus ocellatus). In general, pores on the legs were considered femoral pores, and pores between the legs were considered preanals, but pores that extended from the legs onto the preanal region were considered femorals. Taxa lacking hindlimbs were coded as unknown. Previously used phylogenetically by Estes et al. ([52] but noted by Camp [54]), their character 144.',
+		63 '(673).  Preanal pores: (0) absent; (1) present. Previously used phylogenetically by Estes et al. [52], their character 144.',
+		64 '(674).  Tail tip: (0) pointed, tapered; (1) blunt and rounded',
+		65 '(675).  Small sharply pointed spike at posterior tail tip: (0) absent; (1) present.',
+		66 '(676).  Tail shape (cross-section): (0) dorsoventrally flattened (depressed); (1) rounded; (2) laterally compressed. Ordered.',
+		67 '(677).  Caudal scales: (0) approximately same size as dorsal body scales; (1) distinctly larger than dorsal body scales',
+		68 '(678).  Caudals (dorsal): (0) smooth; (1) mostly keeled.',
+		69 '(679).  Caudal scales: (0) not arranged in non-overlapping vertical rows; (1) annulated, arranged in non-overlapping vertical rows.',
+		70 '(680).  Enlarged preanal scales: (0) absent; (1) present (preanals enlarged relative to adjacent ventrals).',
+		71 '(681).  Anal plate: (0) two or more scales; (1) single plate. Species without a distinct anal plate but with multiple scales in the pre-anal region were coded as having state 0. Previously used phylogenetically by Lee and Scanlon ([51] their char. 257).',
+		72 '(682).  Enlarged postanal scales (males): (0) absent; (1) present (some scales posterior to vent greatly enlarged relative to adjacent scales).',
+		73 '(683).  Lateral postanal tubercles: (0) absent; (1) present (enlarged scale or scales on medial surface of anterior end of tail).',
+		74 '(684).  Subcaudals (scales on ventral mid-line of tail): (0) divided, two or more scale rows; (1) some single, some divided; (2) all single. Ordered. Previously used phylogenetically (in modified form) by Lee and Scanlon ([51] their char. 256).',
+		75 'Frontal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		76 'Frontal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		77 'Frontal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		78 'Chalcidine frontal scale pattern: (0) Absent; (1) Present.',
+		79 'Internasal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		80 'Internasal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		81 'Internasal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		82 'Loreal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		83 'Loreal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		84 'Loreal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		85 'Loreal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		86 'Loreal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		87 'Loreal scale enlargement: (0) Absent; (1) Present.',
+		88 'Supraocular scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		89 'Supraocular scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		90 'Supraocular scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		91 'Supraocular scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		92 'Supraocular scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		93 'Postmental scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		94 'Postmental scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		95 'Postmental scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		96 'Postmental scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		97 'Dorsal neck scale homogeneity: (0) Scales more or less homogenous; (1) Some or all scales vary in morphological traits.',
+		98 'Dorsal neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		99 'Dorsal neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		100 'Dorsal neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		101 'Dorsal neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		102 'Dorsal neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		103 'Lateral neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		104 'Lateral neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		105 'Lateral neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		106 'Lateral neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		107 'Lateral neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		108 'Ventral neck scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		109 'Ventral neck scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		110 'Ventral neck scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		111 'Ventral neck scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		112 'Ventral neck scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		113 'Dorsal body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		114 'Dorsal body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		115 'Dorsal body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		116 'Dorsal body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		117 'Dorsal body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		118 'Lateral body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		119 'Lateral body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		120 'Lateral body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		121 'Lateral body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		122 'Lateral body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		123 'Ventral body scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		124 'Ventral body scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		125 'Ventral body scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		126 'Ventral body scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		127 'Ventral body scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		128 'Dorsal caudal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		129 'Dorsal caudal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		130 'Dorsal caudal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		131 'Dorsal caudal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		132 'Dorsal caudal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		133 'Ventral caudal scale shape: (0) Circular; (1) Elliptical; (2) Diamond; (3) Rectangular; (4) Fit.',
+		134 'Ventral caudal scale texture: (0) Flat; (1) Granular; (2) Globular; (3) Streaked; (4) Rough; (5) Pointed.',
+		135 'Ventral caudal scale keel: (0) Absent; (1) Keel; (2) Double or multiple keel.',
+		136 'Ventral caudal scale justification: (0) Absent or questionable; (1) Lateral/medial justification; (2) Proximal/distal justification; (3) Fully justified.',
+		137 'Ventral caudal scale overlap: (0) Absent; (1) Present; (2) Free Margin.',
+		138 'Apical pits: (0) Absent; (1) Present.',
+		139 'Osteoderms: (0) Absent; (1) Present.',
+		140 'Spines: (0) Absent; (1) Present, distinct appendages when compared to surrounding scales',
+		141 'Horns: (0) Absent; (1) Present, distinct appendages when compared to surrounding scales',
+		142 'Subtympanic Shield: (0) Absent; (1) Present.',
+		143 'Supraocular Disk: (0) Absent; (1) Present',
+		144 'Sensory structures on head: (0) Absent; (1) Present.',
+		145 'Sensory structures on body: (0) Absent; (1) Present.',
+		146 'Body scale formation: (0) Overlap or scale end directed towards posterior; (1) Overlap directed 45 degrees toward midline; (2) Overlap directed completely toward midline (Acanthosaur condition); (3) Overlap directed towards varanus-like enlarged scales..',
+		147 'Mid-ventral Crest: (0) Absent; (1) Present.' ; 
+	MATRIX
+	Sphenodon_punctatus           1001000040000?000000000000000000001??00011100000000001010110101102000000001000000100000400000000002000020000000002000020003001002000300100010000000
+	Dibamus_floweri               1100101101001?001100?0?11000111?001??00111010200020000100010000101000000001020???410021100223102010022100221002210021100211002110021100210000001000
+	Phyllurus_ossa                1001000140000?00000000000000001?001??00001000200100010000010100000000000000200020050000020000200102000050000000002000050000000002000000000010000000
+	Lialis_burtonis               0001000121010?11100100000000001???0110000000020002000010011010100100100002????400110210200012001020022100222002220022100223002220022300220000000000
+	Rhacodactylus_ciliatus        1001001140000?0000000000000000111?0100001100010000000000001000000100100010????000100000020000000002000020000200002000020000002130010300100010000000
+	Oedura_marmorata              1012101020000?100000000000000000000100001110011000000000000000000100100001????020020000020002000002010020100001000010000100002030010300100000000000
+	Coleonyx_mitratus             1000001130000?100000000000000000000100000100010110000000011000000100100001????400010000000000000102000020000200002000020000002130010000110100000000
+	Eublepharis_macularius        1012001140000?000010000000000000000100000100020010100000011000000100100001????000000000000001000104000040001200044000440000002104010300110100000000
+	Teratoscincus_sp              1011101120000?00000100000010001??00110000100010002000010001000000100000001????400000110000114101000021020002002120021200212002100021200210000000000
+	Sphaerodactylus_roosevelti    1001101140100?10000000100010001??00110000100020001100010001000000101000002????100000110121314101024121151010412124121241212402124121100210000000000
+	Sphaerodactylus_klauberi      1011111140110?100000001000100010000100000100020001100010001000000101000002????401440100121314400024121240212012124121241210402124121000210000000000
+	Sphaerodactylus_gaigeae       1011101130110?100000001000100010000100010100020001100010001000000101000002????410411010111011111002100021000212124121241212402124121100210000000000
+	Thecadactylus_rapicauda       ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Phyllodactylus_wirshingi      1001111120000?10000010?00010001??00100000100021000100000001000000101100002????110110000110004001001110050100002001110011100001001110100100000000000
+	Phyllodactylus_galapagoensis  ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Gekko_gecko                   1001001140000?100000000000100000000110010110010110000000001000100100100001????020020000020001000100000000100001000000000100001000010100100100000000
+	Gekko_horsfieldii             ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Hemidactylus_turcicus         1001101140000?10000000000010001??00100000100020110100000001000000100110002????000020000020004000102000020002002100100000002402102110200110000000000
+	Paroedura_androyensis         ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Uroplatus_sikorae             1001000040000?10000000000000000000011000?110020010000001000001010000000010????020000000020000200102000020000000000000100000001002000000000000000000
+	Homopholis_wahlbergii         ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Phelsuma_guentheri            ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Xantusia_vigilis              1001011121001111110010010000011000000000000001000000000001101100011011?0002100400440201300214001002000020000200002010020103403030011300110000011000
+	Lepidophyma_pajapanensis      1001001101001001111?01111000001??001100011110100111000000110110001011101002400???440201440300000105000050002200022101220003003030111300310010111000
+	Lepidophyma_occulor           ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Gerrhosaurus_sp               100101110100101110010111010000000001000000000210031000100010100001011100004400???440211440204001034130341303403134130341303403134131340310100011000
+	Gerrhosaurus_flavigularis     100200110100101100010110000000000001200001000210011000110010110001011100004000???400211400211001033132300321302123132300323403123132201310100000000
+	Platysaurus_intermedius       100000111100100100000111000000010000000100000110000000010110110000111100004010200400210300213001002010050104000002010020003003030130301300000011000
+	Smaug_warreni                 101000111100100110011000000000010000000100000110031000010010100001011100023400440440000340201000021121350100401031130350103003034130341300010000000
+	Plestiodon_obsoletus          100000112100111110011001000000110001200010000200020000100010100001000110023010400400211400213001010022100221002110022100221002210022100220000011100
+	Plestiodon_fasciatus          100000112100111110011001000000010001000010000200020000100010000001000100024011400400211400213001013022130221302213022130221302210022100220000011100
+	Chalcides_ocellatus           ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Scincella_lateralis           1000001111001101100010?10000001000010000100002000200001000100000010000?0004011400400211400213001010022100221002210022240222402210022100220000001100
+	Tribolonotus_novaeguineae     1100001111100?11110?1000000000110000000100000200100000000111000001011100003410342440011442211001144000440000012244000440001012235130301300110000000
+	Tiliqua_sp                    100000110100111110011001000000000001200010000200011000100010000001010000024411???340211440213001020222202221302220122201221302225121130220000010000
+	Tiliqua_scincoides            100000110100111110010111010000100001201000000200020100100010000001000100024311???340211430214401013022130221302213022130221302213022130220000011000
+	Tiliqua_gigas                 100000110100111110010011000000000001000010001200020000100010000001000000024011???400211400214001110022100221002210022100221002200022100220000010000
+	Trachylepis_sp                1000001121001101100110?10000000010012000100002000211001000100000010100?0004011400300211400213001013222130221302213222130221302213222130220000000000
+	Dracaena_sp                   10000011010010011000000100000000001??00010000100111010000111100002011100001410???440010400003001110000000004000010100100003011134111301310010000000
+	Ameiva_ameiva                 100100110101101110010110000000010001100010000110000000010110110101111100004110???310211410214101002010020104001002010020103003130131300310000000000
+	Aspidoscelis_sexlineata       100100110100101110010111000000011000000010000110000000000110110002111100004410???400211400214001002010020104000122010220103003234131301320000001000
+	Aspidoscelis_gularis          100100110100101110010111000000000000001010000110000000000110110001111100004010???400211400214001002010020102002222010220103003230131300320000001000
+	Anadia_steyeri                100000111100101110010011000000011001000100000210030000000010110001001100004011400400010400203001030010000103001030010000103001030030300300000001000
+	Arthrosaura_reticulata        100000111100100110000111000000011001200010000210011000100110010001011100004010300300000400201000030111020000000230111201311003230111100320000001100
+	Neusticurus_rudis             ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Cercosaura_ocellata           ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Rhineura_floridana            1001001131000?001???00000000111???1??0010100021003000000001010010100100100????340140001?????3300030010440104401030010300103001002000300100000001000
+	Bipes_canaliculatus           1000001111001000010?01100000101???1??00111000210030000010010101101001000001000???400000400003000030030300303003030030300303003030030300300000000000
+	Blanus_alexandri              1000011111001?00110?00?00000111?001??00011010210030000000010100111001000004000???300301400003000130010300103001030030300303003030030300300?00000000
+	Cadea_blanoides               1000001111011?00110?00?00000111?001??00011010210000000000010000101001000004300???400301400303000130030300303003010010100101001010010100100?00000000
+	Trogonophis_wiegmanni         1000001101000?001???00100000111???1??0010100021003000001001010000100110000????300400010?????2401034010340103401030010300103001030010300100000001000
+	Amphisbaena_mertensii         1000001101000?001???00000000111???1??0011100021003000001001010110100100000????400400010?????3001030030300300003030030300303003030030300300000001000
+	Amphisbaena_camura            1000001101000?001???00000000111???1??0011100021003000001001010110100100000????400400010?????3001034030340300003034030340303003034030300300000001000
+	Leposternon_microcephalum     10001011010010001???00000000111???1??01111010210030000010010100101001000004010???400010?????1301044001440014000030030300303003030030300300000001000
+	Acanthodactylus_cantoris      100000110101101100010110000000000001000010001100011000110110100001010100004010???300210400210001022020050002002120121201213003120131201310000010000
+	Takydromus_sexlineatus        100100110101100110010010000000000000001100000200011000000111000001010100004410???400211400213001021122020002112131131020002113231131211320000011000
+	Lacerta_viridis               100100110100101110010110000000000001000010001110000000100110110001111110004000???400210040200001002010020002002102010220013003230131301320000010000
+	Podarcis_muralis              100100110100101110010110000000000000000000000110001000000110110001111100004010200400210400213001002110021102002102110021103003130130301300000010000
+	Xenosaurus_grandis            1000000041000?100001001000000000001??0000000000110100000011010000100100000????4{2 4}0440200020002001102000020000001014100141003001014010340300000101000
+	Heloderma_suspectum           0001000140000?100001000000000000001??0000100011000000000011010010100110000????440440100040003000002010020100201002010120103001002010300110000000000
+	Anniella_geronimensis         1000011121001100000110010000001???1??00001000200020000100010000101000000004020400300010400012001010022100221002220022100222002220022200220000000000
+	Anniella_pulchra              1000011121001100000110010000001???1??00001000200020000100010000101000000004020100200020200220001010022100221002200022000220002200022200220000000000
+	Wetmorena_haetiana            ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Ophiodes_luciae               1000001131000?100001101000000000001??00001000200020100100010000001000000002010200400210200212001013021130211302113021130211302113021130210?00000000
+	Ophisaurus_attenuatus         10010101110011101001011100000000001??00010100210030000110010000001001000001010200200220400221002010022200221000234031340311402104031040300000001010
+	Gerrhonotus_ophiurus          ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Mesaspis_monticola            100100012100110000010111000000000001000010000210031000000010100001011000004010300400010300221002030032020003003230132020003003220131200320000010000
+	Abronia_ornelasi              100100012100110000010010000000000001200001000210030010110010100001001100024110010310210410212002031031020001002234031240313003234031300310000010010
+	Shinisaurus_crocodilurus      10000000410010110001000100000001101??000000012011{0 1}1000000110100002111000002410440400210440003001114100141000201014100141000001114110300110000111000
+	Lanthanotus_borneensis        0001000040110?100000000000000100001??0000120120112101010001010000100100000????141041000040000200144100341200011014100141003001014010300100100000000
+	Varanus_niloticus             ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Varanus_prasinus              ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Varanus_sp                    0001000040000?100001000000000000000000000010020010100000001110000200000002????410410000410004000010101120001011010101121003011012000121300000011000
+	Chamaeleo_calyptratus         0001000041000?100000011?00000000011??000001002001000110000000001010010?000????420420100420000200140000120100502010010450201201032010320300010000021
+	Trioceros_jacksonii           0000000041000?100000011?00000000011??000011002001000110000000001010010?000????420420000420000000142000020100200002000020000200032010320300011000000
+	Uromastyx_aegyptia            100000004000101000000100001000000000001010100100010000110010111000111000001400020020000020000001002000020000200020001200013001135130300100000000000
+	Uromastyx_ocellata            1000000021001010000001000010000000000000100000000000000101101100001110?0004000400020000400004000002000020000200000000000003001035130300100000000000
+	Moloch_horridus               0001000040100?100001000100100000000020000110010110100000000100010100000000????010010000011010100101101011010100001100011000100001000030000011000030
+	Pogona_vitticeps              1000000041100?000000000?0000000000000{0 1}00000000001110001001110100011100?000????400400000?????4000005101051010010105101050000012120121201210010110000
+	Acanthosaura_capra            1000000041100?110001010?00000000000000000100010011101110011110000111100000????441441310441004401124121250212410124121241112411124111301310010011020
+	Uranoscodon_superciliosus     1000000041100?110001010?0000000000000000000001100110111000111000010110?000????401400010441004000025121251012512124111241112411134131141310010011000
+	Plica_plica                   1000000040100?110001010100000000000100100100001001101110001110000101100000????400001000400212001125001050000500025111201112011220111201120010000010
+	Iguana_iguana                 1000000041000?110001010?0000000000000100000001100110111100111100010110?000????400400011000210001102000020100201030111201112011130111201210010111000
+	Sauromalus_obesus             0000000040000?100000010000000000000110000000011001000001000001010100100000????020400011000000001025021250002002120010020102001135011340110000010000
+	Cyclura_ricordii              ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Ctenosaura_similis            1000000041000?100001010100000000000001010000101001101101001010000111100000????40040001040021400103501022000200112011120011200113513120132??????????
+	Leiocephalus_carinatus        1000001141000?111001011000000000000110000100020001100010001110000101000000????120410010300214001020121201211302120122201222302120121230210000011100
+	Crotaphytus_bicinctores       1000000041001010000001000010000000000000000000000000000101100100010010?1004000400400000400003000002000020000000100000020002002100010200110000010000
+	Crotaphytus_collaris          1000000041001010000001000000000000000000000001000000000001100100010010?1004000400400001400004000002000020000200002000020002001102000200110000010000
+	Holbrookia_maculata           10000000210010010000011000100000001??00011000100000000000110110101001000004000400200010400014000020000000000000000000000003001140101200020000010000
+	Phrynosoma_cornutum           1000000011100?000001000?0110000000000000100001011110100001110111010100?000????440440010241013400102000020000500004101020000412124101201210011011000
+	Sceloporus_sp                 1000000021001101000100010000000000000000000002000110001000100100010100?1004010400400300400214000020121201212002220121201212000220121201210000010000
+	Hoplocercus_spinosus          1000000040000?1000010001000000000000000001000000110000000110110000110000001200400100000400014000145000020000001044000000103001145101300110010011000
+	Enyalioides_laticeps          0000000040100?100001000000000000000000000100011013101101011101000201100000????020151000021001001135110350102012130110301103011030110301100010000000
+	Enyalioides_palpebralis       0000000040100?100001000000000000000000000100010011101111011110000201100000????151151000151011001105100051001010020100101003011030110301100010000000
+	Oplurus_cuvieri               0000000041000?1000010101000000011001200001000000010000100010000001111000004200420420000400214200022021200212002120001200112001135131351310010011000
+	Anisolepis_grilli             1000000041000?1000010101000000000001000000000100001000000111000001111000004010440400010400214000002000020000210002100001002013124111201310000011000
+	Liolaemus_rothi               1000000040000?110001010?00000000000100000100010001100010001010000101100000????400400000400213001020121200012002220121200112002220111200120000010000
+	Basiliscus_basiliscus         1000000041100?100001011100000000000000001000001001101101001010000201100000????441440110401201201022000020002001120111220112001230111300110000111000
+	Basiliscus_plumifrons         1001000141110?110001010?0010001???0000110000001000001101001010000201100000???????411310411004101001010010100101201010010103101231110211120000001000
+	Anolis_carolinensis           1000000041110?100000111?0000000000010111000012000110000001110000011100?100????401301300430001200002100021002010100121021102010120121201310000011000
+	Anolis_evermanni              1000001141100?110001011?0000000000010110000002000010000001110000020110?000????441141200440000200005000050002500002100020000000120111000110000010000
+	Anolis_stratulus              1000001141100?110000011?0000000000010111000002000000000001101001011100?000????401401300440001200002000020002002102000020000001020101201210000011000
+	Anolis_pulchellus             1000001121000?100000011?0000000000010111000002000110000001110010021100?000????400300200401204000002101020012012120121120002012124121201210000011000
+	Anolis_gundlachi              1000001141100?110000010?0000000000010111000002000010100001110000010110?100????440301200401001200002000020002200102101021012211220121201310000010000
+	Anolis_cristatellus           1000001141100?110001010?0000000000010111000002000010100001110000010110?000????441100200441001200002000020002200102001020000012120101201210000011000
+	Anolis_sagrei                 1000001141100?110001011?0000000000010111010002000010000001110000020100?100????401441200401001210002100021001012102100020001012220121201220000010000
+	Anolis_sp                     1000000041100?110000011?0000000100010110000002000000100001110000020100?100????441101200441000200002000020002000102000020000012102101201210000011000
+	Helminthophis_frontalis       1101001120000?000???00000010111???1??0000100020002000010001000010100001000????100100221?????1002010021100211002100021000210002100021000210000001000
+	Trilepida_macrolepis          1101011111001101110?00?00011111?001??00001100200020000100010000111000010022120210410021110021002010022100220002210022100221002210022100220000001000
+	Rena_humilis                  1101011111001101110?00?00011111?001??00001100200020000100010000111000010022120210410021110021002010022100220002210022100221002210022100220000001000
+	Gerrhopilus_persephone        1101011111010?01110?01100011111?001??00011000200020000100010000101000010001020100400021100020002010022100221002210022100221002210022100220000000000
+	Xenotyphlops_grandidieri      1101001111010?01110?01100011111?001??00011000200020000100010000101000010001010100300011400010001010021100211002110021100211002110021100210000000000
+	Typhlops_reticulatus          1100011111010?00110?00?00011111?001??0001100020002000010001000011100000001????110110021110021001010022100221002110022100221002110022100210000001100
+	Typhlops_hectus               1100011111010?00110?00?00011111?001??0001100020002000010001000011100000002????110110021110021002010022100221002210022100221302210022100220000001100
+	Tropidophis_spiritus          1001011121001101110?10?00001001?001??00001000200010000101110100001000010024410340400311140312001020021200212002120021200213002120021300210000000000
+	Xenophidion_acanthognathus    0000011100000000110?10?00001001?001??00101001200020000101110100001000010021020???300321100221001010022100221002210022100223002210022300220000000000
+	Casarea_dussumieri            1000001121010?01110?10?00001001?001??0010100120002100010111010000101001002????040440010310011001010121101211002110121101213003220122300320000001100
+	Exiliboa_placata              1000001121001011110?00100001001?001??00000100200010010101110100001000010024010300400010300014001240002100024000220022200223003220022300320000001100
+	Boa_constrictor               ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Corallus_caninus              1001001100000000000100100001001?001??0010110120001000010111010000100001002????440440211100211001000001100011000120021100213003220021300220000000000
+	Anomochilus_monticola         1000001111000?00110?10?10001001?001??00101100200020000100010000101000010002020000300021300022002020022200222002210022100221002210022100220000000000
+	Cylindrophis_ruffus           1000001101001001110?10?01000001?001??00001101200020000100010000001000000022410???340111240010002000022000222002204022100220002224021200210000001000
+	Uropeltis_melanogaster        1100001111001000110?10?01001011?001??00011000200020000100010000100000000002020???400021200022002000022000220002200022000220002200022000220000000000
+	Anilius_scytale               1001001101011000110?00?10001011?001??00110010200010000100010000101000010002020200200221200222002020022200222002220022200221002220022100220000001000
+	Xenopeltis_unicolor           1001001121011101110?10?11001001?001??00100101200020000101110100001000010002010200400011200012001020022200222002203022000223003203022300210000000000
+	Loxocemus_bicolor             1000001121001100110?10?10001001?001??01101101200010000101110100001000000002010300300010200013001020022000222002220022200223002220021100220000001000
+	Python_brongersmai            1001001121000001110?10000001001?001??00101100200020000101110100001000010004010300400000400211001000022200212000100021000213003200022100220000001000
+	Python_sebae                  1001001121000011110?00100001001?001??00101100200020000101110100001000010002000300400010300211001020021000210002110021200213003220021000220000001000
+	Acrochordus_javanicus         0000000010100?00000?00000001001?001??0?00100020000100000000100000101000000????22122100022100001002410024100241002410024100241002410024100000000?000
+	Achalinus_juliani             1000001121010?00110?10?00001001?001??01100001200020000101110100002000010002410340340010240013001114000140203002210020100203002210020300220000000000
+	Laticauda_colubrina           1000001111001001110?10000001001?001??00011100200010000101110100102000010004010200300000400012001020022200224002220022200223003210022300220000001100
+	Aplopeltura_boa               1000001111001101110?00?00001001?001??00001101200010000101110100001000010024110010300210310012001020022200222002120022200223003220022300320000001100
+	Bitis_caudalis                1001000040100?10000100000001001?001??0010110020002100010111010000101001002????011011110111211001011121111013003211121111213003221121201210000000000
+	Trimeresurus_venustus         1010011130000?01110?01000101001?001??0010110120001100010111010000100001000????040400011400013001020121200214000120121200213003220021300220000001000
+	Crotalus_stephensi            1000001130010?01110?00000101001?001??0010110020001100010111010010001001001????140400011130004001013121101211001123121101213003203121300120000001000
+	Crotalus_cerastes             1001000040000?01110?00000101001?001??0010100020001100010111010010201001002????010010110130002001023001200012000123122131223003221122300320000001000
+	Crotalus_molossus             1001000041000?01110?00000101001?001??0010100120002100010111010010001001002????430400011130003001013121101213003213121101213003200121300320000001000
+	Crotalus_tigris               1001001120000?01110?00000101001?001??0000110020002100010111010010101001002????040440010440014001011121100211000101121100313003200121300320000001000
+	Enhydris_enhydris             1000001101011001110?10?01001001?001??00100100200010000101110100001000000004110???310210310012001024021110112102123022230223003223022300220000000000
+	Atractaspis_irregularis       1001001121001000110?10?01001001?001??00101110200010000101110100011000000002010200400021300022002000022000222002220022200223003220022300220000001000
+	Micrurus_tener                1001001121001001110?10001001001?001??00100100200010000101110100001000000004010400400010400011001020022000224000220022000223003200022300220000001100
+	Ophiophagus_hannah            1001001121011001110?10001001001?001??00100100200010000101110100001000010014010300300000400013001100001200214000220021200213003220021300220000001000
+	Naja_kaouthia                 ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+	Hapsidophrys_smaragdina       1001001121011011110?10?00001001?001??00100101200011000101110100001010010004010400400010400013001020121101214000220122201223003220122000220000001000
+	Tantilla_cucullata            1001011121011011110?10?00001001?001??00100100200010000101110100001000010002010400000010400013002020022200224000220022200223003220022300220000001000
+	Leptophis_ahaetulla           1001001121011011110?10?00001001?001??00100101200011000101110100001000010004010400400010400013001020021100214000220122201223003220022300220000001000
+	Drymobius_margaritiferus      1001001121011011110?10?01001001?001??00100101200011000101110100001010010004010400400010400013001020021200223003220122200223003220122000220000001000
+	Masticophis_lateralis         1001001121011011110?10?00001001?001??00100101200010000101110100001000010004410440400210440013001020022200224000220022200223003220022300220000001000
+	Xenochrophis_vittatus         1000001121001?01110?10000001001?001??00100101200011000101110100001000010024010400400210400011101000122200024000124122241223003220122300320000001100
+	Tropidodipsas_sartorii        1001001121001001110?10?00001001?001??00101100200010000101110100001000010002410340440010440011101020022200223303224022240223303224022300220000001000
+	Sibynomorphus_turgidus        1001001121001001110?10?00001001?001??00000100200020000101110100001000010002010300400010400024002010022100223002220022100223003220022000220000001000
+	Borikenophis_portoricensis    1001001121001?01110?10000001001?001??00100101200010000101110100001000010004010400400210400013001020022200224000123021200213303223021330220000001000
+
+;
+
+END;
+BEGIN TREES;
+	Title 'Trees from "Last"';
+	ID 0180e86398e95;
+	LINK Taxa = Taxa;
+	TRANSLATE
+[0] 		1 Sphenodon_punctatus,
+[1] 		2 Dibamus_floweri,
+[2] 		3 Phyllurus_ossa,
+[3] 		4 Lialis_burtonis,
+[4] 		5 Rhacodactylus_ciliatus,
+[5] 		6 Oedura_marmorata,
+[6] 		7 Coleonyx_mitratus,
+[7] 		8 Eublepharis_macularius,
+[8] 		9 Teratoscincus_sp,
+[9] 		10 Sphaerodactylus_roosevelti,
+[10] 		11 Sphaerodactylus_klauberi,
+[11] 		12 Sphaerodactylus_gaigeae,
+[12] 		13 Thecadactylus_rapicauda,
+[13] 		14 Phyllodactylus_wirshingi,
+[14] 		15 Phyllodactylus_galapagoensis,
+[15] 		16 Gekko_gecko,
+[16] 		17 Gekko_horsfieldii,
+[17] 		18 Hemidactylus_turcicus,
+[18] 		19 Paroedura_androyensis,
+[19] 		20 Uroplatus_sikorae,
+[20] 		21 Homopholis_wahlbergii,
+[21] 		22 Phelsuma_guentheri,
+[22] 		23 Xantusia_vigilis,
+[23] 		24 Lepidophyma_pajapanensis,
+[24] 		25 Lepidophyma_occulor,
+[25] 		26 Gerrhosaurus_sp,
+[26] 		27 Gerrhosaurus_flavigularis,
+[27] 		28 Platysaurus_intermedius,
+[28] 		29 Smaug_warreni,
+[29] 		30 Plestiodon_obsoletus,
+[30] 		31 Plestiodon_fasciatus,
+[31] 		32 Chalcides_ocellatus,
+[32] 		33 Scincella_lateralis,
+[33] 		34 Tribolonotus_novaeguineae,
+[34] 		35 Tiliqua_sp,
+[35] 		36 Tiliqua_scincoides,
+[36] 		37 Tiliqua_gigas,
+[37] 		38 Trachylepis_sp,
+[38] 		39 Dracaena_sp,
+[39] 		40 Ameiva_ameiva,
+[40] 		41 Aspidoscelis_sexlineata,
+[41] 		42 Aspidoscelis_gularis,
+[42] 		43 Anadia_steyeri,
+[43] 		44 Arthrosaura_reticulata,
+[44] 		45 Neusticurus_rudis,
+[45] 		46 Cercosaura_ocellata,
+[46] 		47 Rhineura_floridana,
+[47] 		48 Bipes_canaliculatus,
+[48] 		49 Blanus_alexandri,
+[49] 		50 Cadea_blanoides,
+[50] 		51 Trogonophis_wiegmanni,
+[51] 		52 Amphisbaena_mertensii,
+[52] 		53 Amphisbaena_camura,
+[53] 		54 Leposternon_microcephalum,
+[54] 		55 Acanthodactylus_cantoris,
+[55] 		56 Takydromus_sexlineatus,
+[56] 		57 Lacerta_viridis,
+[57] 		58 Podarcis_muralis,
+[58] 		59 Xenosaurus_grandis,
+[59] 		60 Heloderma_suspectum,
+[60] 		61 Anniella_geronimensis,
+[61] 		62 Anniella_pulchra,
+[62] 		63 Wetmorena_haetiana,
+[63] 		64 Ophiodes_luciae,
+[64] 		65 Ophisaurus_attenuatus,
+[65] 		66 Gerrhonotus_ophiurus,
+[66] 		67 Mesaspis_monticola,
+[67] 		68 Abronia_ornelasi,
+[68] 		69 Shinisaurus_crocodilurus,
+[69] 		70 Lanthanotus_borneensis,
+[70] 		71 Varanus_niloticus,
+[71] 		72 Varanus_prasinus,
+[72] 		73 Varanus_sp,
+[73] 		74 Chamaeleo_calyptratus,
+[74] 		75 Trioceros_jacksonii,
+[75] 		76 Uromastyx_aegyptia,
+[76] 		77 Uromastyx_ocellata,
+[77] 		78 Moloch_horridus,
+[78] 		79 Pogona_vitticeps,
+[79] 		80 Acanthosaura_capra,
+[80] 		81 Uranoscodon_superciliosus,
+[81] 		82 Plica_plica,
+[82] 		83 Iguana_iguana,
+[83] 		84 Sauromalus_obesus,
+[84] 		85 Cyclura_ricordii,
+[85] 		86 Ctenosaura_similis,
+[86] 		87 Leiocephalus_carinatus,
+[87] 		88 Crotaphytus_bicinctores,
+[88] 		89 Crotaphytus_collaris,
+[89] 		90 Holbrookia_maculata,
+[90] 		91 Phrynosoma_cornutum,
+[91] 		92 Sceloporus_sp,
+[92] 		93 Hoplocercus_spinosus,
+[93] 		94 Enyalioides_laticeps,
+[94] 		95 Enyalioides_palpebralis,
+[95] 		96 Oplurus_cuvieri,
+[96] 		97 Anisolepis_grilli,
+[97] 		98 Liolaemus_rothi,
+[98] 		99 Basiliscus_basiliscus,
+[99] 		100 Basiliscus_plumifrons,
+[100] 		101 Anolis_carolinensis,
+[101] 		102 Anolis_evermanni,
+[102] 		103 Anolis_stratulus,
+[103] 		104 Anolis_pulchellus,
+[104] 		105 Anolis_gundlachi,
+[105] 		106 Anolis_cristatellus,
+[106] 		107 Anolis_sagrei,
+[107] 		108 Anolis_sp,
+[108] 		109 Helminthophis_frontalis,
+[109] 		110 Trilepida_macrolepis,
+[110] 		111 Rena_humilis,
+[111] 		112 Gerrhopilus_persephone,
+[112] 		113 Xenotyphlops_grandidieri,
+[113] 		114 Typhlops_reticulatus,
+[114] 		115 Typhlops_hectus,
+[115] 		116 Tropidophis_spiritus,
+[116] 		117 Xenophidion_acanthognathus,
+[117] 		118 Casarea_dussumieri,
+[118] 		119 Exiliboa_placata,
+[119] 		120 Boa_constrictor,
+[120] 		121 Corallus_caninus,
+[121] 		122 Anomochilus_monticola,
+[122] 		123 Cylindrophis_ruffus,
+[123] 		124 Uropeltis_melanogaster,
+[124] 		125 Anilius_scytale,
+[125] 		126 Xenopeltis_unicolor,
+[126] 		127 Loxocemus_bicolor,
+[127] 		128 Python_brongersmai,
+[128] 		129 Python_sebae,
+[129] 		130 Acrochordus_javanicus,
+[130] 		131 Achalinus_juliani,
+[131] 		132 Laticauda_colubrina,
+[132] 		133 Aplopeltura_boa,
+[133] 		134 Bitis_caudalis,
+[134] 		135 Trimeresurus_venustus,
+[135] 		136 Crotalus_stephensi,
+[136] 		137 Crotalus_cerastes,
+[137] 		138 Crotalus_molossus,
+[138] 		139 Crotalus_tigris,
+[139] 		140 Enhydris_enhydris,
+[140] 		141 Atractaspis_irregularis,
+[141] 		142 Micrurus_tener,
+[142] 		143 Ophiophagus_hannah,
+[143] 		144 Naja_kaouthia,
+[144] 		145 Hapsidophrys_smaragdina,
+[145] 		146 Tantilla_cucullata,
+[146] 		147 Leptophis_ahaetulla,
+[147] 		148 Drymobius_margaritiferus,
+[148] 		149 Masticophis_lateralis,
+[149] 		150 Xenochrophis_vittatus,
+[150] 		151 Tropidodipsas_sartorii,
+[151] 		152 Sibynomorphus_turgidus,
+[152] 		153 Borikenophis_portoricensis;
+	TREE 'tree 1+' = (1:0.451626,(2:0.5267449999999999,((((3:0.240193,4:0.27609):0.01395,(5:0.156115,6:0.285235):0.058522):0.196565,((7:0.287666,8:0.274068):0.099477,((9:0.278213,(10:0.100458,(11:0.044058,12:0.045626):0.051276):0.293591):0.039934,(14:0.364838,((16:0.313206,18:0.431461):0.010376,20:0.54506):0.022129):0.039056):0.058341):0.011673):0.202439,((((23:0.186532,24:0.24085099999999998):0.252621,((26:0.133061,27:0.197437):0.171341,(28:0.231282,29:0.192212):0.081113):0.132189):0.025724,((30:0.049864,31:0.034921):0.18897699999999998,(33:0.34809,((34:0.14815299999999998,(35:0.017611,(36:0.013314,37:0.013591):0.055229999999999994):0.11066899999999999):0.016528,38:0.27213):0.053221):0.034915):0.152231):0.038779,((((39:0.353706,(40:0.134388,(41:0.063909,42:0.06931299999999999):0.131448):0.114355):0.016044,(43:0.206775,44:0.274385):0.232373):0.437544,((47:0.30479,(48:0.33422799999999997,(49:0.20491700000000002,(50:0.191117,(51:0.18809399999999998,((52:0.21544199999999997,53:0.213907):0.015538,54:0.19533):0.104389):0.053714):0.009981):0.024478):0.244267):0.034913,(55:0.38622899999999993,(56:0.264105,(57:0.126461,58:0.129966):0.016377):0.043394):0.23863299999999998):0.054891):0.038498,((((59:0.256384,(60:0.262407,((61:0.06748,62:0.059187):0.104925,(64:0.290557,(65:0.156335,(67:0.093401,68:0.107076):0.097528):0.038197):0.014368):0.113064):0.021067):0.031826,(69:0.217937,(70:0.158411,73:0.354667):0.17054):0.029706):0.111557,(((74:0.179647,75:0.138957):0.338088,((76:0.09635400000000001,77:0.111024):0.283829,((78:0.102773,79:0.13968799999999998):0.269604,80:0.49332):0.08788499999999999):0.046828):0.235739,((81:0.210376,82:0.18334499999999998):0.15776700000000002,(((83:0.065382,84:0.055098):0.009999,86:0.101416):0.14569100000000001,(87:0.29407700000000003,(((88:0.044229,89:0.040654):0.170326,((90:0.133075,91:0.11849200000000001):0.047689,92:0.20256800000000003):0.084258):0.011599,((93:0.10876,(94:0.11989,95:0.09490799999999999):0.019093):0.122367,(((96:0.21951900000000002,97:0.290539):0.021951,98:0.28939600000000004):0.011999,((99:0.019398,100:0.03712):0.151804,(101:0.16161400000000004,(((102:0.043813,103:0.038124):0.045075000000000004,((104:0.071747,105:0.057235):0.010227,106:0.110161):0.015893):0.048480999999999996,(107:0.170449,108:0.157031):0.026137):0.006854):0.18478899999999998):0.01843):0.005862):0.007398):0.00896):0.009126):0.013035):0.132166):0.040717):0.011712,(109:0.557002,(((110:0.147805,111:0.19149):0.26190800000000003,(112:0.28748,(113:0.134944,(114:0.119527,115:0.13067499999999999):0.15165800000000002):0.015552):0.14545):0.022324,((125:0.184789,116:0.209102):0.02419,(117:0.209375,((118:0.201061,((119:0.133558,121:0.211703):0.055456,(((122:0.075558,123:0.09277):0.022551,124:0.18391):0.054924,(126:0.129969,(127:0.115698,(128:0.063645,129:0.073015):0.061374):0.042766):0.02614):0.013646):0.00644):0.010232,((130:0.222885,131:0.28312000000000004):0.043972,(133:0.24360199999999999,((134:0.20535000000000003,(135:0.116467,(136:0.105827,(137:0.067321,(138:0.050879999999999995,139:0.054979):0.006147):0.006541):0.074163):0.052435):0.074153,((140:0.192658,(141:0.08877700000000001,(142:0.172883,(143:0.10807199999999999,132:0.175211):0.005198):0.046952):0.016534):0.010813,((145:0.12329299999999999,(146:0.129597,((147:0.093959,148:0.105626):0.027595,149:0.1178):0.012533):0.020227999999999996):0.051351999999999995,(150:0.213637,((151:0.056587,152:0.09248300000000001):0.076832,153:0.128139):0.044495):0.00633):0.021449000000000003):0.037269):0.018531):0.079297):0.055132):0.004917):0.030544):0.205316):0.020676):0.317761):0.016451):0.046863):0.021846):0.045852):0.451626);
+
+END;
+
+
+BEGIN LABELS;
+	CHARGROUPLABEL Character_Matrix2;
+
+
+END;
+
+BEGIN SETS;
+	CHARPARTITION * UNTITLED  (CHARACTERS = Body_Matrix) =  Character_Matrix2 :  1- 159;
+	CHARPARTITION * UNTITLED  (CHARACTERS = Minimalist_Matrix) =  Character_Matrix2 :  1- 147;
+
+END;
+
+BEGIN ASSUMPTIONS;
+	TYPESET * UNTITLED  (CHARACTERS = Character_Matrix2)  =  unord:  1- 180;
+TYPESET * UNTITLED  (CHARACTERS = Body_Matrix)  =  unord:  1- 159;
+TYPESET * UNTITLED  (CHARACTERS = Minimalist_Matrix)  =  unord:  1- 147;
+
+END;
+
+BEGIN MESQUITECHARMODELS;
+	ProbModelSet * UNTITLED  (CHARACTERS = Character_Matrix2)  =  'Mk1 (est.)':  1- 180;
+ProbModelSet * UNTITLED  (CHARACTERS = Body_Matrix)  =  'Mk1 (est.)':  1- 159;
+ProbModelSet * UNTITLED  (CHARACTERS = Minimalist_Matrix)  =  'Mk1 (est.)':  1- 147;
+END;
+
+Begin MESQUITE;
+		MESQUITESCRIPTVERSION 2;
+		TITLE AUTO;
+		tell ProjectCoordinator;
+		timeSaved 1662833788096;
+		getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			setID 0 5524761721473678308;
+			tell It;
+				setDefaultOrder  0 1 2 3 4 5 6 7 8 9 10 11 141 12 140 13 142 14 144 15 145 143 16 17 147 18 19 20 21 22 23 146 24 25 26 27 28 29 30 31 32 33 34 35 149 148 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 151 52 53 150 54 55 56 57 137 136 58 59 60 61 62 63 64 65 66 67 68 69 152 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 101 102 103 104 139 105 106 107 108 100 109 110 111 112 113 114 126 115 116 117 118 119 120 121 122 123 124 125 138 127 128 129 130 131 132 133 134 135;
+				attachments ;
+			endTell;
+		endTell;
+		getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters;
+		tell It;
+			setID 0 8621522752969699280;
+			mqVersion 370;
+			checksumv 0 3 2869285836 null  getNumChars 180 numChars 180 getNumTaxa 153 numTaxa 153   short true   bits 63   states 63   sumSquaresStatesOnly 353409.0 sumSquares 353409.0 longCompressibleToShort false usingShortMatrix true   NumFiles 1 NumMatrices 3;
+			mqVersion;
+			setID 1 8249905146629208958;
+			mqVersion 370;
+			checksumv 1 3 3088725692 null  getNumChars 159 numChars 159 getNumTaxa 153 numTaxa 153   short true   bits 2305843009213694015   states 63   sumSquaresStatesOnly 298336.0 sumSquares -9.2233720368547021E18 longCompressibleToShort false usingShortMatrix true   NumFiles 1 NumMatrices 3;
+			mqVersion;
+			setID 2 443180576336417333;
+			mqVersion 370;
+			checksumv 2 3 2149511229 null  getNumChars 147 numChars 147 getNumTaxa 153 numTaxa 153   short true   bits 2305843009213694015   states 63   sumSquaresStatesOnly 292319.0 sumSquares -9.2233720368547021E18 longCompressibleToShort false usingShortMatrix true   NumFiles 1 NumMatrices 3;
+			mqVersion;
+		endTell;
+		getWindow;
+		tell It;
+			suppress;
+			setResourcesState false false 100;
+			setPopoutState 300;
+			setExplanationSize 0;
+			setAnnotationSize 0;
+			setFontIncAnnot 0;
+			setFontIncExp 0;
+			setSize 1920 961;
+			setLocation -8 0;
+			setFont SanSerif;
+			setFontSize 10;
+			getToolPalette;
+			tell It;
+			endTell;
+			desuppress;
+		endTell;
+		getEmployee  #mesquite.trees.BasicTreeWindowCoord.BasicTreeWindowCoord;
+		tell It;
+			makeTreeWindow #5524761721473678308  #mesquite.trees.BasicTreeWindowMaker.BasicTreeWindowMaker;
+			tell It;
+				suppressEPCResponse;
+				setTreeSource  #mesquite.trees.StoredTrees.StoredTrees;
+				tell It;
+					setTreeBlock 1;
+					setTreeBlockID 0180e86398e95;
+					toggleUseWeights off;
+				endTell;
+				setAssignedID 1006.1653328514767.879341511194099267;
+				getTreeWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1820 889;
+					setLocation -8 0;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.trees.BasicTreeWindowMaker.BasicTreeWindow.arrow;
+					endTell;
+					getTreeDrawCoordinator #mesquite.trees.BasicTreeDrawCoordinator.BasicTreeDrawCoordinator;
+				tell It;
+					suppress;
+					setTreeDrawer  #mesquite.trees.SquareLineTree.SquareLineTree;
+					tell It;
+						setNodeLocs #mesquite.trees.NodeLocsStandard.NodeLocsStandard;
+						tell It;
+							branchLengthsToggle off;
+							toggleScale on;
+							toggleBroadScale off;
+							toggleCenter on;
+							toggleEven on;
+							setFixedTaxonDistance 0;
+						endTell;
+						setEdgeWidth 4;
+						showEdgeLines on;
+						orientRight;
+					endTell;
+					setBackground White;
+					setBranchColor Black;
+					showNodeNumbers off;
+					showBranchColors on;
+					labelBranchLengths off;
+					centerBrLenLabels on;
+					showBrLensUnspecified on;
+					showBrLenLabelsOnTerminals on;
+					setBrLenLabelColor 0 0 255;
+					setNumBrLenDecimals 6;
+					setSelectedTaxonHighlightMode 1;
+					desuppress;
+					getEmployee #mesquite.trees.BasicDrawTaxonNames.BasicDrawTaxonNames;
+					tell It;
+						setColor Black;
+						setTaxonNameStyler  #mesquite.trees.NoColorForTaxon.NoColorForTaxon;
+						toggleShadePartition off;
+						toggleShowFootnotes on;
+						toggleNodeLabels on;
+						toggleCenterNodeNames off;
+						toggleShowNames on;
+						namesAngle ?;
+					endTell;
+				endTell;
+					setTreeNumber 1;
+					setTree '(1:0.451626,(2:0.5267449999999999,((((3:0.240193,4:0.27609):0.01395,(5:0.156115,6:0.285235):0.058522):0.196565,((7:0.287666,8:0.274068):0.099477,((9:0.278213,(10:0.100458,(11:0.044058,12:0.045626):0.051276):0.293591):0.039934,(14:0.364838,((16:0.313206,18:0.431461):0.010376,20:0.54506):0.022129):0.039056):0.058341):0.011673):0.202439,((((23:0.186532,24:0.24085099999999998):0.252621,((26:0.133061,27:0.197437):0.171341,(28:0.231282,29:0.192212):0.081113):0.132189):0.025724,((30:0.049864,31:0.034921):0.18897699999999998,(33:0.34809,((34:0.14815299999999998,(35:0.017611,(36:0.013314,37:0.013591):0.055229999999999994):0.11066899999999999):0.016528,38:0.27213):0.053221):0.034915):0.152231):0.038779,((((39:0.353706,(40:0.134388,(41:0.063909,42:0.06931299999999999):0.131448):0.114355):0.016044,(43:0.206775,44:0.274385):0.232373):0.437544,((47:0.30479,(48:0.33422799999999997,(49:0.20491700000000002,(50:0.191117,(51:0.18809399999999998,((52:0.21544199999999997,53:0.213907):0.015538,54:0.19533):0.104389):0.053714):0.009981):0.024478):0.244267):0.034913,(55:0.38622899999999993,(56:0.264105,(57:0.126461,58:0.129966):0.016377):0.043394):0.23863299999999998):0.054891):0.038498,((((59:0.256384,(60:0.262407,((61:0.06748,62:0.059187):0.104925,(64:0.290557,(65:0.156335,(67:0.093401,68:0.107076):0.097528):0.038197):0.014368):0.113064):0.021067):0.031826,(69:0.217937,(70:0.158411,73:0.354667):0.17054):0.029706):0.111557,(((74:0.179647,75:0.138957):0.338088,((76:0.09635400000000001,77:0.111024):0.283829,((78:0.102773,79:0.13968799999999998):0.269604,80:0.49332):0.08788499999999999):0.046828):0.235739,((81:0.210376,82:0.18334499999999998):0.15776700000000002,(((83:0.065382,84:0.055098):0.009999,86:0.101416):0.14569100000000001,(87:0.29407700000000003,(((88:0.044229,89:0.040654):0.170326,((90:0.133075,91:0.11849200000000001):0.047689,92:0.20256800000000003):0.084258):0.011599,((93:0.10876,(94:0.11989,95:0.09490799999999999):0.019093):0.122367,(((96:0.21951900000000002,97:0.290539):0.021951,98:0.28939600000000004):0.011999,((99:0.019398,100:0.03712):0.151804,(101:0.16161400000000004,(((102:0.043813,103:0.038124):0.045075000000000004,((104:0.071747,105:0.057235):0.010227,106:0.110161):0.015893):0.048480999999999996,(107:0.170449,108:0.157031):0.026137):0.006854):0.18478899999999998):0.01843):0.005862):0.007398):0.00896):0.009126):0.013035):0.132166):0.040717):0.011712,(109:0.557002,(((110:0.147805,111:0.19149):0.26190800000000003,(112:0.28748,(113:0.134944,(114:0.119527,115:0.13067499999999999):0.15165800000000002):0.015552):0.14545):0.022324,((125:0.184789,116:0.209102):0.02419,(117:0.209375,((118:0.201061,((119:0.133558,121:0.211703):0.055456,(((122:0.075558,123:0.09277):0.022551,124:0.18391):0.054924,(126:0.129969,(127:0.115698,(128:0.063645,129:0.073015):0.061374):0.042766):0.02614):0.013646):0.00644):0.010232,((130:0.222885,131:0.28312000000000004):0.043972,(133:0.24360199999999999,((134:0.20535000000000003,(135:0.116467,(136:0.105827,(137:0.067321,(138:0.050879999999999995,139:0.054979):0.006147):0.006541):0.074163):0.052435):0.074153,((140:0.192658,(141:0.08877700000000001,(142:0.172883,(143:0.10807199999999999,132:0.175211):0.005198):0.046952):0.016534):0.010813,((145:0.12329299999999999,(146:0.129597,((147:0.093959,148:0.105626):0.027595,149:0.1178):0.012533):0.020227999999999996):0.051351999999999995,(150:0.213637,((151:0.056587,152:0.09248300000000001):0.076832,153:0.128139):0.044495):0.00633):0.021449000000000003):0.037269):0.018531):0.079297):0.055132):0.004917):0.030544):0.205316):0.020676):0.317761):0.016451):0.046863):0.021846):0.045852):0.451626);';
+					setDrawingSizeMode 0;
+					toggleLegendFloat on;
+					scale 0;
+					toggleTextOnTree off;
+					togglePrintName off;
+					showWindow;
+					newAssistant  #mesquite.ancstates.TraceCharOverTrees.TraceCharOverTrees;
+				tell It;
+					suppress ;
+					setHistorySource  #mesquite.ancstates.RecAncestralStates.RecAncestralStates;
+					tell It;
+						getCharacterSource  #mesquite.charMatrices.CharSrcCoordObed.CharSrcCoordObed;
+						tell It;
+							setCharacterSource #mesquite.charMatrices.StoredCharacters.StoredCharacters;
+							tell It;
+								setDataSet #8621522752969699280;
+							endTell;
+						endTell;
+						setMethod  #mesquite.parsimony.ParsAncestralStates.ParsAncestralStates;
+						tell It;
+							setModelSource  #mesquite.parsimony.CurrentParsModels.CurrentParsModels;
+							toggleMPRsMode off;
+						endTell;
+						toggleShowSelectedOnly off;
+					endTell;
+					setCharacter 43;
+					setTreeSource  #mesquite.trees.StoredTrees.StoredTrees;
+					tell It;
+						setTreeBlock 1;
+						setTreeBlockID 0180e86398e95;
+						toggleUseWeights off;
+					endTell;
+					setNumTrees 100;
+					setDisplayMode  #mesquite.ancstates.ShadeStatesOnTree.ShadeStatesOnTree;
+					tell It;
+						toggleLabels off;
+						togglePredictions off;
+						toggleGray off;
+					endTell;
+					toggleShowLegend on;
+					toggleShowNodeAbsent on;
+					toggleShowEquivocal on;
+					setMode Count_Trees_with_Uniquely_Best_States;
+					setInitialOffsetX 20;
+					setInitialOffsetY 640;
+					setLegendWidth 142;
+					setLegendHeight 120;
+					desuppress ;
+				endTell;
+				endTell;
+				desuppressEPCResponse;
+				getEmployee #mesquite.trees.ColorBranches.ColorBranches;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.ornamental.BranchNotes.BranchNotes;
+				tell It;
+					setAlwaysOn off;
+				endTell;
+				getEmployee #mesquite.ornamental.ColorTreeByPartition.ColorTreeByPartition;
+				tell It;
+					colorByPartition off;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocDoubles.DrawTreeAssocDoubles;
+				tell It;
+					setOn on;
+					toggleShow consensusFrequency;
+					toggleShow posteriorProbability;
+					toggleShow bootstrapFrequency;
+					toggleShow consensusFrequency;
+					toggleShow posteriorProbability;
+					toggleShow bootstrapFrequency;
+					setDigits 4;
+					setThreshold ?;
+					writeAsPercentage off;
+					toggleCentred off;
+					toggleHorizontal on;
+					toggleWhiteEdges on;
+					toggleShowOnTerminals on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocStrings.DrawTreeAssocStrings;
+				tell It;
+					setOn on;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+					toggleShowOnTerminals on;
+				endTell;
+				getEmployee #mesquite.trees.TreeInfoValues.TreeInfoValues;
+				tell It;
+					panelOpen false;
+				endTell;
+			endTell;
+		endTell;
+		getEmployee  #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord;
+		tell It;
+			showDataWindow #8621522752969699280 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker;
+			tell It;
+				getWindow;
+				tell It;
+					getTable;
+					tell It;
+						rowNamesWidth 223;
+					endTell;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1820 889;
+					setLocation -8 0;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam;
+					endTell;
+					setActive;
+					setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam;
+					colorCells  #mesquite.charMatrices.ColorByState.ColorByState;
+				tell It;
+					setStateLimit 9;
+					toggleUniformMaximum on;
+				endTell;
+					colorRowNames  #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor;
+					colorColumnNames  #mesquite.charMatrices.CharGroupColor.CharGroupColor;
+					colorText  #mesquite.charMatrices.NoColor.NoColor;
+					setBackground White;
+					toggleShowNames on;
+					toggleShowTaxonNames on;
+					toggleTight off;
+					toggleThinRows off;
+					toggleShowChanges on;
+					toggleSeparateLines off;
+					toggleShowStates on;
+					toggleReduceCellBorders off;
+					toggleAutoWCharNames on;
+					toggleAutoTaxonNames off;
+					toggleShowDefaultCharNames off;
+					toggleConstrainCW on;
+					toggleBirdsEye off;
+					toggleColorOnlyTaxonNames off;
+					toggleShowPaleGrid off;
+					toggleShowPaleCellColors off;
+					toggleShowPaleExcluded off;
+					togglePaleInapplicable on;
+					togglePaleMissing off;
+					toggleShowBoldCellText off;
+					toggleAllowAutosize on;
+					toggleColorsPanel off;
+					toggleDiagonal on;
+					setDiagonalHeight 80;
+					toggleLinkedScrolling on;
+					toggleScrollLinkedTables off;
+				endTell;
+				showWindow;
+				getWindow;
+				tell It;
+					forceAutosize;
+				endTell;
+				getEmployee #mesquite.charMatrices.AlterData.AlterData;
+				tell It;
+					toggleBySubmenus off;
+				endTell;
+				getEmployee #mesquite.charMatrices.ColorCells.ColorCells;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+				getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector;
+				tell It;
+					autotabOff;
+				endTell;
+				getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor;
+				tell It;
+					panelOpen true;
+				endTell;
+			endTell;
+			showDataWindow #8249905146629208958 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker;
+			tell It;
+				getWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1820 889;
+					setLocation -8 0;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow;
+					endTell;
+					setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow;
+					colorCells  #mesquite.charMatrices.ColorByState.ColorByState;
+				tell It;
+					setStateLimit 9;
+					toggleUniformMaximum on;
+				endTell;
+					colorRowNames  #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor;
+					colorColumnNames  #mesquite.charMatrices.CharGroupColor.CharGroupColor;
+					colorText  #mesquite.charMatrices.NoColor.NoColor;
+					setBackground White;
+					toggleShowNames on;
+					toggleShowTaxonNames on;
+					toggleTight off;
+					toggleThinRows off;
+					toggleShowChanges on;
+					toggleSeparateLines off;
+					toggleShowStates on;
+					toggleReduceCellBorders off;
+					toggleAutoWCharNames on;
+					toggleAutoTaxonNames off;
+					toggleShowDefaultCharNames off;
+					toggleConstrainCW on;
+					toggleBirdsEye off;
+					toggleColorOnlyTaxonNames off;
+					toggleShowPaleGrid off;
+					toggleShowPaleCellColors off;
+					toggleShowPaleExcluded off;
+					togglePaleInapplicable on;
+					togglePaleMissing off;
+					toggleShowBoldCellText off;
+					toggleAllowAutosize on;
+					toggleColorsPanel off;
+					toggleDiagonal on;
+					setDiagonalHeight 80;
+					toggleLinkedScrolling on;
+					toggleScrollLinkedTables off;
+				endTell;
+				showWindow;
+				getWindow;
+				tell It;
+					forceAutosize;
+				endTell;
+				getEmployee #mesquite.charMatrices.AlterData.AlterData;
+				tell It;
+					toggleBySubmenus off;
+				endTell;
+				getEmployee #mesquite.charMatrices.ColorCells.ColorCells;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+				getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector;
+				tell It;
+					autotabOff;
+				endTell;
+				getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor;
+				tell It;
+					panelOpen true;
+				endTell;
+			endTell;
+			showDataWindow #443180576336417333 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker;
+			tell It;
+				getWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1820 889;
+					setLocation -8 0;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow;
+					endTell;
+					setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow;
+					colorCells  #mesquite.charMatrices.ColorByState.ColorByState;
+				tell It;
+					setStateLimit 9;
+					toggleUniformMaximum on;
+				endTell;
+					colorRowNames  #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor;
+					colorColumnNames  #mesquite.charMatrices.CharGroupColor.CharGroupColor;
+					colorText  #mesquite.charMatrices.NoColor.NoColor;
+					setBackground White;
+					toggleShowNames on;
+					toggleShowTaxonNames on;
+					toggleTight off;
+					toggleThinRows off;
+					toggleShowChanges on;
+					toggleSeparateLines off;
+					toggleShowStates on;
+					toggleReduceCellBorders off;
+					toggleAutoWCharNames on;
+					toggleAutoTaxonNames off;
+					toggleShowDefaultCharNames off;
+					toggleConstrainCW on;
+					toggleBirdsEye off;
+					toggleColorOnlyTaxonNames off;
+					toggleShowPaleGrid off;
+					toggleShowPaleCellColors off;
+					toggleShowPaleExcluded off;
+					togglePaleInapplicable on;
+					togglePaleMissing off;
+					toggleShowBoldCellText off;
+					toggleAllowAutosize on;
+					toggleColorsPanel off;
+					toggleDiagonal on;
+					setDiagonalHeight 80;
+					toggleLinkedScrolling on;
+					toggleScrollLinkedTables off;
+				endTell;
+				showWindow;
+				getWindow;
+				tell It;
+					forceAutosize;
+				endTell;
+				getEmployee #mesquite.charMatrices.AlterData.AlterData;
+				tell It;
+					toggleBySubmenus off;
+				endTell;
+				getEmployee #mesquite.charMatrices.ColorCells.ColorCells;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+				getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector;
+				tell It;
+					autotabOff;
+				endTell;
+				getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip;
+				tell It;
+					showStrip off;
+				endTell;
+				getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor;
+				tell It;
+					panelOpen true;
+				endTell;
+			endTell;
+		endTell;
+		endTell;
+end;
+
+

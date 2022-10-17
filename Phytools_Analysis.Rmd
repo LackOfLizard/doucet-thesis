@@ -1,0 +1,1342 @@
+---
+title: "Phytools_Analysis"
+author: "Daniel Doucet"
+date: "5/20/2022"
+output: html_document
+---
+
+```{r - LIBRARIES}
+
+library(xlsx)
+library(stats)
+library(rJava)
+library(ape)
+library(phytools)
+library(png)
+library(TreeTools)
+library(geiger)
+library(rlang)
+library(pillar)
+library(FactoMineR)
+library(factoextra)
+library(FactoClass)
+library(scatterplot3d)
+library(magick)
+library(devtools)
+library(credentials)
+library(rgl)
+
+setwd("C:/Users/Daniel/Documents/Geckolab/Data/Thesis_Analysis")
+
+```
+
+Read in data.
+Excel spreadsheet was created by copying over character states from Mesquite Character Matrix.
+Tree is obtained from Pyron et al. 2015 (https://link.springer.com/article/10.1186/1471-2148-13-93) and was coerced into an appropriate Newick format using FigTree after taxa not present in my sample were pruned.
+Characters are available in the Thesis or Combined_Data_Tree Mesquite dataset.
+
+```{r - DATA}
+
+#Read in newick tree from Pyron 2013
+pyron <- read.tree("Scale_NEWICK.phy")
+
+#Read in dataset from excel
+scale <- as.matrix(read.xlsx('Dataset.xlsx',
+                             sheetIndex = 1,
+                             rowIndex = 1:153,
+                             colIndex = 2:181,
+                             header = F))
+#Return taxa names
+scale_taxa <- read.xlsx('Dataset.xlsx',
+                   sheetIndex = 1,
+                   rowIndex = 1:153,
+                   colIndex = 1,
+                   as.data.frame = F)
+#Develop vector for denoting proper character numbers
+ch <- c(2:181)
+#Apply names to each section of the matrix
+rownames(scale) <- scale_taxa
+colnames(scale) <- ch
+
+#Verify that taxa are identically named
+name.check(pyron, scale)
+#Underscores instead of spaces in our tree, data needs to be changed
+rownames(scale) <- gsub(" ","_",rownames(scale))
+#Now to verify
+name.check(pyron, scale)
+
+```
+
+These are all tests to apply the Mk model to the dataset: Some using "equal rates" and some using "all rates different"
+
+WARNING: FUNCTIONS make.simmap() AND summary() OF A SIMMAP OBJECT TAKE LONG TIMES TO COMPUTE. IT MAY BE WORTH IT TO SELECT ONLY WHICH TREES/CHARACTERS YOU NEED TO SIMULATE AND BEGIN TO GENERATE THEM IN BULK RATHER THAN RUNNING THE WHOLE BLOCK OF CODE.
+
+```{r - Visualizing Phylogeny W/ Individual Characters}
+
+#Stochastic mapping
+x66 <- setNames(scale[,66], rownames(scale))
+
+mapped.trees.66 <- make.simmap(pyron, x66, model = "ARD", message = F)
+mapped.trees.66
+
+obj.66 <- summary(mapped.trees.66, check.equal = T)
+obj.66
+
+colors <- setNames(c("red", "blue", "green"), c("0", "1", "2"))
+
+#Plot the resulting tree
+plot(obj.66, ftype = "i", fsize = 0.5, colors = colors)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors, shape = "square",
+                  fsize = 0.5)
+
+#Stochastic mapping - Supercillary Scales
+x.20 <- setNames(scale[,20], rownames(scale))
+
+mapped.trees.20 <- make.simmap(pyron, x.20, model = "ARD", message = F)
+mapped.trees.20
+
+obj.20 <- summary(mapped.trees.20, check.equal = T)
+obj.20
+
+colors.20 <- setNames(c("red", "blue"), c("0", "1"))
+
+#Plot the resulting tree
+plot(obj.20, ftype = "i", fsize = 0.5, colors = colors.20)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors.20, shape = "square",
+                  fsize = 0.5)
+
+#Stochastic mapping - ventral scale shape
+x.139 <- setNames(scale[,139], rownames(scale))
+
+mapped.trees.139 <- make.simmap(pyron, x.139, model = "ARD", message = F)
+mapped.trees.139
+
+obj.139 <- summary(mapped.trees.139, check.equal = T)
+obj.139
+
+colors.139 <- setNames(c("#0040af", "#009bff", "#2df5ff", "#00de8a", "#029930"),
+                      c("0", "1", "2", "3", "4"))
+
+#Plot the resulting tree
+plot(obj.139, ftype = "i", fsize = 0.5, colors = colors.139)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors.139, shape = "square",
+                  fsize = 0.5)
+
+#Stochastic mapping - ventral scale texture
+x.140 <- setNames(scale[,140], rownames(scale))
+
+mapped.trees.140 <- make.simmap(pyron, x.140, model = "ARD", message = F)
+mapped.trees.140
+
+obj.140 <- summary(mapped.trees.140, check.equal = T)
+obj.140
+
+colors.140 <- setNames(c("#c132ff", "#0040af", "#009bff", "#2df5ff", "#00de8a", "#029930"),
+                      c("0", "1", "2", "3", "4", "5"))
+
+#Plot the resulting tree
+plot(obj.140, ftype = "i", fsize = 0.5, colors = colors.140)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors.140, shape = "square",
+                  fsize = 0.5)
+
+```
+
+Now to see how much of a difference these two models ("equal rates" and "all rates different") on the same character
+
+```{r - Testing differences between Equal Rates and All Rates Different on phylogenetic visualization}
+
+#Equal Rates
+x.50 <- setNames(scale[,50], rownames(scale))
+
+mapped.trees.50 <- make.simmap(pyron, x.50, model = "ER", message = F)
+mapped.trees.50
+
+obj.50 <- summary(mapped.trees.50, check.equal = T)
+obj.50
+
+#All Rates Different
+mapped.trees.50.ARD <- make.simmap(pyron, x.50, model = "ARD", message = F)
+mapped.trees.50.ARD
+
+obj.50.ARD <- summary(mapped.trees.50.ARD, check.equal = T)
+obj.50.ARD
+
+colors.50 <- setNames(c("#fff93d", "#f8c423", "#ff6223", "#bd1100"),
+                      c("0", "1", "2", "3"))
+
+#Plot the resulting trees (ER and ARD)
+plot(obj.50, ftype = "i", fsize = 0.5, colors = colors.50)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors.50, shape = "square",
+                  fsize = 0.5)
+
+plot(obj.50.ARD, ftype = "i", fsize = 0.5, colors = colors.50)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors.50, shape = "square",
+                  fsize = 0.5)
+
+#Testing to fix the font problem - maybe there's another function that is more modular?
+plotSimmap(mapped.trees.50.ARD, fsize = 0.5, colors = colors.50)
+add.simmap.legend(x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, colors = colors.50, shape = "square",
+                  fsize = 0.5)
+#Well that worked! Praise God!
+
+```
+
+Visualizing the simulated posterior probabilities - function make.SIMMAP applies methods from Bollback 2006
+
+```{r - Posterior probabilities on each node}
+
+#Generate simulated group of trees, then obtain consensus
+trees.pp <- make.simmap(pyron, as.factor(setNames(scale[,128], rownames(scale))), model = "ER", nsim = 100)
+obj.pp <- summary(trees.pp, check.equal = T, plot = F)
+
+colors.pp <- setNames(c("#0040af", "#009bff", "#2df5ff", "#00de8a", "#029930"),
+                      c("0", "1", "2", "3", "4"))
+plot(obj.pp, colors = colors.pp, fsize = 0.5, cex = c(0.5, 0.3))
+add.simmap.legend(colors = colors.pp, x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Try with two state character
+trees.pp.circumorbital <- make.simmap(pyron, as.factor(setNames(scale[,15], rownames(scale))), model = "ER", nsim = 100)
+obj.pp.circumorbital <- summary(trees.pp.circumorbital, check.equal = T, plot = F)
+colors.pp.circumorbital <- setNames(c("grey", "white"),
+                                    c("0", "1"))
+plot(obj.pp.circumorbital, colors = colors.pp.circumorbital,
+     fsize = 0.5, cex = c(0.5, 0.3))
+add.simmap.legend(colors = colors.pp.circumorbital, x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+Attempts to use binary characters with two states (0,1) to generate a gradient:
+
+```{r - Visualizing a gradient on the tree}
+
+#Osteoderms selected and named
+osteo <- setNames(scale[,172], rownames(scale))
+
+#Visualize presence of osteoderms on the tree tips
+dotTree(pyron, osteo,
+        colors = setNames(c("white", "red"), c("0", "1")),
+        ftype = "i", fsize = 0.5)
+
+#Simulate trait evolution, then plot using density map
+trees.osteo <- make.simmap(pyron, osteo, nsim = 100)
+obj.density <- densityMap(trees.osteo, states = c("0", "1", plot = F))
+
+
+#Try with a more variable character
+annulated <- setNames(scale[,69], rownames(scale))
+dotTree(pyron, annulated,
+        colors = setNames(c("#ff9b47", "#d80000"), c("0", "1")),
+        ftype = "i", fsize = 0.5)
+trees.annulated <- make.simmap(pyron, annulated, nsim = 100)
+obj.density.annulated <- densityMap(trees.annulated, states = c("0", "1", plot = F))
+#Ok so this one worked - maybe it's data dependent? Worth exploring?
+
+
+#Something simple such as eye visibility may give a clean gradient in blind snakes and blind lizards
+x.29 <- setNames(scale[,29], rownames(scale))
+dotTree(pyron, x.29,
+        colors = setNames(c("#38bdff", "#001766"), c("0", "1")),
+        ftype = "i", fsize = 0.5)
+trees.29 <- make.simmap(pyron, x.29, nsim = 100)
+obj.density.29 <- densityMap(trees.29, states = c("0", "1", plot = F))
+
+
+```
+
+
+Below are the comparisons of some proposed characters that influenced variation in the MCA:
+
+
+SCALE SHAPE POSTERIOR PROBABILITIES
+
+```{r - Scale shape on various dorsal surfaces compared}
+
+#Colors will remain the same for each character - for continuity and as each has the same states
+colors.shape <- setNames(c("#0040af", "#009bff", "#2df5ff", "#00de8a", "#029930"),
+                      c("0", "1", "2", "3", "4"))
+
+legend.shape <- c("Circular", "Elliptical", "Diamond", "Rectangular", "Polygonal")
+
+#97 - supraocular
+trees.97 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,97], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.97 <- summary(trees.97, check.equal = T, plot = F)
+#109 - dorsal neck
+trees.109 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,109], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.109 <- summary(trees.109, check.equal = T, plot = F)
+#127 - dorsal body
+trees.127 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,127], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.127 <- summary(trees.127, check.equal = T, plot = F)
+#145 - dorsal thigh
+trees.145 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,145], rownames(scale))), 
+                         model = "ER", nsim = 100)
+obj.145 <- summary(trees.145, check.equal = T, plot = F)
+#159 - dorsal caudal
+trees.159 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,159], rownames(scale))), 
+                         model = "ER", nsim = 100)
+obj.159 <- summary(trees.159, check.equal = T, plot = F)
+
+```
+
+```{r}
+
+#Supraocular
+png(filename = "Figures/DorsalSupraocular_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.97, colors = colors.shape, fsize = 0.429, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal neck
+png(filename = "Figures/DorsalNeck_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.109, colors = colors.shape, fsize = 0.429, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal body
+png(filename = "Figures/DorsalBody_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.127, colors = colors.shape, fsize = 0.429, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+  
+#Dorsal body IMAGE TEST
+  
+spp <- c("Smaug warreni")
+w <- 0.5
+  
+png(filename = "Figures/DorsalBody_ShapeTEST.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.127, colors = colors.shape, fsize = 0.429, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+xy <- add.arrow(obj.127, tip = spp, col = "transparent", arrl = 0.4, lwd = 2, hedl = 0.1)
+add.arrow(obj.127, tip = spp, col = "blue", arrl = 0.4, lwd = 2, hedl = 0.1)
+img <- readPNG(source = "Phylogeny/S_warreni.png")
+asp <- dim(img)[1]/dim(img)[2]
+rasterImage(img, xy$x0-w/2, xy$y0-w/2*asp, xy$x0-w/2, xy$y0-w/2*asp)
+
+
+
+
+#Dorsal thigh
+png(filename = "Figures/DorsalThigh_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.145, colors = colors.shape, fsize = 0.429, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal tail
+png(filename = "Figures/DorsalCaudal_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.159, colors = colors.shape, fsize = 0.429, ftype = "bi", 
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r - Scale shape of lateral surfaces}
+
+#115 - lateral neck
+trees.115 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,115], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.115 <- summary(trees.115, check.equal = T, plot = F)
+#133 - lateral body
+trees.133 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,133], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.133 <- summary(trees.133, check.equal = T, plot = F)
+
+
+
+#Lateral neck
+png(filename = "Figures/LateralNeck_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.115, colors = colors.shape, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Lateral body
+png(filename = "Figures/LateralBody_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.133, colors = colors.shape, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r - Scale shape of ventral surfaces}
+
+#121 - ventral neck
+trees.121 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,121], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.121 <- summary(trees.121, check.equal = T, plot = F)
+#139 - ventral body
+trees.139 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,139], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.139 <- summary(trees.139, check.equal = T, plot = F)
+#165 - ventral caudal
+trees.165 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,165], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.165 <- summary(trees.165, check.equal = T, plot = F)
+
+
+
+#Ventral neck
+png(filename = "Figures/VentralNeck_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.121, colors = colors.shape, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral body
+png(filename = "Figures/VentralBody_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.139, colors = colors.shape, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral caudal
+png(filename = "Figures/VentralCaudal_Shape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.165, colors = colors.shape, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+
+
+SCALE TEXTURE POSTERIOR PROBABILITIES
+
+```{r}
+
+colors.tex <- setNames(c("#e6d00e", "#a18c32", "#634d31", "#6ad4c9", "#19688a", "#0a04ba"),
+                       c("0", "1", "2", "3", "4", "5"))
+legend.tex <- c("Flat", "Granular", "Globular", "Streaked", "Rough", "Spiked")
+
+
+#Internasal texture
+trees.87 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,87], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.87 <- summary(trees.87, check.equal = T, plot = F)
+#Supraocular texture
+trees.98 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,98], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.98 <- summary(trees.98, check.equal = T, plot = F)
+#Dorsal neck texture
+trees.110 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,110], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.110 <- summary(trees.110, check.equal = T, plot = F)
+#Dorsal body texture
+trees.128 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,128], rownames(scale))), 
+                         model = "ER", nsim = 100)
+obj.128 <- summary(trees.128, check.equal = T, plot = F)
+#Dorsal thigh texture
+trees.146 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,146], rownames(scale))), 
+                         model = "ER", nsim = 100)
+obj.146 <- summary(trees.146, check.equal = T, plot = F)
+#Dorsal caudal texture
+trees.160 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,160], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.160 <- summary(trees.160, check.equal = T, plot = F)
+
+#Internasal texture plot
+png(filename = "Figures/Internasal_Tex.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.87, colors = colors.tex, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+#Supraocular texture plot
+png(filename = "Figures/Supraocular_Tex.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.98, colors = colors.tex, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+#Dorsal neck texture plot
+png(filename = "Figures/DorsalNeck_Tex.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.110, colors = colors.tex, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+#Dorsal body texture plot
+png(filename = "Figures/DorsalBody_Tex.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.128, colors = colors.tex, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+#Dorsal thigh texture plot
+png(filename = "Figures/DorsalThigh_Tex.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.146, colors = colors.tex, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+#Dorsal caudal texture plot
+png(filename = "Figures/DorsalCaudal_Tex.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.160, colors = colors.tex, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+
+
+
+JUSTIFICATION POSTERIOR PROBABILITIES
+
+```{r - Dorsal justifcation}
+
+colors.just <- setNames(c("#f5024e", "#fc35ce", "#7f2dc2", "#523bff"),
+                      c("0", "1", "2", "3"))
+
+legend.just <- c("Random Arrangement", "Ringed Arrangement",
+                 "Oblique Arrangement", "Grid Arrangement")
+
+#97 - supraocular
+trees.101 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,101], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.101 <- summary(trees.101, check.equal = T, plot = F)
+#109 - dorsal neck
+trees.114 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,114], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.114 <- summary(trees.114, check.equal = T, plot = F)
+#127 - dorsal body
+trees.131 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,131], rownames(scale))), 
+                         model = "ER", nsim = 100)
+obj.131 <- summary(trees.131, check.equal = T, plot = F)
+#145 - dorsal thigh
+trees.149 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,149], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.149 <- summary(trees.149, check.equal = T, plot = F)
+#159 - dorsal caudal
+trees.163 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,163], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.163 <- summary(trees.163, check.equal = T, plot = F)
+
+
+
+#Supraocular
+png(filename = "Figures/DorsalSupraocular_Just.png", res = 300,
+    width = 2600, height = 2600)
+plot(obj.101, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal neck
+png(filename = "Figures/DorsalNeck_Just.png", res = 300,
+    width = 2600, height = 2600)
+plot(obj.114, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal body
+png(filename = "Figures/DorsalBody_Just.png", res = 300,
+    width = 2600, height = 2600)
+plot(obj.131, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+
+#Dorsal thigh
+png(filename = "Figures/DorsalThigh_Just.png", res = 300,
+    width = 2600, height = 2600)
+plot(obj.149, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal tail
+png(filename = "Figures/DorsalCaudal_Just.png", res = 300,
+    width = 2600, height = 2600)
+plot(obj.163, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+```
+
+
+
+```{r - Lateral justification}
+
+#115 - lateral neck justification
+trees.119 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,115], rownames(scale))), 
+                         model = "ER", nsim = 100)
+obj.119 <- summary(trees.119, check.equal = T, plot = F)
+#133 - lateral body justification
+trees.137 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,133], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.137 <- summary(trees.137, check.equal = T, plot = F)
+
+
+
+#Lateral neck
+png(filename = "Figures/LateralNeck_Just.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.119, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Lateral body
+png(filename = "Figures/LateralBody_Just.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.137, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r - Ventral justification}
+
+#121 - ventral neck justification
+trees.125 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,121], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.125 <- summary(trees.125, check.equal = T, plot = F)
+#139 - ventral body justification
+trees.143 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,139], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.143 <- summary(trees.143, check.equal = T, plot = F)
+#165 - ventral caudal justification
+trees.169 <- make.simmap(pyron,
+                         as.factor(setNames(scale[,165], rownames(scale))),
+                         model = "ER", nsim = 100)
+obj.169 <- summary(trees.169, check.equal = T, plot = F)
+
+
+
+#Ventral neck
+png(filename = "Figures/VentralNeck_Just.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.125, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral body
+png(filename = "Figures/VentralBody_Just.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.143, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral caudal
+png(filename = "Figures/VentralCaudal_Just.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.169, colors = colors.just, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.just, colors = colors.just,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+OVERLAP AND FREE MARGIN FREQUENCY
+
+```{r - Cephalic scale overlap}
+
+#Frontal overlap
+trees.84 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,84], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.84 <- summary(trees.84, check.equal = T, plot = F)
+
+#Loreal overlap
+trees.95 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,95], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.95 <- summary(trees.95, check.equal = T, plot = F)
+
+#Supraocular overlap
+trees.102 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,102], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.102 <- summary(trees.102, check.equal = T, plot = F)
+
+#Postmental overlap
+trees.107 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,107], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.107 <- summary(trees.107, check.equal = T, plot = F)
+
+
+
+colors.ov <- setNames(c("#ff0000", "#0008ff", "#00ecff"),
+                      c("0", "1", "2"))
+legend.ov <- c("No Overlap", "Overlap", "Free Margin")
+
+#Frontal overlap plot
+png(filename = "Figures/Frontal_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.84, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Loreal overlap plot
+png(filename = "Figures/Loreal_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.95, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Supraocular overlap plot
+png(filename = "Figures/Supraocular_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.102, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Postmental overlap plot
+png(filename = "Figures/Postmental_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.107, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r - Dorsal overlap}
+
+#Dorsal neck overlap
+trees.114 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,114], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.114 <- summary(trees.114, check.equal = T, plot = F)
+
+#Dorsal body overlap
+trees.132 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,132], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.132 <- summary(trees.132, check.equal = T, plot = F)
+
+#Dorsal thigh overlap
+trees.150 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,150], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.150 <- summary(trees.150, check.equal = T, plot = F)
+
+#Dorsal caudal overlap
+trees.164 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,164], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.164 <- summary(trees.164, check.equal = T, plot = F)
+
+
+#Dorsal neck overlap plot
+png(filename = "Figures/DorsalNeck_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.114, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal body overlap plot
+png(filename = "Figures/DorsalBody_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.132, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal thigh overlap plot
+png(filename = "Figures/DorsalThigh_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.150, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Dorsal caudal overlap plot
+png(filename = "Figures/DorsalCaudal_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.164, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r - Lateral overlap}
+
+#Lateral neck overlap
+trees.120 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,120], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.120 <- summary(trees.120, check.equal = T, plot = F)
+
+#Lateral body overlap
+trees.138 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,138], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.138 <- summary(trees.132, check.equal = T, plot = F)
+
+
+#Lateral neck overlap plot
+png(filename = "Figures/LateralNeck_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.120, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Lateral body overlap plot
+png(filename = "Figures/LateralBody_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.138, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r - Ventral overlap}
+
+#Ventral neck overlap
+trees.126 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,126], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.126 <- summary(trees.126, check.equal = T, plot = F)
+
+#Ventral body overlap
+trees.144 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,144], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.144 <- summary(trees.144, check.equal = T, plot = F)
+
+#Ventral foot overlap
+trees.156 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,156], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.156 <- summary(trees.156, check.equal = T, plot = F)
+
+#Ventral caudal overlap
+trees.170 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,170], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.170 <- summary(trees.170, check.equal = T, plot = F)
+
+
+#Ventral neck overlap plot
+png(filename = "Figures/VentralNeck_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.126, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral body overlap plot
+png(filename = "Figures/VentralBody_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.144, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral foot overlap plot
+png(filename = "Figures/VentralFoot_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.156, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Ventral caudal overlap plot
+png(filename = "Figures/VentralCaudal_Ov.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.170, colors = colors.ov, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.ov, colors = colors.ov,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+
+
+CEPHALIC SCALE CHARACTERS
+
+```{r}
+
+colors.ceph <- setNames(c("red", "blue"),
+                        c("0", "1"))
+
+#Cephalic scale size
+trees.10 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,10], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.10 <- summary(trees.10, check.equal = T, plot = F)
+#Cephalic scale keeling
+trees.11 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,11], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.11 <- summary(trees.11, check.equal = T, plot = F)
+#Elongate cephalic scales
+trees.12 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,12], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.12 <- summary(trees.12, check.equal = T, plot = F)
+
+#Cephalic scale size plot
+legend.10 <- c("Relatively small", "Enlarged")
+png(filename = "Figures/CephalicSize.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.10, colors = colors.ceph, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.10, colors = colors.ceph,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+  
+#Cephalic scale keeling
+legend.11 <- c("Smooth", "Some or all keeled")
+png(filename = "Figures/CephalicKeel.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.11, colors = colors.ceph, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.11, colors = colors.ceph,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Elongate cephalic scales
+legend.12 <- c("Not elongate", "Vertically elongate")
+png(filename = "Figures/CephalicElongate.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.12, colors = colors.ceph, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.12, colors = colors.ceph,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+Frontal Scale Shenanigans
+
+```{r}
+
+#Identify taxa with no enlarged frontal using Reeder Ch 13
+scaledf <- as.data.frame(scale)
+
+nofrontal <- data.frame()
+for (i in 1:nrow(scaledf) ) {
+  if(scaledf$`13`[i] == 0){
+    nofrontal <- rbind(nofrontal, scaledf[i,])
+  }
+}
+
+nofrontal_taxa <- rownames(nofrontal)
+
+#Prune those taxa from tree
+pyron.frontal <- drop.tip(pyron, nofrontal_taxa)
+plotTree(pyron.frontal, fsize = 0.5, ftype = "bi")
+
+```
+
+```{r}
+
+#Frontal scale shape
+trees.82 <- make.simmap(pyron.frontal,
+                        as.factor(setNames(scale[,82], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.82 <- summary(trees.82, check.equal = T, plot = F)
+#Frontal scale texture
+trees.83 <- make.simmap(pyron.frontal,
+                        as.factor(setNames(scale[,83], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.83 <- summary(trees.83, check.equal = T, plot = F)
+
+
+#Plots
+png(filename = "Figures/FrontalShape.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.82, colors = colors.shape, fsize = 0.70, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.shape, colors = colors.shape,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+png(filename = "Figures/FrontalTexture.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.83, colors = colors.tex, fsize = 0.70, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.tex, colors = colors.tex,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+
+
+
+
+MISC POSTERIOR PROBABILITIES
+
+```{r}
+
+#Osteoderms - USING ARD
+trees.172 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,172], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.172 <- summary(trees.172, check.equal = T, plot = F)
+
+#Osteoderms plot
+colors.osteo <- setNames(c("#30d300", "#ffffff"),
+                         c("0", "1"))
+legend.osteo <- c("Lacking Osteoderms", "Osteoderms Present")
+png(filename = "Figures/Osteoderms.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.172, colors = colors.osteo, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.osteo, colors = colors.osteo,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+MENTALS, POSTMENTALS, INFRALABIALS, OH MY!
+
+```{r}
+
+colors.binary <- setNames(c("blue", "red"),
+                          c("0", "1"))
+
+#Mental scale split
+trees.39 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,39], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.39 <- summary(trees.39, check.equal = T, plot = F)
+#Elongate postmentals
+trees.40 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,40], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.40 <- summary(trees.40, check.equal = T, plot = F)
+#Postmentals single or double
+trees.41 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,41], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.41 <- summary(trees.41, check.equal = T, plot = F)
+#Enlarged scales medial to infralabials
+trees.42 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,42], rownames(scale))),
+                        model = "ARD", nsim = 100)
+obj.42 <- summary(trees.42, check.equal = T, plot = F)
+
+
+#Mental scale split plot
+legend.39 <- c("Entire", "Partial posterior split")
+png(filename = "Figures/MentalSplit.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.39, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.39, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+  
+#Elongate postmentals plot
+legend.40 <- c("Short", "Elongate")
+png(filename = "Figures/PostmentalElongate.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.40, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.40, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+  
+#Postmentals single or double plot
+legend.41 <- c("Two or more", "One")
+png(filename = "Figures/PostmentalCount.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.41, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.41, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Enlarged scales medial to infralabials
+legend.42 <- c("Enlarged scales present", "Chin scales homogenous")
+png(filename = "Figures/InfralabialMedialScales.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.42, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.42, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+```{r}
+
+#Tail tip
+trees.64 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,64], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.64 <- summary(trees.64, check.equal = T, plot = F)
+#Tail spike
+trees.65 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,65], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.65 <- summary(trees.65, check.equal = T, plot = F)
+#Tail cross section
+trees.66 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,66], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.66 <- summary(trees.66, check.equal = T, plot = F)
+#Caudal size
+trees.67 <- make.simmap(pyron,
+                        as.factor(setNames(scale[,67], rownames(scale))),
+                        model = "ER", nsim = 100)
+obj.67 <- summary(trees.67, check.equal = T, plot = F)
+
+#Tail tip plot
+legend.64 <- c("Pointed", "Blunt")
+png(filename = "Figures/TailTip.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.64, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.64, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Tail spike plot
+legend.65 <- c("Smooth", "Spike")
+png(filename = "Figures/TailSpike.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.65, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.65, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Tail cross section plot
+colors.66 <- setNames(c("#f3ff00", "#ffb900", "#f03600"),
+                      c("0", "1", "2"))
+legend.66 <- c("dorsoventrally flattened", "rounded", "laterally compressed")
+png(filename = "Figures/TailCrossSection.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.66, colors = colors.66, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.66, colors = colors.66,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+#Caudal size
+legend.67 <- c("Average size", "Enlarged")
+png(filename = "Figures/TailSize.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.67, colors = colors.binary, fsize = 0.45, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.67, colors = colors.binary,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+
+
+On the issue of keeling:
+
+```{r - Pruning non-keeled taxa}
+
+#Identify taxa with no keel
+scaledf <- as.data.frame(scale)
+
+nokeel <- data.frame()
+for (i in 1:nrow(scaledf) ) {
+  if(scaledf$`129`[i] == 0){
+    nokeel <- rbind(nokeel, scaledf[i,])
+  }
+}
+
+nokeel_taxa <- rownames(nokeel)
+
+#Prune those taxa from tree
+pyron.keel <- drop.tip(pyron, nokeel_taxa)
+plotTree(pyron.keel, fsize = 0.5, ftype = "bi")
+
+```
+
+```{r}
+
+#Posterior probabilities with only keeled taxa
+trees.130 <- make.simmap(pyron.keel,
+                         as.factor(setNames(scale[,130], rownames(scale))),
+                         model = "ER", nsim =100)
+obj.130 <- summary(trees.130, check.equal = T, plot = F)
+
+#First set up colors and legend
+colors.keel <- setNames(c("#f42500", "#f4b500", "#f0f400", "#ffffff"),
+                        c("0", "1", "2", "3"))
+legend.keel <- c("Anterior Keel", "Middle Keel", "Posterior Keel", "Keeling Entire")
+
+#Plot
+png(filename = "Figures/DorsalBody_Keel.png", res = 300,
+    width = 2600, height = 2600)
+  plot(obj.130, colors = colors.keel, fsize = 0.70, ftype = "bi",
+     offset = 0.5, cex = c(0.29, 0.12))
+  add.simmap.legend(leg = legend.keel, colors = colors.keel,
+                  x = 0.9*par()$usr[1], y = 0.9*par()$usr[4],
+                  prompt = F, fsize = 0.7)
+
+```
+
+
+
+
+```{r - Examining Reeder keel characters}
+
+#Cephalic scales keel presence/absence
+x.11 <- setNames(scale[,11], rownames(scale))
+trees.11 <- make.simmap(pyron, x.11, nsim = 100)
+#Dorsal body scale keel presence/absence
+x.51 <- setNames(scale[,51], rownames(scale))
+trees.51 <- make.simmap(pyron, x.51, nsim = 100)
+#Caudal scale keel presence/absence
+x.68 <- setNames(scale[,68], rownames(scale))
+trees.68 <- make.simmap(pyron, x.68, nsim = 100)
+#Subdigital scale keel presence/absence
+x.79 <- setNames(scale[,79], rownames(scale))
+trees.79 <- make.simmap(pyron, x.79, nsim = 100)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
